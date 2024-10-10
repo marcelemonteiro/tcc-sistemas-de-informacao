@@ -1,0 +1,6 @@
+.home {
+    display: grid;
+    grid-template-columns: 18.75rem 1fr;
+    background-color: var(--cinza-2);
+    column-gap: 2rem;
+}

@@ -1,0 +1,24 @@
+.navbar {
+   border-right: 1px solid var(--c-4);
+   height: 100vh;
+}
+
+.navbar-header {
+    background: var(--gradient-1);
+}
+
+.navbar-user {
+    color: var(--cinza-2);
+    padding: 2rem;
+}
+
+.navbar-nav ul li a {
+    display: block;
+    padding: 1.5rem 1rem;
+    border-bottom: 1px solid var(--c-4);
+    color: var(--cinza-11);
+}
+
+.navbar-nav ul li a:hover {
+    background-color: var(--c-3);
+}

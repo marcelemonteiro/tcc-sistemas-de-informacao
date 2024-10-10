@@ -1,0 +1,65 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 2rem;
+  margin: 0;
+  padding: 0;
+  color: var(--cinza-12);
+}
+
+body,
+input {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  color: var(--cinza-12);
+}
+
+a,
+button,
+span {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.25px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+:root {
+  /* Cores */
+  --gradient-1: linear-gradient(to right, #134e5e, #71b280);
+  --gradient-2: linear-gradient(to right, #8bc34a, #85c838);
+
+  --c-1: #f5f5f5;
+  --cinza-2: #F0F0F0;
+  --c-3: #e0e0e0;
+  --c-4: #cccccc;
+  --cinza-11: #3d3d3d;
+  --cinza-12: #292929;
+
+  --verde-1: #345b07;
+
+  /* Detalhes */
+  --border-radius: 0.625rem;
+
+  /* Breakpoints */
+  --breakpoint-xs: 320px; /* para dispositivos muito pequenos (smartphones antigos) */
+  --breakpoint-sm: 576px; /* para smartphones */
+  --breakpoint-md: 768px; /* tablets */
+  --breakpoint-lg: 992px; /* desktops pequenos */
+  --breakpoint-xl: 1200px; /* desktops grandes */
+  --breakpoint-xxl: 1400px; /* telas muito grandes */
+}
