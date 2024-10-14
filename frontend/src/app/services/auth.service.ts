@@ -4,10 +4,12 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class AuthService {
+  // o service mantém o valor igual, pois só é criado uma instância dele na aplicação inteira
   private isAuthenticated = false;
   private authSecretKey = 'Token';
 
   constructor() {
+    // o !! transforma em booleano
     this.isAuthenticated = !!localStorage.getItem(this.authSecretKey);
   }
 

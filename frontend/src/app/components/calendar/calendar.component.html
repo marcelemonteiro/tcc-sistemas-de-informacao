@@ -1,0 +1,14 @@
+<app-section title="Calendário">
+    <p class="current-day">Segunda-feira</p>
+
+    <table class="calendar">
+        <tbody>
+            @for (day of schoolCalendar; track day.id) {
+            <tr>
+                <th scope="row" class="calendar-schedule">{{ day.schedule }}</th>
+                <td class="calendar-class">{{ day.class }}</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</app-section>
