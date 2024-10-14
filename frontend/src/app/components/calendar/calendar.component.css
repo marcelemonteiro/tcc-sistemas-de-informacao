@@ -29,7 +29,8 @@
     color: var(--cinza-11);
 }
 
-.calendar-class {
+.calendar-class,
+.calendar-teacher {
     padding: 1rem 2rem;
     text-align: center;
     border: 2px solid var(--c-3);
