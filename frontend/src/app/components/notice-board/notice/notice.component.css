@@ -1,0 +1,56 @@
+.notice-wrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--c-3);
+}
+
+.new-notice {
+    width: 1rem;
+    height: 1rem;
+    background: var(--gradient-2);
+    border-radius: 50%;
+}
+
+.notice {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+}
+
+.notice-title {
+    font-weight: 700;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    text-decoration: underline;
+}
+
+.notice-title a {
+    color: var(--cinza-12);
+}
+
+.notice-title a:hover {
+    opacity: 0.6;
+}
+
+.remove-notice-btn {
+    border: none;
+    cursor: pointer;
+    width: 1.25rem;
+    height: 1.25rem;
+    display: flex;
+    background-color: transparent;
+}
+
+.remove-notice-btn:hover {
+    opacity: 0.6;
+}
+
+.close-icon {
+    color: var(--cinza-10);
+    font-size: 1.25rem;
+}
+
