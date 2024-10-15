@@ -1,0 +1,19 @@
+<div class="forum">
+    <div class="forum-title">
+        <h3>
+            <a routerLink="/">{{ title }}</a>
+        </h3>
+
+        @if (newUpdatesNumber) {
+        <div class="forum-updates">{{ newUpdatesNumber }}</div>
+        }
+    </div>
+
+    <p>
+        Última atualização: {{ lastUpdate }}
+    </p>
+
+    <p class="forum-numbers">
+        {{ postsNumber }} postagens e {{ commentsNumber }} comentários
+    </p>
+</div>

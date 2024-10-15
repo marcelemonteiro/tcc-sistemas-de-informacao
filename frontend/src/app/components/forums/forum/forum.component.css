@@ -1,0 +1,39 @@
+.forum {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--c-3);
+}
+
+.forum-title {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.forum-title h3 {
+    font-weight: 700;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+}
+
+.forum-title h3 a {
+    color: var(--cinza-12);
+}
+
+.forum-title h3 a:hover {
+    opacity: 0.6;
+}
+
+.forum-updates {
+    padding: 0.25rem 0.8rem;
+    background: var(--vermelho);
+    color: var(--cinza-2);
+    font-weight: 700;
+    border-radius: 1rem;
+}
+
+.forum-numbers {
+    color: var(--cinza-10);
+}
