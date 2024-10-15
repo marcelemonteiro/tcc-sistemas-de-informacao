@@ -12,13 +12,22 @@
     padding: 2rem;
 }
 
-.navbar-nav ul li a {
-    display: block;
+.navbar-nav ul li a,
+.navbar-nav ul li button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
     padding: 1.5rem 1rem;
     border-bottom: 1px solid var(--c-4);
+    border-top: none;
+    border-right: none;
+    border-left: none;
     color: var(--cinza-11);
+    cursor: pointer;
 }
 
-.navbar-nav ul li a:hover {
+.navbar-nav ul li a:hover,
+.navbar-nav ul li button:hover {
     background-color: var(--c-3);
 }

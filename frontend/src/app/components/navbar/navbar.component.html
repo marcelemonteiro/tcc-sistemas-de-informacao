@@ -7,11 +7,42 @@
     </div>
     <nav class="navbar-nav">
         <ul>
-            <li><a routerLink="/horarios">Horários</a></li>
-            <li><a routerLink="/">Disciplinas</a></li>
-            <li><a routerLink="/">Avaliações</a></li>
-            <li><a routerLink="/">Fóruns</a></li>
-            <li><a routerLink="/">Secretaria</a></li>
+            <li>
+                <a routerLink="/horarios">
+                    <mat-icon aria-hidden="false" aria-label="Home Icon" fontIcon="calendar_today"></mat-icon>
+                    Horários
+                </a>
+            </li>
+            <li>
+                <a routerLink="/">
+                    <mat-icon aria-hidden="false" aria-label="Home Icon" fontIcon="book"></mat-icon>
+                    Disciplinas
+                </a>
+            </li>
+            <li>
+                <a routerLink="/">
+                    <mat-icon aria-hidden="false" aria-label="Home Icon" fontIcon="bookmark"></mat-icon>
+                    Avaliações
+                </a>
+            </li>
+            <li>
+                <a routerLink="/">
+                    <mat-icon aria-hidden="false" aria-label="Home Icon" fontIcon="chat"></mat-icon>
+                    Fóruns
+                </a>
+            </li>
+            <li>
+                <a routerLink="/">
+                    <mat-icon aria-hidden="false" aria-label="Home Icon" fontIcon="info"></mat-icon>
+                    Secretaria
+                </a>
+            </li>
+            <li>
+                <button (click)="logout()">
+                    <mat-icon aria-hidden="false" aria-label="Home Icon" fontIcon="logout"></mat-icon>
+                    Sair
+                </button>
+            </li>
         </ul>
     </nav>
 </div>
