@@ -4,6 +4,15 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
 h1,
 h2,
 h3 {
@@ -17,7 +26,7 @@ h3 {
 
 body,
 input {
-  font-family: "Roboto", sans-serif;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
   font-weight: 400;
   font-size: 1rem;
   color: var(--cinza-12);
@@ -57,10 +66,16 @@ ul li {
   --border-radius: 0.625rem;
 
   /* Breakpoints */
-  --breakpoint-xs: 320px; /* para dispositivos muito pequenos (smartphones antigos) */
-  --breakpoint-sm: 576px; /* para smartphones */
-  --breakpoint-md: 768px; /* tablets */
-  --breakpoint-lg: 992px; /* desktops pequenos */
-  --breakpoint-xl: 1200px; /* desktops grandes */
-  --breakpoint-xxl: 1400px; /* telas muito grandes */
+  --breakpoint-xs: 320px;
+  /* para dispositivos muito pequenos (smartphones antigos) */
+  --breakpoint-sm: 576px;
+  /* para smartphones */
+  --breakpoint-md: 768px;
+  /* tablets */
+  --breakpoint-lg: 992px;
+  /* desktops pequenos */
+  --breakpoint-xl: 1200px;
+  /* desktops grandes */
+  --breakpoint-xxl: 1400px;
+  /* telas muito grandes */
 }
