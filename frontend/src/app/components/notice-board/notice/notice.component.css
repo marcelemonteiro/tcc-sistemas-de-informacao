@@ -23,7 +23,7 @@
 
 .notice-title {
     font-weight: 700;
-    font-size: 0.875rem;
+    font-size: var(--font-sm); 
     text-transform: uppercase;
 }
 
