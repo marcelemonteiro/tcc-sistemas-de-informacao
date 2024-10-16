@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { DefaultLayoutComponent } from "../default-layout/default-layout.component";
-import { CalendarComponent } from "../calendar/calendar.component";
+import { DefaultLayoutComponent } from '../../components/default-layout/default-layout.component';
+import { CalendarComponent } from '../../components/calendar/calendar.component';
 
 @Component({
   selector: 'app-calendar-page',

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { NavbarComponent } from "../navbar/navbar.component";
-import { DashboardComponent } from "../dashboard/dashboard.component";
-import { DefaultLayoutComponent } from "../default-layout/default-layout.component";
+import { NavbarComponent } from "../../components/navbar/navbar.component";
+import { DashboardComponent } from "../../components/dashboard/dashboard.component";
+import { DefaultLayoutComponent } from "../../components/default-layout/default-layout.component";
 
 @Component({
   selector: 'app-home',
