@@ -1,10 +1,9 @@
 .current-day {
     display: inline-block;
     font-weight: 700;
-    font-size: 1rem;
     letter-spacing: 0.25px;
     text-transform: uppercase;
-    margin-bottom: 1rem;
+    margin: 1rem 0;
 }
 
 .current-day::after {
@@ -25,8 +24,8 @@
     border: 2px solid var(--c-3);
     font-family: "Poppins", sans-serif;
     font-weight: 500;
-    font-size: 1rem;
     color: var(--cinza-11);
+    font-size: var(--font-md);
 }
 
 .calendar-class,
@@ -37,4 +36,19 @@
     font-family: "Poppins", sans-serif;
     font-weight: 500;
     text-transform: uppercase;
+    font-size: var(--font-md);
+}
+
+/* smartphones */
+@media (max-width: 576px) {
+    .calendar-schedule  {
+        padding: 0.25rem 0.15rem;
+        font-size: var(--font-sm);
+    }
+
+    .calendar-class,
+    .calendar-teacher {
+        padding: 0.25rem 0.15rem;
+        font-size: var(--font-sm);
+    }
 }

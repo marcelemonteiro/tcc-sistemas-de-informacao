@@ -4,3 +4,10 @@
     background-color: var(--cinza-2);
     column-gap: 1rem;
 }
+
+/* desktops pequenos */
+@media (max-width: 1200px) {
+    .default-layout {
+        grid-template-columns: 1fr;
+    }
+}

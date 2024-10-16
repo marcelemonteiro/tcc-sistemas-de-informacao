@@ -4,8 +4,11 @@
             <p>Marcele Monteiro</p>
             <span>Aluno</span>
         </div>
+        <button class="navbar-mobile-btn" (click)="enableMobileNavbar()">
+            <mat-icon class="navbar-mobile-icon" aria-hidden="false" aria-label="Menu Icon" fontIcon="menu"></mat-icon>
+        </button>
     </div>
-    <nav class="navbar-nav">
+    <nav class="navbar-nav" [class.activeMobile]="isMobileNavbar">
         <ul>
             <li>
                 <a routerLink="/home">

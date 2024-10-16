@@ -18,3 +18,11 @@
 .forums-wrapper {
     grid-area: forums;
 }
+
+/* desktops pequenos */
+@media (max-width: 1200px) {
+    .dashboard {
+        padding: 0;
+        grid-template-areas: "calendar" "notice-board" "forums";
+    }
+}

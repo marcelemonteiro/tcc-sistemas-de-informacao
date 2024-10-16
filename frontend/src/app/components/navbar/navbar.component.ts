@@ -13,9 +13,14 @@ import { AuthService } from '../../services/auth.service';
 export class NavbarComponent {
   authService = inject(AuthService);
   router = inject(Router);
+  isMobileNavbar = false;
 
   logout() {
     this.authService.logout();
     this.router.navigate(['/login']);
+  }
+
+  enableMobileNavbar() {
+    this.isMobileNavbar = !this.isMobileNavbar;
   }
 }
