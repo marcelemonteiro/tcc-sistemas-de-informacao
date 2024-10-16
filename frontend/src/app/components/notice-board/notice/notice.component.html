@@ -5,7 +5,7 @@
 
     <div class="notice">
         <h3 class="notice-title">
-            <a routerLink="/">{{ title }}</a>
+            <a [routerLink]="['/avisos', id]">{{ title }}</a>
         </h3>
         <p>{{ date }}</p>
         <p>{{ author }}</p>

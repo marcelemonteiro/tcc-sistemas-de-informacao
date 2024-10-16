@@ -10,9 +10,9 @@ import { RouterLink } from '@angular/router';
   styleUrl: './notice.component.css'
 })
 export class NoticeComponent {
+  @Input() id!: string;
   @Input() title!: string;
   @Input() date!: string;
   @Input() author!: string;
   @Input() isNew!: boolean;
-
 }
