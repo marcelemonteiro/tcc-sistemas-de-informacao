@@ -1,0 +1,11 @@
+<app-default-layout>
+    <app-section title="Disciplinas">
+        <ul>
+            @for (class of classesMock; track class.id) {
+                <li>
+                    <a [routerLink]="['/disciplinas', class.id]" >{{ class.name }}</a>
+                </li>
+            }
+        </ul>
+    </app-section>
+</app-default-layout>
