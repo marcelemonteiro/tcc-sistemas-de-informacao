@@ -42,6 +42,15 @@ span {
   text-decoration: none;
 }
 
+a {
+  color: var(--link-color);
+}
+
+a:hover {
+  opacity: 0.6;
+  text-decoration: underline;
+}
+
 ul li {
   list-style: none;
 }
@@ -62,6 +71,8 @@ ul li {
 
   --verde-1: #345b07;
   --vermelho: #E44949;
+
+  --link-color: #134e5e;
 
   --font-sm: clamp(0.7rem, 0.7rem + 0.7vw, 0.9rem);
   --font-md: clamp(1rem, 1rem + 1vw, 1rem);

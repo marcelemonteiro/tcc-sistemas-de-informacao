@@ -1,5 +1,12 @@
 <app-section title="Quadro de avisos">
     <app-notice id="111" title="Entrega das avaliações de matemática" date="Seg. 24 de setembro" author="Professor Billy"
         [isNew]="true" />
+
     <app-notice id="222" title="Entrega das avaliações de português" date="Seg. 20 de setembro" author="Professora Katyane" />
+
+    @if (allNoticesBtn) {
+        <div class="all-notices-link">
+            <a routerLink="/avisos">Ver todos os avisos</a>
+        </div>
+    }
 </app-section>
