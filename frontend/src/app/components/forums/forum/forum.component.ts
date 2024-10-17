@@ -9,6 +9,7 @@ import { RouterLink } from '@angular/router';
   styleUrl: './forum.component.css'
 })
 export class ForumComponent {
+  @Input() id!: string;
   @Input() title!: string;
   @Input() lastUpdate!: string;
   @Input() postsNumber!: number;

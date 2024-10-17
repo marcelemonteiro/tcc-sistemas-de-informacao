@@ -1,7 +1,7 @@
 <div class="forum">
     <div class="forum-title">
         <h3>
-            <a routerLink="/">{{ title }}</a>
+            <a [routerLink]="['/forums', id]">{{ title }}</a>
         </h3>
 
         @if (newUpdatesNumber) {

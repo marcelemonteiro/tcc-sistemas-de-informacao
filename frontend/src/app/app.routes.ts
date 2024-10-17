@@ -10,22 +10,17 @@ import { CalendarPageComponent } from './pages/calendar-page/calendar-page.compo
 import { ForumsPageComponent } from './pages/forums-page/forums-page.component';
 import { NoticePageComponent } from './pages/notice-page/notice-page.component';
 import { NoticeBoardPageComponent } from './pages/notice-board-page/notice-board-page.component';
+import { ForumPageComponent } from './pages/forum-page/forum-page.component';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
-  {
-    path: 'home',
-    component: HomeComponent,
-    canActivate: [authGuard]
-  },
+  { path: 'home', component: HomeComponent, canActivate: [authGuard] },
   { path: 'login', component: LoginComponent, canActivate: [loginGuard] },
   { path: 'horarios', component: CalendarPageComponent, canActivate: [authGuard] },
   { path: 'foruns', component: ForumsPageComponent, canActivate: [authGuard] },
-  {
-    path: 'avisos',
-    component: NoticeBoardPageComponent,
-    canActivate: [authGuard],
-  },
-  { path: 'avisos/:id', component: NoticePageComponent },
+  { path: 'avisos', component: NoticeBoardPageComponent, canActivate: [authGuard] },
+  { path: 'avisos/:id', component: NoticePageComponent, canActivate: [authGuard] },
+  { path: 'forums', component: ForumsPageComponent, canActivate: [authGuard] },
+  { path: 'forums/:id', component: ForumPageComponent, canActivate: [authGuard] },
   { path: '**', component: PageNotFoundComponent },
 ];

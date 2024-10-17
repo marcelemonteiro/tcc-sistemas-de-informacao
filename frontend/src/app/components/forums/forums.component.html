@@ -1,6 +1,12 @@
 <app-section title="Fóruns">
-    <app-forum title="Fórum de biologia" [newUpdatesNumber]="5" lastUpdate="21 de setembro às 14:20" [postsNumber]="5"
+    <app-forum id="333" title="Fórum de biologia" [newUpdatesNumber]="5" lastUpdate="21 de setembro às 14:20" [postsNumber]="5"
         [commentsNumber]="5" />
 
-    <app-forum title="Fórum de química" lastUpdate="5 de setembro às 14:20" [postsNumber]="10" [commentsNumber]="3" />
+    <app-forum id="444" title="Fórum de química" lastUpdate="5 de setembro às 14:20" [postsNumber]="10" [commentsNumber]="3" />
+
+    @if (allForumsBtn) {
+        <div class="all-forums-link">
+            <a routerLink="/forums">Ver todos os fóruns</a>
+        </div>
+    }
 </app-section>

@@ -1,10 +1,10 @@
 .dashboard {
-    padding: 1.5rem;
+    padding: 1rem;
     display: grid;
     grid-template-areas: "calendar notice-board" "calendar forums";
-    row-gap: 1.125rem;
+    row-gap: 1rem;
     column-gap: 1.75rem;
-    min-height: 100vh;
+    height: 100vh;
 }
 
 .calendar-wrapper {
