@@ -1,0 +1,15 @@
+<div>
+    <div>
+        <p><strong>ID:</strong> {{ exam.id }}</p>
+        <p>
+            <a [routerLink]="['/avaliacoes', exam.id]">
+                <strong>Title:</strong> {{ exam.title }}
+            </a>
+        </p>
+        <p><strong>Description:</strong> {{ exam.description }}</p>
+        <p><strong>Type:</strong> {{ exam.type }}</p>
+        <p><strong>Date Start:</strong> {{ exam.dateStart }}</p>
+        <p><strong>Date End:</strong> {{ exam.dateEnd }}</p>
+        <p><strong>ID Disciplina:</strong> {{ exam.idDisciplina }}</p>
+    </div>
+</div>

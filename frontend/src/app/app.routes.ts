@@ -11,6 +11,8 @@ import { ForumsPageComponent } from './pages/forums-page/forums-page.component';
 import { NoticePageComponent } from './pages/notice-page/notice-page.component';
 import { NoticeBoardPageComponent } from './pages/notice-board-page/notice-board-page.component';
 import { ForumPageComponent } from './pages/forum-page/forum-page.component';
+import { ExamsPageComponent } from './pages/exams-page/exams-page.component';
+import { ExamPageComponent } from './pages/exam-page/exam-page.component';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -22,5 +24,7 @@ export const routes: Routes = [
   { path: 'avisos/:id', component: NoticePageComponent, canActivate: [authGuard] },
   { path: 'forums', component: ForumsPageComponent, canActivate: [authGuard] },
   { path: 'forums/:id', component: ForumPageComponent, canActivate: [authGuard] },
+  { path: 'avaliacoes', component: ExamsPageComponent, canActivate: [authGuard] },
+  { path: 'avaliacoes/:id', component: ExamPageComponent, canActivate: [authGuard] },
   { path: '**', component: PageNotFoundComponent },
 ];
