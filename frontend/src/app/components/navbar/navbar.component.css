@@ -1,6 +1,8 @@
 .navbar {
     border-right: 1px solid var(--c-4);
+    width: 18.75rem;
     min-height: 100vh;
+    position: fixed;
 }
 
 .navbar-header {
@@ -53,7 +55,9 @@
 /* desktops pequenos */
 @media (max-width: 1200px) {
     .navbar {
+        width: 100%;
         min-height: 100%;
+        position: static;
     }
 
     .navbar-mobile-btn {

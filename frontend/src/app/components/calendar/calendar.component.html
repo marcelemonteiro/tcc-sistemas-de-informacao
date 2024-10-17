@@ -1,15 +1,35 @@
-<app-section title="Calendário">
-    <p class="current-day">Segunda-feira</p>
+<p class="current-day">Segunda-feira</p>
 
-    <table class="calendar">
-        <tbody>
-            @for (day of schoolCalendar; track day.id) {
-            <tr>
-                <th scope="row" class="calendar-schedule">{{ day.schedule }}</th>
-                <td class="calendar-class">{{ day.class }}</td>
-                <td class="calendar-teacher">{{ day.teacher }}</td>
-            </tr>
-            }
-        </tbody>
-    </table>
-</app-section>
+<table class="calendar">
+    <thead>
+        <tr class="calendar-head">
+            <th scope="col">
+                <div>
+                    <mat-icon aria-hidden="false" aria-label="Avaliações Icon" fontIcon="schedule"></mat-icon>
+                    Horário
+                </div>
+            </th>
+            <th scope="col">
+                <div>
+                    <mat-icon aria-hidden="false" aria-label="Avaliações Icon" fontIcon="book"></mat-icon>
+                    Disciplina
+                </div>
+            </th>
+            <th scope="col">
+                <div>
+                    <mat-icon aria-hidden="false" aria-label="Avaliações Icon" fontIcon="people"></mat-icon>
+                    Professor(a)
+                </div>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (day of schoolCalendar; track day.id) {
+        <tr class="calendar-body-row">
+            <th scope="row" class="calendar-schedule">{{ day.schedule }}</th>
+            <td class="calendar-class">{{ day.class }}</td>
+            <td class="calendar-teacher">{{ day.teacher }}</td>
+        </tr>
+        }
+    </tbody>
+</table>

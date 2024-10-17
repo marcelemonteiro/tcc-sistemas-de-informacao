@@ -19,6 +19,21 @@
     border-collapse: collapse;
 }
 
+.calendar-head {
+    background-color: var(--cinza-2);
+}
+
+.calendar-head th div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.calendar-body-row {
+    background-color: #FFF;
+}
+
 .calendar-schedule {
     padding: 1rem 0;
     border: 2px solid var(--c-3);
@@ -28,13 +43,13 @@
     font-size: var(--font-md);
 }
 
+.calendar-head th,
 .calendar-class,
 .calendar-teacher {
     padding: 1rem 2rem;
     text-align: center;
     border: 2px solid var(--c-3);
     font-family: "Poppins", sans-serif;
-    font-weight: 500;
     text-transform: uppercase;
     font-size: var(--font-md);
 }
@@ -46,6 +61,11 @@
         font-size: var(--font-sm);
     }
 
+    .calendar-head th div {
+        gap: 0.25rem;
+    }
+
+    .calendar-head th,
     .calendar-class,
     .calendar-teacher {
         padding: 0.25rem 0.15rem;

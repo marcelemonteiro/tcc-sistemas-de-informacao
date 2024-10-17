@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { SectionComponent } from "../section/section.component";
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-calendar',
   standalone: true,
-  imports: [SectionComponent],
+  imports: [SectionComponent, MatIconModule],
   templateUrl: './calendar.component.html',
   styleUrl: './calendar.component.css'
 })
@@ -17,6 +18,4 @@ export class CalendarComponent {
     { id: 4, schedule: '10:20 - 11:10', class: 'História', teacher: 'Prof. Pedro' },
     { id: 5, schedule: '11:10 - 12:00', class: 'Educação Física', teacher: 'Prof. Roberto' },
   ];
-
-
 }
