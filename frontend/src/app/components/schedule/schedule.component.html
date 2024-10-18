@@ -24,11 +24,17 @@
         </tr>
     </thead>
     <tbody>
-        @for (day of weekSchedule; track day.id) {
+        @for (day of formattedWeekSchedule; track day.id) {
         <tr class="calendar-body-row">
-            <th scope="row" class="calendar-schedule">{{ day.schedule }}</th>
-            <td class="calendar-class">{{ day.class }}</td>
-            <td class="calendar-teacher">{{ day.teacher }}</td>
+            <th scope="row" class="calendar-schedule">
+                {{ day.startTime }} - {{ day.endTime }}
+            </th>
+            <td class="calendar-class">
+                {{ day.subjectName }}
+            </td>
+            <td class="calendar-teacher">
+                {{ day.teacherName }}
+            </td>
         </tr>
         }
     </tbody>
