@@ -1,5 +1,48 @@
 <app-default-layout>
-    <app-section [title]="classMock.nome">
+    <!-- <app-section [title]="classMock.nome">
         <app-class [class]="classMock" />
+    </app-section> -->
+    <app-section title="Matemática">
+        <div class="class-teacher">
+            <mat-icon aria-hidden="false" aria-label="User Icon" fontIcon="person"></mat-icon>
+            <p>Prof. Carlos</p>
+        </div>
+
+        <div class="class-content-grid">
+            <div class="class-upcoming-exams">
+                <h3 class="class-section-title">Próximas avaliações</h3>
+    
+                <div class="exam">
+                    <div class="exam-date">
+                        <p>10 de Setembro</p>
+                        <p>9h</p>
+                    </div>
+                    <div class="exam-type">
+                        <p>Prova</p>
+                    </div>
+                </div>
+    
+                <div class="exam">
+                    <div class="exam-date">
+                        <p>20 de Setembro</p>
+                        <p>8h</p>
+                    </div>
+                    <div class="exam-type">
+                        <p>Entrega de Projeto</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="class-schedule">
+                <h3 class="class-section-title">Horários</h3>
+            </div>
+    
+    
+            <div>
+                <h3 class="class-section-title">Fóruns relacionados</h3>
+            </div>
+        </div>
+
+
     </app-section>
 </app-default-layout>

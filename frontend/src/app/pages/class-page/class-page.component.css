@@ -1,0 +1,53 @@
+.class-teacher {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.class-content-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 2fr;
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.class-upcoming-exams {
+}
+
+.class-section-title {
+    font-family: "Poppins", sans-serif;
+    font-size: var(--font-lg);
+    font-weight: 500;
+    margin: 1rem 0;
+}
+
+.exam {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    background: #134e5e;
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.exam-date p {
+    font-family: "Poppins", sans-serif;
+}
+
+.exam-date p:nth-child(1) {
+    font-size: var(--font-lg);
+    font-weight: 700;
+    color: #fff;
+}
+
+.exam-date p:nth-child(2) {
+    color: var(--c-3);
+}
+
+.exam-type p {
+    color: var(--c-3);
+    text-transform: uppercase;
+    text-align: right;
+}

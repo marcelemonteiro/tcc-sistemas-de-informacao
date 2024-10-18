@@ -3,11 +3,13 @@ import { DefaultLayoutComponent } from "../../components/default-layout/default-
 import { ClassComponent } from "../../components/class/class.component";
 import { Class } from '../../components/class/class.model';
 import { SectionComponent } from "../../components/section/section.component";
+import { MatIconModule } from '@angular/material/icon';
+import { CalendarComponent } from "../../components/calendar/calendar.component";
 
 @Component({
   selector: 'app-class-page',
   standalone: true,
-  imports: [DefaultLayoutComponent, ClassComponent, SectionComponent],
+  imports: [DefaultLayoutComponent, ClassComponent, SectionComponent, MatIconModule, CalendarComponent],
   templateUrl: './class-page.component.html',
   styleUrl: './class-page.component.css'
 })

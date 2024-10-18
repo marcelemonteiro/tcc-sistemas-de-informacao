@@ -1,6 +1,6 @@
 .navbar {
     border-right: 1px solid var(--c-4);
-    width: 18.75rem;
+    width: 16rem;
     min-height: 100vh;
     position: fixed;
 }

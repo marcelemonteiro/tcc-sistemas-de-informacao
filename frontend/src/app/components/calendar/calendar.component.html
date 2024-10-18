@@ -1,4 +1,4 @@
-<p class="current-day">Segunda-feira</p>
+<p class="current-day">{{ weekSchedule[0].weekDay }}</p>
 
 <table class="calendar">
     <thead>
@@ -24,7 +24,7 @@
         </tr>
     </thead>
     <tbody>
-        @for (day of schoolCalendar; track day.id) {
+        @for (day of weekSchedule; track day.id) {
         <tr class="calendar-body-row">
             <th scope="row" class="calendar-schedule">{{ day.schedule }}</th>
             <td class="calendar-class">{{ day.class }}</td>

@@ -1,11 +1,67 @@
 <app-default-layout>
     <app-section title="Disciplinas">
-        <ul>
+        <!-- <ul>
             @for (class of classesMock; track class.id) {
                 <li>
                     <a [routerLink]="['/disciplinas', class.id]" >{{ class.name }}</a>
                 </li>
             }
-        </ul>
+        </ul> -->
+        <div class="cards-grid">
+            <div class="card" [routerLink]="['/disciplinas', 1]">
+                <div class="card-header"></div>
+                <div class="card-body">
+                    <h3 class="card-class-name">Matemática</h3>
+                    <div class="card-teacher">
+                        <mat-icon aria-hidden="false" aria-label="User Icon" fontIcon="person"></mat-icon>
+                        <p>Prof. Carlos</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header"></div>
+                <div class="card-body">
+                    <h3>Português</h3>
+                    <div class="card-teacher">
+                        <mat-icon aria-hidden="false" aria-label="User Icon" fontIcon="person"></mat-icon>
+                        <p>Prof.ª Ana</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header"></div>
+                <div class="card-body">
+                    <h3>Ciências</h3>
+                    <div class="card-teacher">
+                        <mat-icon aria-hidden="false" aria-label="User Icon" fontIcon="person"></mat-icon>
+                        <p>Prof.ª Julia</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header"></div>
+                <div class="card-body">
+                    <h3>História</h3>
+                    <div class="card-teacher">
+                        <mat-icon aria-hidden="false" aria-label="User Icon" fontIcon="person"></mat-icon>
+                        <p>Prof. Pedro</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header"></div>
+                <div class="card-body">
+                    <h3>Educação Física</h3>
+                    <div class="card-teacher">
+                        <mat-icon aria-hidden="false" aria-label="User Icon" fontIcon="person"></mat-icon>
+                        <p>Prof. Roberto</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </app-section>
 </app-default-layout>

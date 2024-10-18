@@ -11,13 +11,14 @@ body {
 
 body {
   margin: 0;
+  background-color: var(--c-1);
 }
 
 h1,
 h2 {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-size: var(--font-lg); 
+  font-size: var(--font-title); 
   margin: 0;
   padding: 0;
   color: var(--cinza-12);
@@ -76,7 +77,8 @@ ul li {
 
   --font-sm: clamp(0.7rem, 0.7rem + 0.7vw, 0.9rem);
   --font-md: clamp(1rem, 1rem + 1vw, 1rem);
-  --font-lg: clamp(1.8rem, 1rem + 1.8vw, 2rem);
+  --font-lg: clamp(1.2rem, 1rem + 1.2vw, 1.5rem);
+  --font-title: clamp(1.5rem, 1rem + 1.5vw, 1.8rem);
 
   /* Detalhes */
   --border-radius: 0.625rem;
