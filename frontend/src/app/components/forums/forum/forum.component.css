@@ -18,12 +18,9 @@
     text-transform: uppercase;
 }
 
-.forum-title h3 a {
-    color: var(--cinza-12);
-}
-
 .forum-title h3 a:hover {
-    opacity: 0.6;
+    opacity: 0.7;
+    text-decoration: underline;
 }
 
 .forum-updates {

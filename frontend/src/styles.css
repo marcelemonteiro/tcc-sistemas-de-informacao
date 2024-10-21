@@ -11,14 +11,14 @@ body {
 
 body {
   margin: 0;
-  background-color: var(--c-1);
+  background-color: var(--cinza-azulado-claro);
 }
 
 h1,
 h2 {
   font-family: "Poppins", sans-serif;
-  font-weight: 500;
-  font-size: var(--font-title); 
+  font-weight: 700;
+  font-size: var(--font-lg); 
   margin: 0;
   padding: 0;
   color: var(--cinza-12);
@@ -36,10 +36,9 @@ a,
 button,
 span {
   font-family: "Roboto", sans-serif;
-  font-weight: 700;
-  font-size: var(--font-sm); 
+  font-weight: 500;
+  font-size: var(--font-md); 
   letter-spacing: 0.25px;
-  text-transform: uppercase;
   text-decoration: none;
 }
 
@@ -47,10 +46,6 @@ a {
   color: var(--link-color);
 }
 
-a:hover {
-  opacity: 0.6;
-  text-decoration: underline;
-}
 
 ul li {
   list-style: none;
@@ -58,8 +53,9 @@ ul li {
 
 :root {
   /* Cores */
-  --gradient-1: linear-gradient(to right, #134e5e, #71b280);
-  --gradient-2: linear-gradient(to right, #8bc34a, #85c838);
+  /* --gradient-1: linear-gradient(to right, #134e5e, #71b280); */
+  --gradient-1: linear-gradient(to right, #0f0fbe, #2525d6);
+  --gradient-2: linear-gradient(to right, #8cdf2f, #88ff00);
 
   --c-1: #f5f5f5;
   --cinza-2: #F0F0F0;
@@ -72,8 +68,16 @@ ul li {
 
   --verde-1: #345b07;
   --vermelho: #E44949;
+  --azul-1: #0f0fbe;
 
-  --link-color: #134e5e;
+  --cinza-a: #E8E9EC;
+  --cinza-azulado: #F5F6FA;
+  --cinza-azulado-claro: #F8F9FC;
+
+  --link-color: #2626cc;
+
+  --box-shadow-1: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  --box-shadow-2: rgba(0, 0, 255, 0.02) 0px 1px 3px 0px, rgba(27, 31, 255, 0.15) 0px 0px 0px 1px;
 
   --font-sm: clamp(0.7rem, 0.7rem + 0.7vw, 0.9rem);
   --font-md: clamp(1rem, 1rem + 1vw, 1rem);

@@ -1,19 +1,26 @@
 .navbar {
-    border-right: 1px solid var(--c-4);
     width: 16rem;
     min-height: 100vh;
     position: fixed;
+    background-color: #FFF;
+    border-right: 2px solid var(--cinza-a);
 }
 
 .navbar-header {
-    background: var(--gradient-1);
     display: flex;
     justify-content: space-between;
-    padding: 2rem;
+    padding: 1.25rem 1.2rem;
+    margin: 1rem;
+    margin-bottom: 0.5rem;
+    box-shadow: var(--box-shadow-1);
+    border-radius: 10px;
 }
 
-.navbar-user {
-    color: var(--cinza-2);
+.navbar-avatar {
+    width: 40px;
+    height: 40px;
+    background-color: var(--azul-1);
+    border-radius: 50%;
 }
 
 .navbar-mobile-btn {
@@ -29,7 +36,11 @@
     justify-content: center;
     align-items: center;
     font-size: 2.5rem;
-    color: var(--cinza-2);
+    color: var(--azul-1);
+}
+
+.navbar-nav {
+    margin: 1rem;
 }
 
 .navbar-nav ul li a,
@@ -38,18 +49,34 @@
     display: flex;
     align-items: center;
     gap: 0.625rem;
-    padding: 1.5rem 1rem;
-    border-bottom: 1px solid var(--c-4);
-    border-top: none;
-    border-right: none;
-    border-left: none;
+    padding: 1rem 1.5rem;
     color: var(--cinza-11);
     cursor: pointer;
+    border: none;
+    background-color: transparent;
+    margin-bottom: 0.5rem;
 }
 
 .navbar-nav ul li a:hover,
 .navbar-nav ul li button:hover {
-    background-color: var(--c-3);
+    color: var(--azul-1);
+    background-color: var(--cinza-azulado);
+    border-radius: 8px;
+}
+
+.navbar-nav ul li a.active {
+    box-shadow: var(--box-shadow-2);
+}
+
+.navbar-nav ul li a.active,
+.navbar-nav ul li a.active .nav-icon {
+    color: var(--azul-1);
+    background-color: var(--cinza-azulado);
+    border-radius: 8px;
+}
+
+.navbar-nav ul li button {
+    border-top: 2px solid var(--cinza-a);
 }
 
 /* desktops pequenos */

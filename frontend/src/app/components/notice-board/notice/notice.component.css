@@ -1,6 +1,5 @@
 .notice-wrapper {
     display: flex;
-    align-items: flex-start;
     justify-content: space-between;
     gap: 1rem;
     padding: 1rem 0;
@@ -8,10 +7,11 @@
 }
 
 .new-notice {
-    width: 1rem;
-    height: 1rem;
+    width: 0.8rem;
+    height: 0.8rem;
     background: var(--gradient-2);
     border-radius: 50%;
+    align-self: center;
 }
 
 .notice {
@@ -27,12 +27,9 @@
     text-transform: uppercase;
 }
 
-.notice-title a {
-    color: var(--cinza-12);
-}
-
 .notice-title a:hover {
-    opacity: 0.6;
+    opacity: 0.7;
+    text-decoration: underline;
 }
 
 .remove-notice-btn {
