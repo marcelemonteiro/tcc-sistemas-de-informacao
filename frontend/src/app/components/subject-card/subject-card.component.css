@@ -1,11 +1,3 @@
-.cards-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(21.875rem, 1fr));
-    grid-auto-columns: 1fr;
-    gap: 1.5rem;
-    margin-top: 1rem;
-}
-
 .card {
     background-color: #FFF;
     border-radius: 10px;
@@ -31,17 +23,16 @@
     padding: 1.5rem;
 }
 
-.card-class-name {
+.card-subject-name {
     font-family: "Poppins", sans-serif;
     font-weight: 700;
     font-size: var(--font-md);
     margin-bottom: 0.5rem;
 }
 
-.card-teacher {
+.card-teacher-name {
     display: flex;
     align-items: center;
     gap: 0.5rem;
     font-size: var(--font-sm);
 }
-

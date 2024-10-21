@@ -3,15 +3,16 @@ import { DefaultLayoutComponent } from "../../components/default-layout/default-
 import { SectionComponent } from "../../components/section/section.component";
 import { RouterLink } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
+import { SubjectCardComponent } from "../../components/subject-card/subject-card.component";
 
 @Component({
-  selector: 'app-classes-page',
+  selector: 'app-subjects-page',
   standalone: true,
-  imports: [DefaultLayoutComponent, SectionComponent, RouterLink, MatIconModule],
-  templateUrl: './classes-page.component.html',
-  styleUrl: './classes-page.component.css'
+  imports: [DefaultLayoutComponent, SectionComponent, RouterLink, MatIconModule, SubjectCardComponent],
+  templateUrl: './subjects-page.component.html',
+  styleUrl: './subjects-page.component.css'
 })
-export class ClassesPageComponent {
+export class SubjectsPageComponent {
   classesMock = [
     { id: 1, name: "Matemática" },
     { id: 2, name: "Português" },

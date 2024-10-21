@@ -1,16 +1,22 @@
 <app-default-layout>
-    <!-- <app-section [title]="classMock.nome">
-        <app-subject [class]="classMock" />
-    </app-section> -->
     <app-section title="Matemática">
-        <div class="class-teacher">
+        <div class="subject-teacher">
             <mat-icon aria-hidden="false" aria-label="User Icon" fontIcon="person"></mat-icon>
             <p>Prof. Carlos</p>
         </div>
 
-        <div class="class-content-grid">
-            <div class="class-upcoming-exams">
-                <h3 class="class-section-title">Próximas avaliações</h3>
+        <div class="subject-content-grid">
+            <div class="subject-schedule">
+                <h3 class="subject-section-title">Horários</h3>
+                <div class="subject-schedule-group">
+                    <app-schedule [weekSchedule]="scheduleMockBySubject"  />
+                    <app-schedule [weekSchedule]="scheduleMockBySubject"  />
+                    <app-schedule [weekSchedule]="scheduleMockBySubject"  />
+                </div>
+            </div>
+
+            <div class="subject-upcoming-exams">
+                <h3 class="subject-section-title">Próximas avaliações</h3>
     
                 <div class="exam">
                     <div class="exam-date">
@@ -33,13 +39,14 @@
                 </div>
             </div>
 
-            <div class="class-schedule">
-                <h3 class="class-section-title">Horários</h3>
-            </div>
     
     
             <div>
-                <h3 class="class-section-title">Fóruns relacionados</h3>
+                <h3 class="subject-section-title">Fóruns relacionados</h3>
+                <div>
+                    <app-forum id="333" title="Fórum de Matemática" [newUpdatesNumber]="5" lastUpdate="21 de setembro às 14:20" [postsNumber]="5"
+        [commentsNumber]="5" />
+                </div>
             </div>
         </div>
 

@@ -13,8 +13,8 @@ import { NoticeBoardPageComponent } from './pages/notice-board-page/notice-board
 import { ForumPageComponent } from './pages/forum-page/forum-page.component';
 import { ExamsPageComponent } from './pages/exams-page/exams-page.component';
 import { ExamPageComponent } from './pages/exam-page/exam-page.component';
-import { ClassesPageComponent } from './pages/classes-page/classes-page.component';
-import { ClassPageComponent } from './pages/class-page/class-page.component';
+import { SubjectsPageComponent } from './pages/subjects-page/subjects-page.component';
+import { SubjectPageComponent } from './pages/subject-page/subject-page.component';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -28,7 +28,7 @@ export const routes: Routes = [
   { path: 'forums/:id', component: ForumPageComponent, canActivate: [authGuard] },
   { path: 'avaliacoes', component: ExamsPageComponent, canActivate: [authGuard] },
   { path: 'avaliacoes/:id', component: ExamPageComponent, canActivate: [authGuard] },
-  { path: 'disciplinas', component: ClassesPageComponent, canActivate: [authGuard] },
-  { path: 'disciplinas/:id', component: ClassPageComponent, canActivate: [authGuard] },
+  { path: 'disciplinas', component: SubjectsPageComponent, canActivate: [authGuard] },
+  { path: 'disciplinas/:id', component: SubjectPageComponent, canActivate: [authGuard] },
   { path: '**', component: PageNotFoundComponent },
 ];
