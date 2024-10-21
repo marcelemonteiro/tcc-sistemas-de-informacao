@@ -1,15 +1,14 @@
-<div>
-    <div>
-        <p><strong>ID:</strong> {{ exam.id }}</p>
-        <p>
-            <a [routerLink]="['/avaliacoes', exam.id]">
-                <strong>Title:</strong> {{ exam.title }}
-            </a>
-        </p>
-        <p><strong>Description:</strong> {{ exam.description }}</p>
-        <p><strong>Type:</strong> {{ exam.type }}</p>
-        <p><strong>Date Start:</strong> {{ exam.dateStart }}</p>
-        <p><strong>Date End:</strong> {{ exam.dateEnd }}</p>
-        <p><strong>ID Disciplina:</strong> {{ exam.idDisciplina }}</p>
-    </div>
+<div class="exam-card">
+  <h3 class="exam-card-title">
+    <a [routerLink]="['/avaliacoes', exam.id]">
+      {{ exam.title }}
+    </a>
+  </h3>
+
+  @if (exam.finished) {
+  <p class="exam-finished">Finalizado</p>
+  } @else {
+  <p class="exam-card-date"><strong>Início:</strong> {{ exam.dateStart }}</p>
+  <p class="exam-card-date"><strong>Término:</strong> {{ exam.dateEnd }}</p>
+  }
 </div>

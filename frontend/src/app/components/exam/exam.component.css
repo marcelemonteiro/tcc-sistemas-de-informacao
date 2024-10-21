@@ -1,0 +1,33 @@
+.exam-card {
+  box-shadow: var(--box-shadow-1);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.exam-card-title {
+  margin-bottom: 0.5rem;
+}
+
+.exam-card-title a {
+  font-family: "Poppins", sans-serif;
+  font-size: var(--font-md);
+  font-weight: 700;
+}
+
+.exam-finished {
+  display: inline-block;
+  color: var(--verde-1);
+  font-weight: 500;
+  background: var(--gradient-2);
+  padding: 0.25rem 1rem;
+  border-radius: 5px;
+}
+
+.exam-card-date:not(:last-child) {
+  margin-bottom: 0.5rem;
+}
+
+.exam-card-date strong {
+  text-transform: uppercase;
+  font-size: var(--font-sm);
+}

@@ -1,7 +1,18 @@
 <app-default-layout>
-    <app-section title="Avaliações">
+  <app-section title="Avaliações">
+    <div class="upcoming-exams">
+      <h3>Próximas Avaliações</h3>
+      <div class="app-exam-wrapper">
         <app-exam [exam]="examMock" />
-    </app-section>
+      </div>
+    </div>
 
+    <div class="finished-exams">
+      <h3>Avaliações Finalizadas</h3>
+      <div class="app-exam-wrapper">
+        <app-exam [exam]="examFinishedMock" />
+        <app-exam [exam]="examFinishedMock" />
+      </div>
+    </div>
+  </app-section>
 </app-default-layout>
-

@@ -7,7 +7,7 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   imports: [RouterLink],
   templateUrl: './exam.component.html',
-  styleUrl: './exam.component.css'
+  styleUrl: './exam.component.css',
 })
 export class ExamComponent {
   @Input() exam!: Exam;
