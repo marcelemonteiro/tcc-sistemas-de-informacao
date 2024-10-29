@@ -1,52 +1,88 @@
 <div class="navbar">
-    <div class="navbar-header">
-        <div class="navbar-avatar"></div>
-        <div class="navbar-user">
-            <p>Marcele Monteiro</p>
-            <span>Aluno</span>
-        </div>
-        <button class="navbar-mobile-btn" (click)="enableMobileNavbar()">
-            <mat-icon class="navbar-mobile-icon" aria-hidden="false" aria-label="Menu Icon" fontIcon="menu"></mat-icon>
-        </button>
+  <div class="navbar-header">
+    <div class="navbar-avatar"></div>
+
+    <div class="navbar-user">
+      <p>Marcele Monteiro</p>
+      <span>Aluno</span>
     </div>
-    <nav class="navbar-nav" [class.activeMobile]="isMobileNavbar">
-        <ul>
-            <li>
-                <a routerLink="/home" routerLinkActive="active">
-                    <mat-icon aria-hidden="false" aria-label="Dashboard Icon" fontIcon="dashboard" class="nav-icon"></mat-icon>
-                    Dashboard
-                </a>
-            </li>
-            <li>
-                <a routerLink="/horarios" routerLinkActive="active">
-                    <mat-icon aria-hidden="false" aria-label="Horários Icon" fontIcon="calendar_today" class="nav-icon"></mat-icon>
-                    Horários
-                </a>
-            </li>
-            <li>
-                <a routerLink="/disciplinas" routerLinkActive="active">
-                    <mat-icon aria-hidden="false" aria-label="Disciplinas Icon" fontIcon="book" class="nav-icon"></mat-icon>
-                    Disciplinas
-                </a>
-            </li>
-            <li>
-                <a routerLink="/avaliacoes" routerLinkActive="active">
-                    <mat-icon aria-hidden="false" aria-label="Avaliações Icon" fontIcon="bookmark" class="nav-icon"></mat-icon>
-                    Avaliações
-                </a>
-            </li>
-            <li>
-                <a routerLink="/foruns" routerLinkActive="active">
-                    <mat-icon aria-hidden="false" aria-label="Fóruns Icon" fontIcon="chat" class="nav-icon"></mat-icon>
-                    Fóruns
-                </a>
-            </li>
-            <li>
-                <button (click)="logout()">
-                    <mat-icon aria-hidden="false" aria-label="Sair Icon" fontIcon="logout"></mat-icon>
-                    Sair
-                </button>
-            </li>
-        </ul>
-    </nav>
+
+    <button class="navbar-mobile-btn" (click)="enableMobileNavbar()">
+      <mat-icon
+        class="navbar-mobile-icon"
+        aria-hidden="false"
+        aria-label="Menu Icon"
+        fontIcon="menu"
+      ></mat-icon>
+    </button>
+  </div>
+  <nav class="navbar-nav" [class.openMobileNav]="isMobileNavbar">
+    <ul>
+      <li>
+        <a routerLink="/home" routerLinkActive="active">
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Dashboard Icon"
+            fontIcon="dashboard"
+            class="nav-icon"
+          ></mat-icon>
+          Dashboard
+        </a>
+      </li>
+      <li>
+        <a routerLink="/horarios" routerLinkActive="active">
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Horários Icon"
+            fontIcon="calendar_today"
+            class="nav-icon"
+          ></mat-icon>
+          Horários
+        </a>
+      </li>
+      <li>
+        <a routerLink="/disciplinas" routerLinkActive="active">
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Disciplinas Icon"
+            fontIcon="book"
+            class="nav-icon"
+          ></mat-icon>
+          Disciplinas
+        </a>
+      </li>
+      <li>
+        <a routerLink="/avaliacoes" routerLinkActive="active">
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Avaliações Icon"
+            fontIcon="bookmark"
+            class="nav-icon"
+          ></mat-icon>
+          Avaliações
+        </a>
+      </li>
+      <li>
+        <a routerLink="/foruns" routerLinkActive="active">
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Fóruns Icon"
+            fontIcon="chat"
+            class="nav-icon"
+          ></mat-icon>
+          Fóruns
+        </a>
+      </li>
+      <li>
+        <button (click)="logout()">
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Sair Icon"
+            fontIcon="logout"
+          ></mat-icon>
+          Sair
+        </button>
+      </li>
+    </ul>
+  </nav>
 </div>

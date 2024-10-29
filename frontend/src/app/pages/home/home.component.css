@@ -1,0 +1,36 @@
+.dashboard {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.dashboard-section {
+  background-color: #fff;
+  border: 2px solid #e8e9ec;
+  border-radius: 8px;
+  padding: 1rem 2rem;
+}
+
+.dashboard-section h2 {
+  margin-bottom: 1rem;
+}
+
+.schedule {
+  width: 100%;
+  overflow-x: scroll;
+}
+
+.all-notices-link {
+  padding: 1rem 0;
+}
+
+.all-notices-link a:hover {
+  opacity: 0.6;
+  text-decoration: underline;
+}
+
+/* Telas com larguras maiores ou iguais a 1200px */
+@media (min-width: 75rem) {
+  .dashboard {
+    grid-template-columns: 1.5fr 1fr;
+  }
+}

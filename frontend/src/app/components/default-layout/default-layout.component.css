@@ -1,15 +1,15 @@
 .default-layout {
-    display: grid;
-    grid-template-columns: 16rem 1fr;
+  display: grid;
+  grid-template-columns: 1fr;
 }
 
 .default-layout-main {
-    padding: 1rem;
+  padding: 1rem;
 }
 
-/* desktops pequenos */
-@media (max-width: 1200px) {
-    .default-layout {
-        grid-template-columns: 1fr;
-    }
+/* telas com largura maior ou igual a 992px */
+@media (min-width: 62rem) {
+  .default-layout {
+    grid-template-columns: 16rem 1fr;
+  }
 }

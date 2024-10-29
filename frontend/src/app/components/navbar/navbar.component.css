@@ -1,101 +1,98 @@
 .navbar {
-    width: 16rem;
-    min-height: 100vh;
-    position: fixed;
-    background-color: #FFF;
-    border-right: 2px solid var(--cinza-a);
+  background-color: #fff;
+  border-right: 2px solid var(--cinza-a);
 }
 
 .navbar-header {
-    display: flex;
-    justify-content: space-between;
-    padding: 1.25rem 1.2rem;
-    margin: 1rem;
-    margin-bottom: 0.5rem;
-    box-shadow: var(--box-shadow-1);
-    border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  padding: 1.25rem 1.2rem;
+  margin: 1rem;
+  margin-bottom: 0.5rem;
+  box-shadow: var(--box-shadow-1);
+  border-radius: 1.75rem;
 }
 
 .navbar-avatar {
-    width: 40px;
-    height: 40px;
-    background-color: var(--azul-1);
-    border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  background-color: var(--azul-1);
+  border-radius: 50%;
 }
 
 .navbar-mobile-btn {
-    display: none;
-    padding: 0.25rem 0.5rem;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
 }
 
 .navbar-mobile-icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2.5rem;
-    color: var(--azul-1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  color: var(--azul-1);
 }
 
 .navbar-nav {
-    margin: 1rem;
+  display: none;
+  margin: 1rem;
+}
+
+.navbar-nav.openMobileNav {
+  display: block;
 }
 
 .navbar-nav ul li a,
 .navbar-nav ul li button {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    gap: 0.625rem;
-    padding: 1rem 1.5rem;
-    color: var(--cinza-11);
-    cursor: pointer;
-    border: none;
-    background-color: transparent;
-    margin-bottom: 0.5rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 1rem 1.5rem;
+  color: var(--cinza-11);
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  margin-bottom: 0.5rem;
 }
 
 .navbar-nav ul li a:hover,
 .navbar-nav ul li button:hover {
-    color: var(--azul-1);
-    background-color: var(--cinza-azulado);
-    border-radius: 8px;
+  color: var(--azul-1);
+  background-color: var(--cinza-azulado);
+  border-radius: 8px;
 }
 
 .navbar-nav ul li a.active {
-    box-shadow: var(--box-shadow-2);
+  box-shadow: var(--box-shadow-2);
 }
 
 .navbar-nav ul li a.active,
 .navbar-nav ul li a.active .nav-icon {
-    color: var(--azul-1);
-    background-color: var(--cinza-azulado);
-    border-radius: 8px;
+  color: var(--azul-1);
+  background-color: var(--cinza-azulado);
+  border-radius: 8px;
 }
 
 .navbar-nav ul li button {
-    border-top: 2px solid var(--cinza-a);
+  border-top: 2px solid var(--cinza-a);
 }
 
-/* desktops pequenos */
-@media (max-width: 1200px) {
-    .navbar {
-        width: 100%;
-        min-height: 100%;
-        position: static;
-    }
+/* telas com largura maior ou igual a 992px */
+@media (min-width: 62rem) {
+  .navbar {
+    width: 16rem;
+    height: 100vh;
+    position: fixed;
+  }
 
-    .navbar-mobile-btn {
-        display: block;
-    }
+  .navbar-mobile-btn {
+    display: none;
+  }
 
-    .navbar-nav {
-        display: none;
-    }
-
-    .activeMobile {
-        display: block;
-    }
+  .navbar-nav {
+    display: block;
+  }
 }

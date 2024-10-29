@@ -1,16 +1,24 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { NavbarComponent } from "../../components/navbar/navbar.component";
-import { DashboardComponent } from "../../components/dashboard/dashboard.component";
-import { DefaultLayoutComponent } from "../../components/default-layout/default-layout.component";
+import { DefaultLayoutComponent } from '../../components/default-layout/default-layout.component';
+import { ScheduleComponent } from '../../components/schedule/schedule.component';
+
+import { Schedule } from '../../components/schedule/schedule.model';
+import { mockSchedules } from '../../mock-data';
+import { NoticeComponent } from '../../components/notice/notice.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterOutlet, NavbarComponent, DashboardComponent, DefaultLayoutComponent],
+  imports: [
+    DefaultLayoutComponent,
+    ScheduleComponent,
+    NoticeComponent,
+    RouterLink,
+  ],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrl: './home.component.css',
 })
 export class HomeComponent {
-
+  scheduleMock: Schedule[] = mockSchedules;
 }

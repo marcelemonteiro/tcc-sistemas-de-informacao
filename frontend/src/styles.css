@@ -40,10 +40,7 @@ span {
   font-size: var(--font-md);
   letter-spacing: 0.25px;
   text-decoration: none;
-}
-
-a {
-  color: var(--link-color);
+  color: var(--cinza-12);
 }
 
 ul li {
@@ -81,7 +78,7 @@ ul li {
     rgba(27, 31, 255, 0.15) 0px 0px 0px 1px;
 
   --font-sm: clamp(0.7rem, 0.7rem + 0.7vw, 0.9rem);
-  --font-md: clamp(1rem, 1rem + 1vw, 1rem);
+  --font-md: clamp(0.8rem, 0.188vw + 0.74rem, 1.1rem);
   --font-lg: clamp(1.2rem, 1rem + 1.2vw, 1.5rem);
   --font-title: clamp(1.5rem, 1rem + 1.5vw, 1.8rem);
 

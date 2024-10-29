@@ -1,0 +1,51 @@
+.notice-wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--c-3);
+}
+
+.new-notice {
+  width: 0.8rem;
+  height: 0.8rem;
+  background: var(--gradient-2);
+  border-radius: 50%;
+  align-self: center;
+}
+
+.notice {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.notice-title {
+  font-weight: 700;
+  font-size: var(--font-sm);
+  text-transform: uppercase;
+}
+
+.notice-title a:hover {
+  opacity: 0.7;
+  text-decoration: underline;
+}
+
+.remove-notice-btn {
+  border: none;
+  cursor: pointer;
+  width: 1.25rem;
+  height: 1.25rem;
+  display: flex;
+  background-color: transparent;
+}
+
+.remove-notice-btn:hover {
+  opacity: 0.6;
+}
+
+.close-icon {
+  color: var(--cinza-10);
+  font-size: 1.25rem;
+}

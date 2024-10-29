@@ -1,41 +1,53 @@
 <p class="current-day">{{ weekSchedule[0].weekDay }}</p>
 
 <table class="calendar">
-    <thead>
-        <tr class="calendar-head">
-            <th scope="col">
-                <div>
-                    <mat-icon aria-hidden="false" aria-label="Avaliações Icon" fontIcon="schedule"></mat-icon>
-                    Horário
-                </div>
-            </th>
-            <th scope="col">
-                <div>
-                    <mat-icon aria-hidden="false" aria-label="Avaliações Icon" fontIcon="book"></mat-icon>
-                    Disciplina
-                </div>
-            </th>
-            <th scope="col">
-                <div>
-                    <mat-icon aria-hidden="false" aria-label="Avaliações Icon" fontIcon="people"></mat-icon>
-                    Professor(a)
-                </div>
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @for (day of formattedWeekSchedule; track day.id) {
-        <tr class="calendar-body-row">
-            <th scope="row" class="calendar-schedule">
-                {{ day.startTime }} - {{ day.endTime }}
-            </th>
-            <td class="calendar-class">
-                {{ day.subjectName }}
-            </td>
-            <td class="calendar-teacher">
-                {{ day.teacherName }}
-            </td>
-        </tr>
-        }
-    </tbody>
+  <thead>
+    <tr class="calendar-head">
+      <th scope="col">
+        <div>
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Avaliações Icon"
+            fontIcon="schedule"
+          ></mat-icon>
+          Horário
+        </div>
+      </th>
+      <th scope="col">
+        <div>
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Avaliações Icon"
+            fontIcon="book"
+          ></mat-icon>
+          Disciplina
+        </div>
+      </th>
+      <th scope="col">
+        <div>
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Avaliações Icon"
+            fontIcon="people"
+          ></mat-icon>
+          Professor(a)
+        </div>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (day of formattedWeekSchedule; track day.id) {
+    <tr class="calendar-body-row">
+      <th scope="row" class="calendar-schedule">
+        {{ day.startTime }} - {{ day.endTime }}
+      </th>
+      <td class="calendar-class">
+        {{ day.subjectName }}
+      </td>
+      <td class="calendar-teacher">
+        {{ day.teacherName }}
+      </td>
+    </tr>
+    }
+  </tbody>
 </table>
