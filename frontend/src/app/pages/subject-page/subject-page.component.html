@@ -1,55 +1,52 @@
 <app-default-layout>
-    <app-section title="Matemática">
-        <div class="subject-teacher">
-            <mat-icon aria-hidden="false" aria-label="User Icon" fontIcon="person"></mat-icon>
-            <p>Prof. Carlos</p>
+  <app-section title="Matemática">
+    <div class="subject-teacher">
+      <mat-icon
+        aria-hidden="false"
+        aria-label="User Icon"
+        fontIcon="person"
+      ></mat-icon>
+      <p>Prof. Carlos</p>
+    </div>
+
+    <div class="subject-content-grid">
+      <div class="subject-schedule">
+        <h3 class="subject-section-title">Horários</h3>
+        <div class="subject-schedule-group">
+          <app-schedule [weekSchedule]="scheduleMockBySubject" />
+          <app-schedule [weekSchedule]="scheduleMockBySubject" />
+          <app-schedule [weekSchedule]="scheduleMockBySubject" />
+        </div>
+      </div>
+
+      <div class="subject-upcoming-exams">
+        <h3 class="subject-section-title">Próximas avaliações</h3>
+
+        <div class="exam">
+          <div class="exam-date">
+            <p>10 de Setembro</p>
+            <p>9h</p>
+          </div>
+          <div class="exam-type">
+            <p>Prova</p>
+          </div>
         </div>
 
-        <div class="subject-content-grid">
-            <div class="subject-schedule">
-                <h3 class="subject-section-title">Horários</h3>
-                <div class="subject-schedule-group">
-                    <app-schedule [weekSchedule]="scheduleMockBySubject"  />
-                    <app-schedule [weekSchedule]="scheduleMockBySubject"  />
-                    <app-schedule [weekSchedule]="scheduleMockBySubject"  />
-                </div>
-            </div>
-
-            <div class="subject-upcoming-exams">
-                <h3 class="subject-section-title">Próximas avaliações</h3>
-    
-                <div class="exam">
-                    <div class="exam-date">
-                        <p>10 de Setembro</p>
-                        <p>9h</p>
-                    </div>
-                    <div class="exam-type">
-                        <p>Prova</p>
-                    </div>
-                </div>
-    
-                <div class="exam">
-                    <div class="exam-date">
-                        <p>20 de Setembro</p>
-                        <p>8h</p>
-                    </div>
-                    <div class="exam-type">
-                        <p>Entrega de Projeto</p>
-                    </div>
-                </div>
-            </div>
-
-    
-    
-            <div>
-                <h3 class="subject-section-title">Fóruns relacionados</h3>
-                <div>
-                    <app-forum id="333" title="Fórum de Matemática" [newUpdatesNumber]="5" lastUpdate="21 de setembro às 14:20" [postsNumber]="5"
-        [commentsNumber]="5" />
-                </div>
-            </div>
+        <div class="exam">
+          <div class="exam-date">
+            <p>20 de Setembro</p>
+            <p>8h</p>
+          </div>
+          <div class="exam-type">
+            <p>Entrega de Projeto</p>
+          </div>
         </div>
+      </div>
 
-
-    </app-section>
+      <div class="subject-attendance">
+        <h3 class="subject-section-title">Frequência</h3>
+        <p>100%</p>
+      </div>
+    </div>
+  </app-section>
 </app-default-layout>
