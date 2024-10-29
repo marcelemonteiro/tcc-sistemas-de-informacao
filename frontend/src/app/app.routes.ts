@@ -15,20 +15,58 @@ import { ExamsPageComponent } from './pages/exams-page/exams-page.component';
 import { ExamPageComponent } from './pages/exam-page/exam-page.component';
 import { SubjectsPageComponent } from './pages/subjects-page/subjects-page.component';
 import { SubjectPageComponent } from './pages/subject-page/subject-page.component';
+import { SettingsComponent } from './pages/settings/settings.component';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: 'home', component: HomeComponent, canActivate: [authGuard] },
   { path: 'login', component: LoginComponent, canActivate: [loginGuard] },
-  { path: 'horarios', component: CalendarPageComponent, canActivate: [authGuard] },
+  {
+    path: 'horarios',
+    component: CalendarPageComponent,
+    canActivate: [authGuard],
+  },
   { path: 'foruns', component: ForumsPageComponent, canActivate: [authGuard] },
-  { path: 'avisos', component: NoticeBoardPageComponent, canActivate: [authGuard] },
-  { path: 'avisos/:id', component: NoticePageComponent, canActivate: [authGuard] },
+  {
+    path: 'avisos',
+    component: NoticeBoardPageComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'avisos/:id',
+    component: NoticePageComponent,
+    canActivate: [authGuard],
+  },
   { path: 'forums', component: ForumsPageComponent, canActivate: [authGuard] },
-  { path: 'forums/:id', component: ForumPageComponent, canActivate: [authGuard] },
-  { path: 'avaliacoes', component: ExamsPageComponent, canActivate: [authGuard] },
-  { path: 'avaliacoes/:id', component: ExamPageComponent, canActivate: [authGuard] },
-  { path: 'disciplinas', component: SubjectsPageComponent, canActivate: [authGuard] },
-  { path: 'disciplinas/:id', component: SubjectPageComponent, canActivate: [authGuard] },
+  {
+    path: 'forums/:id',
+    component: ForumPageComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'avaliacoes',
+    component: ExamsPageComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'avaliacoes/:id',
+    component: ExamPageComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'disciplinas',
+    component: SubjectsPageComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'disciplinas/:id',
+    component: SubjectPageComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'configuracoes',
+    component: SettingsComponent,
+    canActivate: [authGuard],
+  },
   { path: '**', component: PageNotFoundComponent },
 ];

@@ -77,10 +77,10 @@ ul li {
   --box-shadow-2: rgba(0, 0, 255, 0.02) 0px 1px 3px 0px,
     rgba(27, 31, 255, 0.15) 0px 0px 0px 1px;
 
-  --font-sm: clamp(0.7rem, 0.7rem + 0.7vw, 0.9rem);
-  --font-md: clamp(0.8rem, 0.188vw + 0.74rem, 1.1rem);
-  --font-lg: clamp(1.2rem, 1rem + 1.2vw, 1.5rem);
-  --font-title: clamp(1.5rem, 1rem + 1.5vw, 1.8rem);
+  --font-sm: clamp(0.7rem, 0.2vw + 0.66rem, 0.9rem);
+  --font-md: clamp(0.8rem, 0.3vw + 0.74rem, 1.1rem);
+  --font-lg: clamp(1.2rem, 0.3vw + 1.14rem, 1.5rem);
+  --font-title: clamp(1.5rem, 0.3vw + 1.44rem, 1.8rem);
 
   /* Detalhes */
   --border-radius: 0.625rem;

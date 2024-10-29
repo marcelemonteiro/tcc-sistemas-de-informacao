@@ -1,0 +1,33 @@
+<app-default-layout>
+  <main>
+    <app-section title="Configurações">
+      <div class="settings-section">
+        <h3>Alterar senha de acesso</h3>
+        <input
+          type="password"
+          name="newPassword"
+          placeholder="Nova senha de acesso"
+        />
+        <button>Alterar</button>
+
+        <div class="status-message success">
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Sucesso Icon"
+            fontIcon="check_circle"
+          ></mat-icon>
+          <p>Senha alterada com sucesso!</p>
+        </div>
+
+        <div class="status-message error">
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Error Icon"
+            fontIcon="error"
+          ></mat-icon>
+          <p>Mensagem de erro</p>
+        </div>
+      </div>
+    </app-section>
+  </main>
+</app-default-layout>

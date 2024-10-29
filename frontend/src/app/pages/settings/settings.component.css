@@ -1,0 +1,68 @@
+.settings-section {
+  border-top: 2px solid var(--cinza-a);
+  border-bottom: 2px solid var(--cinza-a);
+  padding: 1rem;
+}
+
+.settings-section h3 {
+  font-family: "Poppins", sans-serif;
+  margin-bottom: 1rem;
+  font-size: var(--font-md);
+}
+
+.settings-section input {
+  display: block;
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--c-4);
+  border-radius: var(--border-radius);
+  color: var(--cinza-11);
+  height: 52px;
+}
+
+.settings-section button {
+  width: 100%;
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  border: none;
+  background: var(--gradient-2);
+  color: var(--verde-1);
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: var(--font-sm);
+  height: 52px;
+}
+
+.settings-section button:hover {
+  background: #77c023;
+}
+
+.status-message {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1rem 0;
+  font-weight: 500;
+}
+
+.status-message.success {
+  color: var(--verde-1);
+}
+
+.status-message.error {
+  color: var(--vermelho);
+}
+
+@media (min-width: 1200px) {
+  .settings-section input {
+    display: inline;
+    width: 30rem;
+    margin-right: 0.5rem;
+  }
+
+  .settings-section button {
+    width: 10rem;
+    padding: 1rem;
+  }
+}

@@ -76,8 +76,9 @@
   border-radius: 8px;
 }
 
-.navbar-nav ul li button {
+.navbar-nav ul li:nth-child(6) {
   border-top: 2px solid var(--cinza-a);
+  padding-top: 0.5rem;
 }
 
 /* telas com largura maior ou igual a 992px */

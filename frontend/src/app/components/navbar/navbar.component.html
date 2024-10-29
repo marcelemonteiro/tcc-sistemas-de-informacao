@@ -16,6 +16,7 @@
       ></mat-icon>
     </button>
   </div>
+
   <nav class="navbar-nav" [class.openMobileNav]="isMobileNavbar">
     <ul>
       <li>
@@ -29,6 +30,7 @@
           Dashboard
         </a>
       </li>
+
       <li>
         <a routerLink="/horarios" routerLinkActive="active">
           <mat-icon
@@ -40,6 +42,7 @@
           Horários
         </a>
       </li>
+
       <li>
         <a routerLink="/disciplinas" routerLinkActive="active">
           <mat-icon
@@ -51,6 +54,7 @@
           Disciplinas
         </a>
       </li>
+
       <li>
         <a routerLink="/avaliacoes" routerLinkActive="active">
           <mat-icon
@@ -62,6 +66,7 @@
           Avaliações
         </a>
       </li>
+
       <li>
         <a routerLink="/foruns" routerLinkActive="active">
           <mat-icon
@@ -73,6 +78,19 @@
           Fóruns
         </a>
       </li>
+
+      <li>
+        <a routerLink="/configuracoes" routerLinkActive="active">
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Configurações Icon"
+            fontIcon="settings"
+            class="nav-icon"
+          ></mat-icon>
+          Configurações
+        </a>
+      </li>
+
       <li>
         <button (click)="logout()">
           <mat-icon
