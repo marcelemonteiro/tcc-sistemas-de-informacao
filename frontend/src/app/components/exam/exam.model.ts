@@ -7,4 +7,5 @@ export interface Exam {
   dateEnd: string;
   idDisciplina: number;
   finished?: boolean;
+  result?: number;
 }

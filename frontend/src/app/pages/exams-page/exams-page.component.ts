@@ -32,5 +32,6 @@ export class ExamsPageComponent {
     dateEnd: '17/10/2024 às 12h30',
     idDisciplina: 2,
     finished: true,
+    result: 9.5,
   };
 }

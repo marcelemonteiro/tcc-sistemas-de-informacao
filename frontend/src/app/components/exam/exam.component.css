@@ -23,6 +23,11 @@
   border-radius: 5px;
 }
 
+.exam-result {
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+}
+
 .exam-card-date:not(:last-child) {
   margin-bottom: 0.5rem;
 }
