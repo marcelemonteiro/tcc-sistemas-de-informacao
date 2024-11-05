@@ -1,4 +1,4 @@
-package dev.tcc.sistemasdeinformacao.sistema_escolar;
+package dev.tcc_si.sistema_escolar;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

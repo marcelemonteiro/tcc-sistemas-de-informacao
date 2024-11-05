@@ -1,4 +1,4 @@
-package dev.tcc.sistema_escolar;
+package dev.tcc_si.sistema_escolar;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
