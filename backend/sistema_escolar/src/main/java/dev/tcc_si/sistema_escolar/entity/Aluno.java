@@ -33,6 +33,9 @@ public class Aluno {
     private String email;
     private String telefone;
 
+    public Aluno() {
+    }
+
     public Aluno(@NotBlank String nome, @NotBlank String cpf, @NotBlank String dataNascimento,
             @NotBlank String matricula, @NotBlank String serieAno, @NotBlank String turmaId, String endereco,
             String email, String telefone) {
@@ -45,16 +48,6 @@ public class Aluno {
         this.endereco = endereco;
         this.email = email;
         this.telefone = telefone;
-    }
-
-    public Aluno(@NotBlank String nome, @NotBlank String cpf, @NotBlank String dataNascimento,
-            @NotBlank String matricula, @NotBlank String serieAno, @NotBlank String turmaId) {
-        this.nome = nome;
-        this.cpf = cpf;
-        this.dataNascimento = dataNascimento;
-        this.matricula = matricula;
-        this.serieAno = serieAno;
-        this.turmaId = turmaId;
     }
 
     public String getNome() {
@@ -128,4 +121,5 @@ public class Aluno {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
+
 }
