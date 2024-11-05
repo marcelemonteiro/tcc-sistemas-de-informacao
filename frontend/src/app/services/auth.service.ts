@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -8,8 +9,7 @@ export class AuthService {
   private isAuthenticated = false;
   private authSecretKey = 'Token';
 
-  constructor() {
-    // o !! transforma em booleano
+  constructor(private httpClient: HttpClient) {
     this.isAuthenticated = !!localStorage.getItem(this.authSecretKey);
   }
 
