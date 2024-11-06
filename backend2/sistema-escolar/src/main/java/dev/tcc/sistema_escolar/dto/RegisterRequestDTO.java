@@ -1,4 +1,6 @@
 package dev.tcc.sistema_escolar.dto;
 
-public record RegisterRequestDTO(String name, String email, String password) {
+import dev.tcc.sistema_escolar.domain.user.UserRole;
+
+public record RegisterRequestDTO(String email, String password, UserRole role) {
 }
