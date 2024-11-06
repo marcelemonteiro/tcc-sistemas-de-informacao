@@ -11,6 +11,12 @@
   margin-bottom: 0.5rem;
   box-shadow: var(--box-shadow-1);
   border-radius: 1.75rem;
+  cursor: pointer;
+}
+
+.navbar-header:hover {
+  background-color: var(--cinza-azulado);
+  transition: background-color 200ms ease-in-out;
 }
 
 .navbar-avatar {
@@ -63,6 +69,7 @@
   color: var(--azul-1);
   background-color: var(--cinza-azulado);
   border-radius: 8px;
+  transition: background-color 200ms ease-in-out;
 }
 
 .navbar-nav ul li a.active {

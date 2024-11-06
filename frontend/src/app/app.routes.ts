@@ -14,11 +14,17 @@ import { ExamPageComponent } from './pages/exam-page/exam-page.component';
 import { SubjectsPageComponent } from './pages/subjects-page/subjects-page.component';
 import { SubjectPageComponent } from './pages/subject-page/subject-page.component';
 import { SettingsComponent } from './pages/settings/settings.component';
+import { UserComponent } from './pages/user/user.component';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: 'home', component: HomeComponent, canActivate: [authGuard] },
   { path: 'login', component: LoginComponent, canActivate: [loginGuard] },
+  {
+    path: 'usuario',
+    component: UserComponent,
+    canActivate: [authGuard],
+  },
   {
     path: 'horarios',
     component: CalendarPageComponent,
