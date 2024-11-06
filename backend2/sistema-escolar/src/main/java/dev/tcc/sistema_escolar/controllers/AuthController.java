@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import dev.tcc.sistema_escolar.domain.user.User;
 import dev.tcc.sistema_escolar.dto.LoginRequestDTO;
+import dev.tcc.sistema_escolar.dto.LoginResponseDTO;
 import dev.tcc.sistema_escolar.dto.RegisterRequestDTO;
 import dev.tcc.sistema_escolar.infra.security.TokenService;
 import dev.tcc.sistema_escolar.repositories.UserRepository;
@@ -29,7 +30,7 @@ public class AuthController {
         User user = this.repository.findByEmail(body.email()).orElseThrow(() -> new RuntimeException("User not found"));
         if (passwordEncoder.matches(body.password(), user.getPassword())) {
             String token = this.tokenService.generateToken(user);
-            return ResponseEntity.ok(new LoginRequestDTO(user.getName(), token));
+            return ResponseEntity.ok(new LoginResponseDTO(user.getName(), token));
         }
         return ResponseEntity.badRequest().build();
     }
@@ -46,7 +47,7 @@ public class AuthController {
             this.repository.save(newUser);
 
             String token = this.tokenService.generateToken(newUser);
-            return ResponseEntity.ok(new LoginRequestDTO(newUser.getName(), token));
+            return ResponseEntity.ok(new LoginResponseDTO(newUser.getName(), token));
         }
         return ResponseEntity.badRequest().build();
     }
