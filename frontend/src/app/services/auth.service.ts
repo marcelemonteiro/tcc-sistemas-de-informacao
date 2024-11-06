@@ -1,42 +1,31 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { LoginResponse } from '../types/login-response.type';
+import { catchError, map, of, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  // o service mantém o valor igual, pois só é criado uma instância dele na aplicação inteira
   private isAuthenticated = false;
-  private authSecretKey = 'Token';
+  private authSecretKey = 'auth-token';
 
   constructor(private httpClient: HttpClient) {
-    this.isAuthenticated = !!localStorage.getItem(this.authSecretKey);
+    this.isAuthenticated = !!sessionStorage.getItem(this.authSecretKey);
   }
 
-  login(username: string, password: string) {
-    const httpHeaders: HttpHeaders = new HttpHeaders({
-      Authorization:
-        'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzaXN0ZW1hX2VzY29sYXIiLCJzdWIiOiJjZWxlLUFETUlOIiwiZXhwIjoxNzMwOTI0OTIyfQ.kx0JEcIrKygdj-BnMRsraQY6_LmtUIE47u3EHAvjdcg',
-    });
-
-    this.httpClient
-      .get('http://localhost:8080/aluno/todos', {
-        headers: httpHeaders,
+  login(email: string, password: string) {
+    return this.httpClient
+      .post<LoginResponse>('http://localhost:8080/auth/login', {
+        email,
+        password,
       })
-      .subscribe({
-        next: (data) => console.log(data),
-        error: (error) => console.error(error),
-        complete: () => console.info('complete'),
-      });
-
-    // if (username === 'teste' && password === '123') {
-    //   const authToken = 'token-jwt';
-    //   localStorage.setItem(this.authSecretKey, authToken);
-    //   this.isAuthenticated = true;
-    //   return true;
-    // }
-    // return false;
-    return false;
+      .pipe(
+        tap((response) => {
+          this.isAuthenticated = true;
+          sessionStorage.setItem(this.authSecretKey, response.token);
+        })
+      );
   }
 
   isAuthenticatedUser(): boolean {
@@ -44,7 +33,7 @@ export class AuthService {
   }
 
   logout(): void {
-    localStorage.removeItem(this.authSecretKey);
+    sessionStorage.removeItem(this.authSecretKey);
     this.isAuthenticated = false;
   }
 }

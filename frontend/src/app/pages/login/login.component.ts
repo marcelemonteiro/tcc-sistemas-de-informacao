@@ -22,11 +22,15 @@ export class LoginComponent {
     if (this.username && this.password) {
       const login = this.authService.login(this.username, this.password);
 
-      if (login) {
-        this.router.navigate(['/']);
-      } else {
-        this.loginError = true;
-      }
+      login.subscribe({
+        next: () => {
+          this.router.navigate(['/']);
+        },
+        error: (error) => {
+          // TODO: Melhorar tratamento de erros
+          this.loginError = true;
+        },
+      });
     }
   }
 }
