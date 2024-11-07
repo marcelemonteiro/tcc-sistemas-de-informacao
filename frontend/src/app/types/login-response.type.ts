@@ -1,4 +1,6 @@
+import { User } from '../pages/user/user.model';
+
 export type LoginResponse = {
   token: string;
-  name: string;
+  aluno: User;
 };

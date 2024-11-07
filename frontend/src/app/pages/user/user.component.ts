@@ -20,15 +20,9 @@ export class UserComponent {
   }
 
   loadUser() {
-    const user = this.userService.getAllUsers();
-
-    user.subscribe({
-      next: (users) => {
-        this.user = users[0];
-      },
-      error: (error) => {
-        console.error(error);
-      },
-    });
+    const currentUser = this.userService.getCurrentUser();
+    if (currentUser) {
+      this.user = currentUser;
+    }
   }
 }

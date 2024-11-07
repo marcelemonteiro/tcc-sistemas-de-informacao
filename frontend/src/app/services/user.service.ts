@@ -7,17 +7,37 @@ import { User } from '../pages/user/user.model';
   providedIn: 'root',
 })
 export class UserService {
+  private token: string | null;
+  private aluno: User | null = null;
+
   constructor(
     private httpClient: HttpClient,
     private authService: AuthService
-  ) {}
+  ) {
+    this.token = this.authService.getToken();
+
+    const alunoSession = this.authService.getAluno();
+    if (alunoSession) {
+      this.aluno = JSON.parse(alunoSession);
+    }
+  }
+
+  getUserById() {
+    return this.httpClient.get<User>('http://localhost:8080/aluno', {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + this.token,
+      }),
+    });
+  }
+
+  getCurrentUser() {
+    return this.aluno;
+  }
 
   getAllUsers() {
-    const token = this.authService.getToken();
-
     return this.httpClient.get<User[]>('http://localhost:8080/aluno/todos', {
       headers: new HttpHeaders({
-        Authorization: 'Bearer ' + token,
+        Authorization: 'Bearer ' + this.token,
       }),
     });
   }

@@ -3,8 +3,8 @@
     <div class="navbar-avatar"></div>
 
     <div class="navbar-user">
-      <p>Marcele Monteiro</p>
-      <span>Aluno</span>
+      <p>{{ aluno?.nome }}</p>
+      <span>{{ aluno?.usuario?.role }}</span>
     </div>
 
     <button class="navbar-mobile-btn" (click)="enableMobileNavbar()">

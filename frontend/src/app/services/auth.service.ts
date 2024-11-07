@@ -11,7 +11,7 @@ export class AuthService {
   private authSecretKey = 'auth-token';
 
   constructor(private httpClient: HttpClient) {
-    this.isAuthenticated = !!sessionStorage.getItem(this.authSecretKey);
+    this.isAuthenticated = !!localStorage.getItem(this.authSecretKey);
   }
 
   login(email: string, password: string) {
@@ -23,13 +23,18 @@ export class AuthService {
       .pipe(
         tap((response) => {
           this.isAuthenticated = true;
-          sessionStorage.setItem(this.authSecretKey, response.token);
+          localStorage.setItem(this.authSecretKey, response.token);
+          localStorage.setItem('aluno', JSON.stringify(response.aluno));
         })
       );
   }
 
   getToken() {
-    return sessionStorage.getItem(this.authSecretKey);
+    return localStorage.getItem(this.authSecretKey);
+  }
+
+  getAluno() {
+    return localStorage.getItem('aluno');
   }
 
   isAuthenticatedUser(): boolean {
@@ -37,7 +42,8 @@ export class AuthService {
   }
 
   logout(): void {
-    sessionStorage.removeItem(this.authSecretKey);
+    localStorage.removeItem(this.authSecretKey);
+    localStorage.removeItem('aluno');
     this.isAuthenticated = false;
   }
 }

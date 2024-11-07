@@ -96,6 +96,11 @@
     position: fixed;
   }
 
+  .navbar-header {
+    justify-content: start;
+    gap: 1rem;
+  }
+
   .navbar-mobile-btn {
     display: none;
   }
