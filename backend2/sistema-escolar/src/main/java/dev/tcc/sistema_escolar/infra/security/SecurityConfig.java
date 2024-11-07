@@ -37,6 +37,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
+                        // TODO: Set user roles
                         // .requestMatchers(HttpMethod.POST, "/aluno").hasRole("ADMIN")
                         .anyRequest().authenticated())
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class);
