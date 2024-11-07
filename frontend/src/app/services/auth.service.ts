@@ -28,6 +28,10 @@ export class AuthService {
       );
   }
 
+  getToken() {
+    return sessionStorage.getItem(this.authSecretKey);
+  }
+
   isAuthenticatedUser(): boolean {
     return this.isAuthenticated;
   }
