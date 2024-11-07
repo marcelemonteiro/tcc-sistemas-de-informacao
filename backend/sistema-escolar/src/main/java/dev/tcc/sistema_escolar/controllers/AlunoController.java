@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import dev.tcc.sistema_escolar.domain.aluno.Aluno;
+import dev.tcc.sistema_escolar.dto.CreateAlunoDTO;
 import dev.tcc.sistema_escolar.services.AlunoService;
 import jakarta.validation.Valid;
 
@@ -39,7 +40,7 @@ public class AlunoController {
     }
 
     @PostMapping
-    ResponseEntity<List<Aluno>> createAluno(@RequestBody @Valid Aluno aluno) {
+    ResponseEntity<List<Aluno>> createAluno(@RequestBody @Valid CreateAlunoDTO aluno) {
         var alunos = alunoService.create(aluno);
         return ResponseEntity.ok(alunos);
     }

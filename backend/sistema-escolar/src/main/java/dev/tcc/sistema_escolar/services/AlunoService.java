@@ -7,18 +7,38 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import dev.tcc.sistema_escolar.domain.aluno.Aluno;
+import dev.tcc.sistema_escolar.domain.user.User;
+import dev.tcc.sistema_escolar.dto.CreateAlunoDTO;
 import dev.tcc.sistema_escolar.repositories.AlunoRepository;
+import dev.tcc.sistema_escolar.repositories.UserRepository;
 
 @Service
 public class AlunoService {
     private AlunoRepository alunoRepository;
+    private UserRepository userRepository;
 
-    public AlunoService(AlunoRepository alunoRepository) {
+    public AlunoService(AlunoRepository alunoRepository, UserRepository userRepository) {
         this.alunoRepository = alunoRepository;
+        this.userRepository = userRepository;
     }
 
-    public List<Aluno> create(Aluno aluno) {
-        alunoRepository.save(aluno);
+    public List<Aluno> create(CreateAlunoDTO aluno) {
+        User usuario = this.userRepository.findById(aluno.usuario())
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        Aluno novoAluno = new Aluno();
+        novoAluno.setUsuario(usuario);
+        novoAluno.setNome(aluno.nome());
+        novoAluno.setCpf(aluno.cpf());
+        novoAluno.setDataNascimento(aluno.dataNascimento());
+        novoAluno.setMatricula(aluno.matricula());
+        novoAluno.setSerieAno(aluno.serieAno());
+        novoAluno.setTurmaId(aluno.turmaId());
+        novoAluno.setEndereco(aluno.endereco());
+        novoAluno.setEmail(aluno.email());
+        novoAluno.setTelefone(aluno.telefone());
+
+        alunoRepository.save(novoAluno);
         return list();
     }
 
