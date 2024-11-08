@@ -41,4 +41,16 @@ export class UserService {
       }),
     });
   }
+
+  createUser(user: User) {
+    // TODO: Implementar createUser
+  }
+
+  updateUser(userId: string) {
+    // TODO: Implementar updateUser
+  }
+
+  deleteUser(userId: string) {
+    // TODO: Implementar deleteUser
+  }
 }

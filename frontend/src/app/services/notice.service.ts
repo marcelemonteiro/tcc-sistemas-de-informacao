@@ -27,4 +27,16 @@ export class NoticeService {
       }),
     });
   }
+
+  createNotice(notice: Notice) {
+    // TODO: Implementar createNotice
+  }
+
+  updateNotice(noticeId: string) {
+    // TODO: Implementar updateNotice
+  }
+
+  deleteNotice(noticeId: string) {
+    // TODO: Implementar deleteNotice
+  }
 }
