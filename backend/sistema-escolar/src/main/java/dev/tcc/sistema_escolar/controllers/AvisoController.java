@@ -40,13 +40,13 @@ public class AvisoController {
     }
 
     @PostMapping
-    ResponseEntity<List<Aviso>> createAviso(@RequestBody @Valid CreateAvisoDTO aviso) {
+    ResponseEntity<Aviso> createAviso(@RequestBody @Valid CreateAvisoDTO aviso) {
         var avisos = avisoService.create(aviso);
         return ResponseEntity.ok(avisos);
     }
 
     @PutMapping("{id}")
-    ResponseEntity<Aviso> updateAviso(@PathVariable("id") String id, @RequestBody Aviso aviso) {
+    ResponseEntity<Aviso> updateAviso(@PathVariable("id") String id, @RequestBody CreateAvisoDTO aviso) {
         var avisoAtualizado = avisoService.update(id, aviso);
         if (avisoAtualizado == null) {
             return ResponseEntity.badRequest().build();

@@ -1,16 +1,14 @@
 package dev.tcc.sistema_escolar.domain.aviso;
 
 public enum AvisoStatus {
-    LIDO("lido"),
-    NAO_LIDO("nao_lido");
+    LIDO,
+    NAO_LIDO;
 
-    private String status;
-
-    private AvisoStatus(String status) {
-        this.status = status;
-    }
-
-    public String getStatus() {
-        return status;
+    public static boolean validar(String status) {
+        try {
+            return AvisoStatus.valueOf(status) != null;
+        } catch (Exception e) {
+            return false;
+        }
     }
 }

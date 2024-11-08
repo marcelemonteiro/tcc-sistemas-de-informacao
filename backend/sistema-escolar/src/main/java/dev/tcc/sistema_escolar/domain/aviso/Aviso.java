@@ -3,6 +3,8 @@ package dev.tcc.sistema_escolar.domain.aviso;
 import dev.tcc.sistema_escolar.domain.user.User;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -35,5 +37,6 @@ public class Aviso {
     @Column(name = "data_envio")
     private String dataEnvio;
     @Column(name = "status_leitura")
+    @Enumerated(EnumType.STRING)
     private AvisoStatus statusLeitura;
 }

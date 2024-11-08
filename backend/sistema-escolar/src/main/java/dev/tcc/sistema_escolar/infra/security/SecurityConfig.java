@@ -35,12 +35,12 @@ public class SecurityConfig {
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
-                        // TODO: Set user roles
-                        // .requestMatchers(HttpMethod.POST, "/aluno").hasRole("ADMIN")
-                        .requestMatchers("/v3/**", "/swagger-ui/**").permitAll()
-                        .anyRequest().authenticated())
+                        // .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
+                        // .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
+                        // // TODO: Set user roles
+                        // // .requestMatchers(HttpMethod.POST, "/aluno").hasRole("ADMIN")
+                        // .requestMatchers("/v3/**", "/swagger-ui/**").permitAll()
+                        .anyRequest().permitAll())
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
