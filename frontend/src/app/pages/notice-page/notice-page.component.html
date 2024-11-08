@@ -1,5 +1,12 @@
 <app-default-layout>
-    <app-section title="Aviso">
-        <app-notice id="111" [title]="title" [date]="date" [author]="author" />
-    </app-section>
+  <app-section title="Aviso">
+    @if (id && notice) {
+    <app-notice
+      [id]="id"
+      [title]="notice.titulo"
+      [date]="notice.dataEnvio"
+      [author]="notice.remetente.nome"
+    />
+    }
+  </app-section>
 </app-default-layout>

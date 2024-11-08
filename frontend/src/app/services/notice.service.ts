@@ -9,14 +9,22 @@ import { Notice } from '../components/notice/notice.model';
 export class NoticeService {
   constructor(private http: HttpClient, private authService: AuthService) {}
 
-  getNoticesByUserId(id: string) {
+  getNoticesByUserId(userId: string) {
     return this.http.get<Notice[]>(
-      `http://localhost:8080/aviso/destinatario/${id}`,
+      `http://localhost:8080/aviso/destinatario/${userId}`,
       {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + this.authService.getToken(),
         }),
       }
     );
+  }
+
+  getNotice(noticeId: string) {
+    return this.http.get<Notice>(`http://localhost:8080/aviso/${noticeId}`, {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + this.authService.getToken(),
+      }),
+    });
   }
 }

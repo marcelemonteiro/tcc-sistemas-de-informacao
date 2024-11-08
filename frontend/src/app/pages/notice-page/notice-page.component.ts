@@ -3,6 +3,8 @@ import { DefaultLayoutComponent } from '../../components/default-layout/default-
 import { ActivatedRoute } from '@angular/router';
 import { NoticeComponent } from '../../components/notice/notice.component';
 import { SectionComponent } from '../../components/section/section.component';
+import { NoticeService } from '../../services/notice.service';
+import { Notice } from '../../components/notice/notice.model';
 
 @Component({
   selector: 'app-notice-page',
@@ -12,12 +14,28 @@ import { SectionComponent } from '../../components/section/section.component';
   styleUrl: './notice-page.component.css',
 })
 export class NoticePageComponent {
-  id: number;
-  title = 'Entrega das avaliações de matemática';
-  date = 'Seg. 24 de setembro';
-  author = 'Professor Billy';
+  id: string | null;
+  notice: Notice | null = null;
 
-  constructor(private route: ActivatedRoute) {
-    this.id = Number(this.route.snapshot.paramMap.get('id'));
+  constructor(
+    private route: ActivatedRoute,
+    private noticeService: NoticeService
+  ) {
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.loadNoticeData();
+  }
+
+  loadNoticeData() {
+    if (this.id) {
+      this.noticeService.getNotice(this.id).subscribe({
+        next: (response) => {
+          this.notice = response;
+        },
+        error: (error) => {
+          // TODO: Melhorar tratamento de erros
+          console.error(error);
+        },
+      });
+    }
   }
 }
