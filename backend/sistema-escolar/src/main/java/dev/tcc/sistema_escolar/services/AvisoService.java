@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import dev.tcc.sistema_escolar.domain.aviso.Aviso;
@@ -44,6 +45,10 @@ public class AvisoService {
     public List<Aviso> listAll() {
         // TODO: Ordenar pela data de envio
         return avisoRepository.findAll();
+    }
+
+    public List<Aviso> listAllByDestinatario(String userId) {
+        return avisoRepository.findByDestinatarioId(userId);
     }
 
     public Aviso get(String id) {
