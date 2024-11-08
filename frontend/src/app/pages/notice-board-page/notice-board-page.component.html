@@ -1,3 +1,13 @@
 <app-default-layout>
-  <p>Lista com todos os avisos</p>
+  <app-section title="Todos os avisos">
+    @for (notice of notices; track notice.id) {
+    <app-notice
+      [id]="notice.id"
+      [title]="notice.titulo"
+      [date]="notice.dataEnvio"
+      [author]="notice.remetente.nome"
+      [isNew]="notice.statusLeitura === 'LIDO' ? false : true"
+    />
+    }
+  </app-section>
 </app-default-layout>

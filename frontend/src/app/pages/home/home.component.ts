@@ -38,6 +38,7 @@ export class HomeComponent {
     if (userId) {
       this.noticeService.getNoticesByUserId(userId).subscribe({
         next: (response) => {
+          // TODO: Limitar tamanho da lista para não mostrar mais de 4 avisos na home page
           this.notices = response;
         },
         error: (error) => {
