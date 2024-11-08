@@ -10,6 +10,7 @@ export interface User {
   email: string;
   telefone: string;
   usuario: {
+    id: string;
     role: string;
   };
 }

@@ -16,9 +16,9 @@ export class UserService {
   ) {
     this.token = this.authService.getToken();
 
-    const alunoSession = this.authService.getAluno();
-    if (alunoSession) {
-      this.aluno = JSON.parse(alunoSession);
+    const storageAluno = this.authService.getAluno();
+    if (storageAluno) {
+      this.aluno = JSON.parse(storageAluno);
     }
   }
 

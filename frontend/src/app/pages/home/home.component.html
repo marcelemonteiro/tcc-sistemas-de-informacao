@@ -7,20 +7,15 @@
 
     <section class="dashboard-section">
       <h2>Avisos</h2>
+      @for (notice of notices; track notice.id) {
       <app-notice
-        id="111"
-        title="Entrega das avaliações de matemática"
-        date="Seg. 24 de setembro"
-        author="Professor Billy"
-        [isNew]="true"
+        [id]="notice.id"
+        [title]="notice.titulo"
+        [date]="notice.dataEnvio"
+        [author]="notice.remetente.nome"
+        [isNew]="notice.statusLeitura === 'LIDO' ? false : true"
       />
-
-      <app-notice
-        id="222"
-        title="Entrega das avaliações de português"
-        date="Seg. 20 de setembro"
-        author="Professora Katyane"
-      />
+      }
 
       <div class="all-notices-link">
         <a routerLink="/avisos">Ver todos os avisos</a>

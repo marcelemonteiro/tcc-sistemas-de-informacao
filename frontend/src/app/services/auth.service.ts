@@ -9,9 +9,14 @@ import { catchError, map, of, tap } from 'rxjs';
 export class AuthService {
   private isAuthenticated = false;
   private authSecretKey = 'auth-token';
+  token: string | null = null;
+  aluno: string | null = null;
 
   constructor(private httpClient: HttpClient) {
     this.isAuthenticated = !!localStorage.getItem(this.authSecretKey);
+    // TODO: Resolver problema dos dados persistirem até dar refresh na página mesmo depois do logout
+    this.token = localStorage.getItem(this.authSecretKey);
+    this.aluno = localStorage.getItem('aluno');
   }
 
   login(email: string, password: string) {
@@ -23,6 +28,7 @@ export class AuthService {
       .pipe(
         tap((response) => {
           this.isAuthenticated = true;
+          localStorage.clear();
           localStorage.setItem(this.authSecretKey, response.token);
           localStorage.setItem('aluno', JSON.stringify(response.aluno));
         })
@@ -30,11 +36,11 @@ export class AuthService {
   }
 
   getToken() {
-    return localStorage.getItem(this.authSecretKey);
+    return this.token;
   }
 
   getAluno() {
-    return localStorage.getItem('aluno');
+    return this.aluno;
   }
 
   isAuthenticatedUser(): boolean {
@@ -44,6 +50,7 @@ export class AuthService {
   logout(): void {
     localStorage.removeItem(this.authSecretKey);
     localStorage.removeItem('aluno');
+    localStorage.clear();
     this.isAuthenticated = false;
   }
 }
