@@ -3,8 +3,6 @@ package dev.tcc.sistema_escolar.services;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.BeanUtils;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import dev.tcc.sistema_escolar.domain.aviso.Aviso;

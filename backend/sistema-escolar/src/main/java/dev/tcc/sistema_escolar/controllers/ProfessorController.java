@@ -40,13 +40,13 @@ public class ProfessorController {
     }
 
     @PostMapping
-    ResponseEntity<List<Professor>> createProfessor(@RequestBody @Valid CreateProfDTO professor) {
+    ResponseEntity<Professor> createProfessor(@RequestBody @Valid CreateProfDTO professor) {
         var professores = professorService.create(professor);
         return ResponseEntity.ok(professores);
     }
 
     @PutMapping("{id}")
-    ResponseEntity<Professor> updateProfessor(@PathVariable("id") String id, @RequestBody Professor professor) {
+    ResponseEntity<Professor> updateProfessor(@PathVariable("id") String id, @RequestBody CreateProfDTO professor) {
         var professorSalvo = professorService.update(id, professor);
         if (professorSalvo == null) {
             return ResponseEntity.badRequest().build();

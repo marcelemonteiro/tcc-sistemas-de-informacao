@@ -3,7 +3,6 @@ package dev.tcc.sistema_escolar.services;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import dev.tcc.sistema_escolar.domain.professor.Professor;
@@ -22,7 +21,7 @@ public class ProfessorService {
         this.userRepository = userRepository;
     }
 
-    public List<Professor> create(CreateProfDTO professor) {
+    public Professor create(CreateProfDTO professor) {
         User usuario = this.userRepository.findById(professor.usuario())
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
@@ -34,8 +33,7 @@ public class ProfessorService {
         novoProf.setEmail(professor.email());
         novoProf.setTelefone(professor.telefone());
 
-        professorRepository.save(novoProf);
-        return list();
+        return professorRepository.save(novoProf);
     }
 
     public List<Professor> list() {
@@ -52,19 +50,21 @@ public class ProfessorService {
         return profExistente.get();
     }
 
-    public Professor update(String id, Professor profAtualizado) {
-        Optional<Professor> profExistente = professorRepository.findById(id);
+    public Professor update(String id, CreateProfDTO profAtualizado) {
+        User usuario = this.userRepository.findById(profAtualizado.usuario())
+                .orElseThrow(() -> new RuntimeException("User not found"));
 
-        if (profExistente.isPresent()) {
-            Professor prof = profExistente.get();
-
-            BeanUtils.copyProperties(profAtualizado, prof, "id");
-
-            Professor profSalvo = professorRepository.save(prof);
-            return profSalvo;
-        } else {
-            throw new RuntimeException("Usuário não encontrado");
-        }
+        return professorRepository.findById(id).map(professor -> {
+            professor.setUsuario(usuario);
+            professor.setNome(profAtualizado.nome());
+            professor.setCpf(profAtualizado.cpf());
+            professor.setDataNascimento(profAtualizado.dataNascimento());
+            professor.setEmail(profAtualizado.email());
+            professor.setTelefone(profAtualizado.telefone());
+            return professorRepository.save(professor);
+        }).orElseGet(() -> {
+            return this.create(profAtualizado);
+        });
     }
 
     public List<Professor> delete(String id) {

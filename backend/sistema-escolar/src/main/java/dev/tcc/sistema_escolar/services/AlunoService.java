@@ -3,7 +3,6 @@ package dev.tcc.sistema_escolar.services;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import dev.tcc.sistema_escolar.domain.aluno.Aluno;
@@ -22,7 +21,7 @@ public class AlunoService {
         this.userRepository = userRepository;
     }
 
-    public List<Aluno> create(CreateAlunoDTO aluno) {
+    public Aluno create(CreateAlunoDTO aluno) {
         User usuario = this.userRepository.findById(aluno.usuario())
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
@@ -38,8 +37,7 @@ public class AlunoService {
         novoAluno.setEmail(aluno.email());
         novoAluno.setTelefone(aluno.telefone());
 
-        alunoRepository.save(novoAluno);
-        return list();
+        return alunoRepository.save(novoAluno);
     }
 
     public List<Aluno> list() {
@@ -56,19 +54,25 @@ public class AlunoService {
         return alunoExistente.get();
     }
 
-    public Aluno update(String id, Aluno alunoAtualizado) {
-        Optional<Aluno> alunoExistente = alunoRepository.findById(id);
+    public Aluno update(String id, CreateAlunoDTO alunoAtualizado) {
+        User usuario = this.userRepository.findById(alunoAtualizado.usuario())
+                .orElseThrow(() -> new RuntimeException("User not found"));
 
-        if (alunoExistente.isPresent()) {
-            Aluno aluno = alunoExistente.get();
-
-            BeanUtils.copyProperties(alunoAtualizado, aluno, "id");
-
-            Aluno alunoSalvo = alunoRepository.save(aluno);
-            return alunoSalvo;
-        } else {
-            throw new RuntimeException("Usuário não encontrado");
-        }
+        return alunoRepository.findById(id).map(aluno -> {
+            aluno.setUsuario(usuario);
+            aluno.setNome(alunoAtualizado.nome());
+            aluno.setCpf(alunoAtualizado.cpf());
+            aluno.setDataNascimento(alunoAtualizado.dataNascimento());
+            aluno.setMatricula(alunoAtualizado.matricula());
+            aluno.setSerieAno(alunoAtualizado.serieAno());
+            aluno.setTurmaId(alunoAtualizado.turmaId());
+            aluno.setEndereco(alunoAtualizado.endereco());
+            aluno.setEmail(alunoAtualizado.email());
+            aluno.setTelefone(alunoAtualizado.telefone());
+            return alunoRepository.save(aluno);
+        }).orElseGet(() -> {
+            return this.create(alunoAtualizado);
+        });
     }
 
     public List<Aluno> delete(String id) {

@@ -40,13 +40,13 @@ public class AlunoController {
     }
 
     @PostMapping
-    ResponseEntity<List<Aluno>> createAluno(@RequestBody @Valid CreateAlunoDTO aluno) {
+    ResponseEntity<Aluno> createAluno(@RequestBody @Valid CreateAlunoDTO aluno) {
         var alunos = alunoService.create(aluno);
         return ResponseEntity.ok(alunos);
     }
 
     @PutMapping("{id}")
-    ResponseEntity<Aluno> updateAluno(@PathVariable("id") String id, @RequestBody Aluno aluno) {
+    ResponseEntity<Aluno> updateAluno(@PathVariable("id") String id, @RequestBody CreateAlunoDTO aluno) {
         var alunoSalvo = alunoService.update(id, aluno);
         if (alunoSalvo == null) {
             return ResponseEntity.badRequest().build();
