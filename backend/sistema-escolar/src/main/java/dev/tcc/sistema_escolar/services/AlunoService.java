@@ -6,24 +6,32 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import dev.tcc.sistema_escolar.domain.aluno.Aluno;
+import dev.tcc.sistema_escolar.domain.turma.Turma;
 import dev.tcc.sistema_escolar.domain.user.User;
 import dev.tcc.sistema_escolar.dto.CreateAlunoDTO;
 import dev.tcc.sistema_escolar.repositories.AlunoRepository;
+import dev.tcc.sistema_escolar.repositories.TurmaRepository;
 import dev.tcc.sistema_escolar.repositories.UserRepository;
 
 @Service
 public class AlunoService {
     private AlunoRepository alunoRepository;
     private UserRepository userRepository;
+    private TurmaRepository turmaRepository;
 
-    public AlunoService(AlunoRepository alunoRepository, UserRepository userRepository) {
+    public AlunoService(AlunoRepository alunoRepository, UserRepository userRepository,
+            TurmaRepository turmaRepository) {
         this.alunoRepository = alunoRepository;
         this.userRepository = userRepository;
+        this.turmaRepository = turmaRepository;
     }
 
     public Aluno create(CreateAlunoDTO aluno) {
         User usuario = this.userRepository.findById(aluno.usuario())
                 .orElseThrow(() -> new RuntimeException("User not found"));
+
+        Turma turma = this.turmaRepository.findById(aluno.turma())
+                .orElseThrow(() -> new RuntimeException("Turma in user not found"));
 
         Aluno novoAluno = new Aluno();
         novoAluno.setUsuario(usuario);
@@ -32,7 +40,7 @@ public class AlunoService {
         novoAluno.setDataNascimento(aluno.dataNascimento());
         novoAluno.setMatricula(aluno.matricula());
         novoAluno.setSerieAno(aluno.serieAno());
-        novoAluno.setTurmaId(aluno.turmaId());
+        novoAluno.setTurma(turma);
         novoAluno.setEndereco(aluno.endereco());
         novoAluno.setEmail(aluno.email());
         novoAluno.setTelefone(aluno.telefone());
@@ -58,6 +66,9 @@ public class AlunoService {
         User usuario = this.userRepository.findById(alunoAtualizado.usuario())
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
+        Turma turma = this.turmaRepository.findById(alunoAtualizado.turma())
+                .orElseThrow(() -> new RuntimeException("Turma in user not found"));
+
         return alunoRepository.findById(id).map(aluno -> {
             aluno.setUsuario(usuario);
             aluno.setNome(alunoAtualizado.nome());
@@ -65,7 +76,7 @@ public class AlunoService {
             aluno.setDataNascimento(alunoAtualizado.dataNascimento());
             aluno.setMatricula(alunoAtualizado.matricula());
             aluno.setSerieAno(alunoAtualizado.serieAno());
-            aluno.setTurmaId(alunoAtualizado.turmaId());
+            aluno.setTurma(turma);
             aluno.setEndereco(alunoAtualizado.endereco());
             aluno.setEmail(alunoAtualizado.email());
             aluno.setTelefone(alunoAtualizado.telefone());
