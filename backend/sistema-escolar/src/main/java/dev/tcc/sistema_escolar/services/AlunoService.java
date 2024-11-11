@@ -6,9 +6,11 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import dev.tcc.sistema_escolar.domain.aluno.Aluno;
+import dev.tcc.sistema_escolar.domain.aluno.AlunoEndereco;
 import dev.tcc.sistema_escolar.domain.turma.Turma;
 import dev.tcc.sistema_escolar.domain.user.User;
 import dev.tcc.sistema_escolar.dto.CreateAlunoDTO;
+import dev.tcc.sistema_escolar.repositories.AlunoEnderecoRepository;
 import dev.tcc.sistema_escolar.repositories.AlunoRepository;
 import dev.tcc.sistema_escolar.repositories.TurmaRepository;
 import dev.tcc.sistema_escolar.repositories.UserRepository;
@@ -16,12 +18,15 @@ import dev.tcc.sistema_escolar.repositories.UserRepository;
 @Service
 public class AlunoService {
     private AlunoRepository alunoRepository;
+    private AlunoEnderecoRepository alunoEnderecoRepository;
     private UserRepository userRepository;
     private TurmaRepository turmaRepository;
 
-    public AlunoService(AlunoRepository alunoRepository, UserRepository userRepository,
+    public AlunoService(AlunoRepository alunoRepository, AlunoEnderecoRepository alunoEnderecoRepository,
+            UserRepository userRepository,
             TurmaRepository turmaRepository) {
         this.alunoRepository = alunoRepository;
+        this.alunoEnderecoRepository = alunoEnderecoRepository;
         this.userRepository = userRepository;
         this.turmaRepository = turmaRepository;
     }
@@ -41,7 +46,6 @@ public class AlunoService {
         novoAluno.setMatricula(aluno.matricula());
         novoAluno.setSerieAno(aluno.serieAno());
         novoAluno.setTurma(turma);
-        novoAluno.setEndereco(aluno.endereco());
         novoAluno.setEmail(aluno.email());
         novoAluno.setTelefone(aluno.telefone());
 
@@ -77,7 +81,6 @@ public class AlunoService {
             aluno.setMatricula(alunoAtualizado.matricula());
             aluno.setSerieAno(alunoAtualizado.serieAno());
             aluno.setTurma(turma);
-            aluno.setEndereco(alunoAtualizado.endereco());
             aluno.setEmail(alunoAtualizado.email());
             aluno.setTelefone(alunoAtualizado.telefone());
             return alunoRepository.save(aluno);
@@ -89,5 +92,15 @@ public class AlunoService {
     public List<Aluno> delete(String id) {
         alunoRepository.deleteById(id);
         return list();
+    }
+
+    public AlunoEndereco salvarEndereco(String alunoId, AlunoEndereco endereco) {
+        Aluno aluno = this.alunoRepository.findById(alunoId)
+                .orElseThrow(() -> new RuntimeException("Aluno in AlunoEndereco not found"));
+        aluno.setEndereco(endereco);
+        endereco.setAluno(aluno);
+        alunoRepository.save(aluno);
+
+        return endereco;
     }
 }
