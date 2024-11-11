@@ -1,6 +1,7 @@
 package dev.tcc.sistema_escolar.domain.agenda;
 
 import dev.tcc.sistema_escolar.domain.disciplina.Disciplina;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -28,9 +29,12 @@ public class Agenda {
     @JoinColumn(name = "disciplina_id", nullable = false)
     private Disciplina disciplina;
 
+    @Column(name = "dia_semana")
     private String diaSemana;
 
+    @Column(name = "horario_inicial")
     private String horarioInicial;
 
+    @Column(name = "horario_final")
     private String horarioFinal;
 }

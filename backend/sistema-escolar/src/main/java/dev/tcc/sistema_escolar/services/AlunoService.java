@@ -10,7 +10,6 @@ import dev.tcc.sistema_escolar.domain.aluno.AlunoEndereco;
 import dev.tcc.sistema_escolar.domain.turma.Turma;
 import dev.tcc.sistema_escolar.domain.user.User;
 import dev.tcc.sistema_escolar.dto.CreateAlunoDTO;
-import dev.tcc.sistema_escolar.repositories.AlunoEnderecoRepository;
 import dev.tcc.sistema_escolar.repositories.AlunoRepository;
 import dev.tcc.sistema_escolar.repositories.TurmaRepository;
 import dev.tcc.sistema_escolar.repositories.UserRepository;
@@ -18,15 +17,13 @@ import dev.tcc.sistema_escolar.repositories.UserRepository;
 @Service
 public class AlunoService {
     private AlunoRepository alunoRepository;
-    private AlunoEnderecoRepository alunoEnderecoRepository;
     private UserRepository userRepository;
     private TurmaRepository turmaRepository;
 
-    public AlunoService(AlunoRepository alunoRepository, AlunoEnderecoRepository alunoEnderecoRepository,
+    public AlunoService(AlunoRepository alunoRepository,
             UserRepository userRepository,
             TurmaRepository turmaRepository) {
         this.alunoRepository = alunoRepository;
-        this.alunoEnderecoRepository = alunoEnderecoRepository;
         this.userRepository = userRepository;
         this.turmaRepository = turmaRepository;
     }
