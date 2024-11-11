@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import dev.tcc.sistema_escolar.domain.avaliacao.Avaliacao;
+import dev.tcc.sistema_escolar.dto.AvaliacaoDTO;
 import dev.tcc.sistema_escolar.services.AvaliacaoService;
 
 @RestController
@@ -23,13 +24,14 @@ public class AvaliacaoController {
     AvaliacaoService avaliacaoService;
 
     @PostMapping
-    public ResponseEntity<Avaliacao> create(@RequestBody Avaliacao avaliacao) {
+    public ResponseEntity<Avaliacao> create(@RequestBody AvaliacaoDTO avaliacao) {
         var novaAvaliacao = this.avaliacaoService.createAvaliacao(avaliacao);
         return ResponseEntity.ok(novaAvaliacao);
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Avaliacao> update(@PathVariable("id") String id, Avaliacao avaliacaoAtualizada) {
+    public ResponseEntity<Avaliacao> update(@PathVariable("id") String id,
+            @RequestBody AvaliacaoDTO avaliacaoAtualizada) {
         var avaliacao = this.avaliacaoService.updateAvaliacao(id, avaliacaoAtualizada);
         return ResponseEntity.ok(avaliacao);
     }
