@@ -1,8 +1,6 @@
 package dev.tcc.sistema_escolar.domain.agenda;
 
 import dev.tcc.sistema_escolar.domain.disciplina.Disciplina;
-import dev.tcc.sistema_escolar.domain.professor.Professor;
-import dev.tcc.sistema_escolar.domain.turma.Turma;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -32,7 +30,7 @@ public class Agenda {
 
     private String diaSemana;
 
-    private String horarioInicio;
+    private String horarioInicial;
 
     private String horarioFinal;
 }
