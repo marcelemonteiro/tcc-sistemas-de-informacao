@@ -40,9 +40,9 @@ public class AvisoController {
         return ResponseEntity.ok(aviso);
     }
 
-    @GetMapping("destinatario/{destinatarioId}")
-    ResponseEntity<List<Aviso>> getAvisosByDestinatario(@PathVariable("destinatarioId") String destinatarioId) {
-        var avisos = avisoService.listAllByDestinatario(destinatarioId);
+    @GetMapping("aluno/{alunoId}")
+    ResponseEntity<List<Aviso>> getAvisosByAluno(@PathVariable("alunoId") String alunoId) {
+        var avisos = avisoService.listAllByAluno(alunoId);
         if (avisos == null) {
             return ResponseEntity.badRequest().build();
         }

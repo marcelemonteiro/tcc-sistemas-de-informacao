@@ -41,7 +41,7 @@ public class ProfessorService {
     }
 
     public Professor get(String id) {
-        Optional<Professor> profExistente = professorRepository.findById(id);
+        Optional<Professor> profExistente = professorRepository.findByIdOrUsuarioId(id, id);
 
         if (!profExistente.isPresent()) {
             throw new RuntimeException("Usuário não encontrado");

@@ -1,6 +1,7 @@
 package dev.tcc.sistema_escolar.domain.aviso;
 
-import dev.tcc.sistema_escolar.domain.user.User;
+import dev.tcc.sistema_escolar.domain.aluno.Aluno;
+import dev.tcc.sistema_escolar.domain.professor.Professor;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -27,11 +28,11 @@ public class Aviso {
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
     @ManyToOne
-    @JoinColumn(name = "remetente_id", nullable = false)
-    private User remetente;
+    @JoinColumn(name = "professor_id", nullable = false)
+    private Professor professor;
     @ManyToOne
-    @JoinColumn(name = "destinatario_id", nullable = false)
-    private User destinatario;
+    @JoinColumn(name = "aluno_id", nullable = false)
+    private Aluno aluno;
     private String titulo;
     private String conteudo;
     @Column(name = "data_envio")

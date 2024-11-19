@@ -4,36 +4,41 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import dev.tcc.sistema_escolar.domain.aluno.Aluno;
 import dev.tcc.sistema_escolar.domain.aviso.Aviso;
 import dev.tcc.sistema_escolar.domain.aviso.AvisoStatus;
-import dev.tcc.sistema_escolar.domain.user.User;
+import dev.tcc.sistema_escolar.domain.professor.Professor;
 import dev.tcc.sistema_escolar.dto.CreateAvisoDTO;
+import dev.tcc.sistema_escolar.repositories.AlunoRepository;
 import dev.tcc.sistema_escolar.repositories.AvisoRepository;
-import dev.tcc.sistema_escolar.repositories.UserRepository;
+import dev.tcc.sistema_escolar.repositories.ProfessorRepository;
 
 @Service
 public class AvisoService {
     private AvisoRepository avisoRepository;
-    private UserRepository userRepository;
+    private AlunoRepository alunoRepository;
+    private ProfessorRepository professorRepository;
 
-    public AvisoService(AvisoRepository avisoRepository, UserRepository userRepository) {
+    public AvisoService(AvisoRepository avisoRepository,
+            AlunoRepository alunoRepository,
+            ProfessorRepository professorRepository) {
         this.avisoRepository = avisoRepository;
-        this.userRepository = userRepository;
+        this.alunoRepository = alunoRepository;
+        this.professorRepository = professorRepository;
     }
 
     public Aviso create(CreateAvisoDTO aviso) {
-        User remetente = this.userRepository.findById(aviso.remetente())
-                .orElseThrow(() -> new RuntimeException("Remetente not found"));
+        Aluno aluno = this.alunoRepository.findById(aviso.aluno())
+                .orElseThrow(() -> new RuntimeException("Aluno not found"));
 
-        User destinatario = this.userRepository.findById(aviso.destinatario())
+        Professor professor = this.professorRepository.findById(aviso.professor())
                 .orElseThrow(() -> new RuntimeException("Destinatario not found"));
 
         Aviso novoAviso = new Aviso();
-        novoAviso.setRemetente(remetente);
-        novoAviso.setDestinatario(destinatario);
+        novoAviso.setAluno(aluno);
+        novoAviso.setProfessor(professor);
         novoAviso.setTitulo(aviso.titulo());
         novoAviso.setConteudo(aviso.conteudo());
         novoAviso.setDataEnvio(aviso.dataEnvio());
@@ -47,8 +52,8 @@ public class AvisoService {
         return avisoRepository.findAll();
     }
 
-    public List<Aviso> listAllByDestinatario(String userId) {
-        return avisoRepository.findByDestinatarioId(userId);
+    public List<Aviso> listAllByAluno(String userId) {
+        return avisoRepository.findByAlunoId(userId);
     }
 
     public Aviso get(String id) {
@@ -62,15 +67,15 @@ public class AvisoService {
     }
 
     public Aviso update(String id, CreateAvisoDTO avisoAtualizado) {
-        User remetente = this.userRepository.findById(avisoAtualizado.remetente())
-                .orElseThrow(() -> new RuntimeException("Remetente not found"));
+        Aluno aluno = this.alunoRepository.findById(avisoAtualizado.aluno())
+                .orElseThrow(() -> new RuntimeException("Aluno not found"));
 
-        User destinatario = this.userRepository.findById(avisoAtualizado.destinatario())
+        Professor professor = this.professorRepository.findById(avisoAtualizado.professor())
                 .orElseThrow(() -> new RuntimeException("Destinatario not found"));
 
         return avisoRepository.findById(id).map(aviso -> {
-            aviso.setRemetente(remetente);
-            aviso.setDestinatario(destinatario);
+            aviso.setAluno(aluno);
+            aviso.setProfessor(professor);
             aviso.setTitulo(avisoAtualizado.titulo());
             aviso.setConteudo(avisoAtualizado.conteudo());
             aviso.setDataEnvio(avisoAtualizado.dataEnvio());

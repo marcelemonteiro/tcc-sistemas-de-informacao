@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import dev.tcc.sistema_escolar.domain.aviso.Aviso;
 
 public interface AvisoRepository extends JpaRepository<Aviso, String> {
-    List<Aviso> findByDestinatarioId(String destinatarioId);
+    List<Aviso> findByAlunoId(String alunoId);
 }
