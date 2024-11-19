@@ -43,7 +43,7 @@ public class Aluno {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "numero_matricula", referencedColumnName = "id")
-    private String matricula;
+    private AlunoMatricula matricula;
 
     @Column(name = "serie_ano")
     private String serieAno;
