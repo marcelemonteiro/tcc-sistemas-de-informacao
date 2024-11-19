@@ -7,9 +7,11 @@ import org.springframework.stereotype.Service;
 
 import dev.tcc.sistema_escolar.domain.aluno.Aluno;
 import dev.tcc.sistema_escolar.domain.aluno.AlunoEndereco;
+import dev.tcc.sistema_escolar.domain.aluno.AlunoMatricula;
 import dev.tcc.sistema_escolar.domain.turma.Turma;
 import dev.tcc.sistema_escolar.domain.user.User;
 import dev.tcc.sistema_escolar.dto.CreateAlunoDTO;
+import dev.tcc.sistema_escolar.repositories.AlunoMatriculaRepository;
 import dev.tcc.sistema_escolar.repositories.AlunoRepository;
 import dev.tcc.sistema_escolar.repositories.TurmaRepository;
 import dev.tcc.sistema_escolar.repositories.UserRepository;
@@ -17,13 +19,16 @@ import dev.tcc.sistema_escolar.repositories.UserRepository;
 @Service
 public class AlunoService {
     private AlunoRepository alunoRepository;
+    private AlunoMatriculaRepository alunoMatriculaRepository;
     private UserRepository userRepository;
     private TurmaRepository turmaRepository;
 
     public AlunoService(AlunoRepository alunoRepository,
+            AlunoMatriculaRepository alunoMatriculaRepository,
             UserRepository userRepository,
             TurmaRepository turmaRepository) {
         this.alunoRepository = alunoRepository;
+        this.alunoMatriculaRepository = alunoMatriculaRepository;
         this.userRepository = userRepository;
         this.turmaRepository = turmaRepository;
     }
@@ -35,12 +40,14 @@ public class AlunoService {
         Turma turma = this.turmaRepository.findById(aluno.turma())
                 .orElseThrow(() -> new RuntimeException("Turma in user not found"));
 
+        AlunoMatricula matricula = this.alunoMatriculaRepository.save(aluno.matricula());
+
         Aluno novoAluno = new Aluno();
         novoAluno.setUsuario(usuario);
         novoAluno.setNome(aluno.nome());
         novoAluno.setCpf(aluno.cpf());
         novoAluno.setDataNascimento(aluno.dataNascimento());
-        novoAluno.setMatricula(aluno.matricula());
+        novoAluno.setMatricula(matricula);
         novoAluno.setSerieAno(aluno.serieAno());
         novoAluno.setTurma(turma);
         novoAluno.setEmail(aluno.email());
@@ -75,7 +82,6 @@ public class AlunoService {
             aluno.setNome(alunoAtualizado.nome());
             aluno.setCpf(alunoAtualizado.cpf());
             aluno.setDataNascimento(alunoAtualizado.dataNascimento());
-            aluno.setMatricula(alunoAtualizado.matricula());
             aluno.setSerieAno(alunoAtualizado.serieAno());
             aluno.setTurma(turma);
             aluno.setEmail(alunoAtualizado.email());

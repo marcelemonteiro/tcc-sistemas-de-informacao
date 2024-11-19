@@ -1,12 +1,11 @@
 package dev.tcc.sistema_escolar.domain.aluno;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,9 +25,6 @@ public class AlunoMatricula {
 
     private String data;
 
+    @Enumerated(EnumType.STRING)
     private AlunoMatriculaStatus status;
-
-    @OneToOne(mappedBy = "matricula")
-    @JsonIgnore
-    private Aluno aluno;
 }
