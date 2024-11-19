@@ -1,8 +1,10 @@
 package dev.tcc.sistema_escolar.services;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import dev.tcc.sistema_escolar.domain.aviso.Aviso;
@@ -82,8 +84,12 @@ public class AvisoService {
         });
     }
 
-    public List<Aviso> delete(String id) {
-        avisoRepository.deleteById(id);
-        return listAll();
+    public Map<String, String> delete(String id) {
+        if (avisoRepository.existsById(id)) {
+            avisoRepository.deleteById(id);
+            return Map.of("deletado", id);
+        } else {
+            throw new RuntimeException("Aviso not found");
+        }
     }
 }

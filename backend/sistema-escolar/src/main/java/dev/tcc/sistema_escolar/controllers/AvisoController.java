@@ -1,6 +1,7 @@
 package dev.tcc.sistema_escolar.controllers;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -64,8 +65,9 @@ public class AvisoController {
     }
 
     @DeleteMapping("{id}")
-    ResponseEntity<List<Aviso>> deleteAviso(@PathVariable("id") String id) {
-        var aviso = avisoService.delete(id);
-        return ResponseEntity.ok(aviso);
+    ResponseEntity<Map<String, String>> deleteAviso(@PathVariable("id") String id) {
+        var deletado = avisoService.delete(id);
+
+        return ResponseEntity.ok(deletado);
     }
 }
