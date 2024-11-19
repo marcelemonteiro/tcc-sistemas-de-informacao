@@ -37,4 +37,12 @@ export class NoticeBoardPageComponent {
       });
     }
   }
+
+  onDeletedNotice(deletedNoticeId: string) {
+    if (this.notices) {
+      this.notices = this.notices.filter(
+        (notice) => notice.id !== deletedNoticeId
+      );
+    }
+  }
 }

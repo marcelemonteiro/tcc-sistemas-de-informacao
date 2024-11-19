@@ -25,6 +25,7 @@ import { UserService } from '../../services/user.service';
 export class HomeComponent {
   scheduleMock: Schedule[] = mockSchedules;
   notices: Notice[] | null = null;
+  isNoticesSliced: boolean = false;
 
   constructor(
     private noticeService: NoticeService,
@@ -38,14 +39,26 @@ export class HomeComponent {
     if (userId) {
       this.noticeService.getNoticesByUserId(userId).subscribe({
         next: (response) => {
-          // TODO: Limitar tamanho da lista para não mostrar mais de 4 avisos na home page
-          this.notices = response;
+          if (response.length > 4) {
+            this.isNoticesSliced = true;
+            this.notices = response.slice(0, 4);
+          } else {
+            this.notices = response;
+          }
         },
         error: (error) => {
           // TODO: Melhorar tratamento de erros
           console.error(error);
         },
       });
+    }
+  }
+
+  onDeletedNotice(deletedNoticeId: string) {
+    if (this.notices) {
+      this.notices = this.notices.filter(
+        (notice) => notice.id !== deletedNoticeId
+      );
     }
   }
 }

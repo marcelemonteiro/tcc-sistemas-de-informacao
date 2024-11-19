@@ -2,6 +2,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
 import { Notice } from '../components/notice/notice.model';
+import { Observable } from 'rxjs';
+import { DeleteNoticeResponse } from '../types/delete-notice-response.type';
 
 @Injectable({
   providedIn: 'root',
@@ -36,7 +38,14 @@ export class NoticeService {
     // TODO: Implementar updateNotice
   }
 
-  deleteNotice(noticeId: string) {
-    // TODO: Implementar deleteNotice
+  deleteNotice(noticeId: string): Observable<DeleteNoticeResponse> {
+    return this.http.delete<DeleteNoticeResponse>(
+      `http://localhost:8080/aviso/${noticeId}`,
+      {
+        headers: new HttpHeaders({
+          Authorization: 'Bearer ' + this.authService.getToken(),
+        }),
+      }
+    );
   }
 }

@@ -14,12 +14,15 @@
         [date]="notice.dataEnvio"
         [author]="notice.remetente.nome"
         [isNew]="notice.statusLeitura === 'LIDO' ? false : true"
+        (delete)="onDeletedNotice($event)"
       />
       }
-
+      <!--  -->
+      @if (isNoticesSliced) {
       <div class="all-notices-link">
         <a routerLink="/avisos">Ver todos os avisos</a>
       </div>
+      }
     </section>
   </main>
 </app-default-layout>
