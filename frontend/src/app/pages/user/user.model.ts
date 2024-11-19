@@ -1,3 +1,4 @@
+import { Matricula } from '../../interfaces/Matricula.model';
 import { Turma } from '../../interfaces/Turma.model';
 
 export interface User {
@@ -5,7 +6,7 @@ export interface User {
   nome: string;
   cpf: string;
   dataNascimento: string;
-  matricula: string;
+  matricula: Matricula;
   serieAno: string;
   turma?: Turma;
   endereco: string;

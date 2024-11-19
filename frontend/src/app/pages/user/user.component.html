@@ -8,7 +8,7 @@
         <strong>Data de nascimento</strong>:
         {{ user.dataNascimento | date : "dd/MM/yyyy" }}
       </p>
-      <p><strong>Matrícula</strong>: {{ user.matricula }}</p>
+      <p><strong>Matrícula</strong>: {{ user.matricula.status }}</p>
       <p><strong>Série</strong>: {{ user.serieAno }}</p>
       <p><strong>Endereço</strong>: {{ user.endereco }}</p>
       <p>
