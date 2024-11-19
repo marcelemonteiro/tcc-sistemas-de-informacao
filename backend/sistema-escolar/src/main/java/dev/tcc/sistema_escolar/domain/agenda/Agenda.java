@@ -1,6 +1,9 @@
 package dev.tcc.sistema_escolar.domain.agenda;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import dev.tcc.sistema_escolar.domain.disciplina.Disciplina;
+import dev.tcc.sistema_escolar.domain.turma.Turma;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,6 +31,11 @@ public class Agenda {
     @ManyToOne
     @JoinColumn(name = "disciplina_id", nullable = false)
     private Disciplina disciplina;
+
+    @ManyToOne
+    @JoinColumn(name = "turma_id", nullable = false)
+    @JsonIgnore
+    private Turma turma;
 
     @Column(name = "dia_semana")
     private String diaSemana;

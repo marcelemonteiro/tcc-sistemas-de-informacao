@@ -47,6 +47,12 @@ public class AgendaController {
         return ResponseEntity.ok(agendas);
     }
 
+    @GetMapping("todos/turma/{turmaId}")
+    public ResponseEntity<List<Agenda>> listAllByTurma(@PathVariable("turmaId") String turmaId) {
+        var agendas = this.agendaService.listAgendasByTurma(turmaId);
+        return ResponseEntity.ok(agendas);
+    }
+
     @DeleteMapping("{id}")
     public ResponseEntity<Agenda> delete(@PathVariable("id") String id) {
         this.agendaService.deleteAgenda(id);
