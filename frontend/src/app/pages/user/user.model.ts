@@ -9,6 +9,7 @@ export interface User {
   endereco: string;
   email: string;
   telefone: string;
+  role?: string;
   usuario: {
     id: string;
     role: string;

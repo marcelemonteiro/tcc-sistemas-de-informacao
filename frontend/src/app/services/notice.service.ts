@@ -13,7 +13,7 @@ export class NoticeService {
 
   getNoticesByUserId(userId: string) {
     return this.http.get<Notice[]>(
-      `http://localhost:8080/aviso/destinatario/${userId}`,
+      `http://localhost:8080/aviso/aluno/${userId}`,
       {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + this.authService.getToken(),

@@ -24,7 +24,7 @@ export class NoticeBoardPageComponent {
   }
 
   loadNotices() {
-    const userId = this.userService.getCurrentUser()?.usuario.id;
+    const userId = this.userService.getCurrentUser()?.id;
     if (userId) {
       this.noticeService.getNoticesByUserId(userId).subscribe({
         next: (response) => {

@@ -1,23 +1,18 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
-import { mockTeachers } from '../mock-data';
-
-export interface Teacher {
-  id: number;
-  name: string;
-  gender: string;
-}
+import { AuthService } from './auth.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TeacherService {
-  mockTeachers: Teacher[] = mockTeachers;
+  constructor(private http: HttpClient, private authService: AuthService) {}
 
-  constructor() { }
-
-  getTeacher(id: number): Teacher | undefined {
-    const teacher = mockTeachers.find((teacher) => teacher.id === id);
-    return teacher;
+  getTeacher(id: string) {
+    return this.http.get(`http://localhost:8080/professor/${id}`, {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + this.authService.getToken(),
+      }),
+    });
   }
 }

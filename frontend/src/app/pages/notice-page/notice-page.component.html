@@ -1,12 +1,23 @@
 <app-default-layout>
-  <app-section title="Aviso">
-    @if (id && notice) {
-    <app-notice
-      [id]="id"
-      [title]="notice.titulo"
-      [date]="notice.dataEnvio"
-      [author]="notice.remetente.nome"
-    />
-    }
+  @if (id && notice) {
+  <app-section>
+    <div class="notice-header">
+      <h2>{{ notice.titulo }}</h2>
+      <p>{{ notice.dataEnvio }}</p>
+    </div>
+
+    <div class="notice-remetente">
+      <mat-icon
+        aria-hidden="false"
+        aria-label="User Icon"
+        fontIcon="person"
+      ></mat-icon>
+      <p>{{ notice.professor.nome }}</p>
+    </div>
+
+    <p class="notice-content">
+      {{ notice.conteudo }}
+    </p>
   </app-section>
+  }
 </app-default-layout>

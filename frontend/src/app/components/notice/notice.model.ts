@@ -2,8 +2,8 @@ import { User } from '../../pages/user/user.model';
 
 export interface Notice {
   id: string;
-  remetente: User;
-  destinatario: User;
+  professor: User;
+  aluno: User;
   titulo: string;
   conteudo: string;
   dataEnvio: string;

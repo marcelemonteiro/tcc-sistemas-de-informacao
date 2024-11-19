@@ -5,11 +5,14 @@ import { NoticeComponent } from '../../components/notice/notice.component';
 import { SectionComponent } from '../../components/section/section.component';
 import { NoticeService } from '../../services/notice.service';
 import { Notice } from '../../components/notice/notice.model';
+import { MatIconModule } from '@angular/material/icon';
+import { User } from '../user/user.model';
+import { TeacherService } from '../../services/teacher.service';
 
 @Component({
   selector: 'app-notice-page',
   standalone: true,
-  imports: [DefaultLayoutComponent, NoticeComponent, SectionComponent],
+  imports: [DefaultLayoutComponent, SectionComponent, MatIconModule],
   templateUrl: './notice-page.component.html',
   styleUrl: './notice-page.component.css',
 })
@@ -19,7 +22,8 @@ export class NoticePageComponent {
 
   constructor(
     private route: ActivatedRoute,
-    private noticeService: NoticeService
+    private noticeService: NoticeService,
+    private teacherService: TeacherService
   ) {
     this.id = this.route.snapshot.paramMap.get('id');
     this.loadNoticeData();

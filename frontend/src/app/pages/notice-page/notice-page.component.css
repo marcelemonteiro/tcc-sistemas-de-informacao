@@ -1,0 +1,14 @@
+.notice-header {
+  margin-bottom: 1rem;
+}
+
+.notice-header p {
+  font-size: var(--font-sm);
+}
+
+.notice-remetente {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin: 1.5rem 0;
+}
