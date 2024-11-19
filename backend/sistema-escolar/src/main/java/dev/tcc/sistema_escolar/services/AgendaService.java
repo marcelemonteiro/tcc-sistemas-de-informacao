@@ -66,10 +66,12 @@ public class AgendaService {
     }
 
     public List<Agenda> listAgendas() {
+        // TODO: Ordenar por horário
         return this.agendaRepository.findAll();
     }
 
     public List<Agenda> listAgendasByTurma(String turmaId) {
+        // TODO: Ordenar por horário
         return this.agendaRepository.findAllByTurmaId(turmaId);
     }
 
