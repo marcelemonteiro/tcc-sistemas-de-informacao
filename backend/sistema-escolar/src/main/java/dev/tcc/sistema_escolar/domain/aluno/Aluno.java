@@ -29,16 +29,25 @@ public class Aluno {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
+
     @ManyToOne
     @JoinColumn(name = "usuario_id", nullable = false)
     private User usuario;
+
     private String nome;
+
     private String cpf;
+
     @Column(name = "data_nascimento")
     private String dataNascimento;
-    private String matricula; // TODO: Adicionar chave estrangeira para tabela matriculas
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "numero_matricula", referencedColumnName = "id")
+    private String matricula;
+
     @Column(name = "serie_ano")
     private String serieAno;
+
     @ManyToOne
     @JoinColumn(name = "turma_id")
     @JsonIgnoreProperties({ "alunos" })
@@ -49,5 +58,6 @@ public class Aluno {
     private AlunoEndereco endereco;
 
     private String email;
+
     private String telefone;
 }
