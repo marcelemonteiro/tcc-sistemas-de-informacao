@@ -1,11 +1,9 @@
 <app-default-layout>
   <app-section title="Horários">
     <div class="app-schedule-wrapper">
-      <app-schedule [weekSchedule]="scheduleMock" />
-      <app-schedule [weekSchedule]="scheduleMock" />
-      <app-schedule [weekSchedule]="scheduleMock" />
-      <app-schedule [weekSchedule]="scheduleMock" />
-      <app-schedule [weekSchedule]="scheduleMock" />
+      @for (day of diasUteis; track day) { @if (calendarList[day]) {
+      <app-schedule [scheduleList]="calendarList[day]" />
+      } }
     </div>
   </app-section>
 </app-default-layout>

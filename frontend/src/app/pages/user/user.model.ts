@@ -1,3 +1,5 @@
+import { Turma } from '../../interfaces/Turma.model';
+
 export interface User {
   id: string;
   nome: string;
@@ -5,7 +7,7 @@ export interface User {
   dataNascimento: string;
   matricula: string;
   serieAno: string;
-  turmaId: string;
+  turma?: Turma;
   endereco: string;
   email: string;
   telefone: string;

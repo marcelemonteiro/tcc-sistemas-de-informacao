@@ -2,7 +2,11 @@
   <main class="dashboard">
     <section class="dashboard-section schedule">
       <h2>Horários</h2>
-      <app-schedule [weekSchedule]="scheduleMock" />
+      @if (calendarList) {
+      <app-schedule [scheduleList]="calendarList" />
+      } @else {
+      <p>Nada para hoje 😄</p>
+      }
     </section>
 
     <section class="dashboard-section">

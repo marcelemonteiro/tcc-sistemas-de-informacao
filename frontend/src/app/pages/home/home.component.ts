@@ -11,6 +11,7 @@ import { Notice } from '../../components/notice/notice.model';
 import { UserService } from '../../services/user.service';
 import { map, tap } from 'rxjs';
 import { TeacherService } from '../../services/teacher.service';
+import { CalendarService } from '../../services/calendar.service';
 
 @Component({
   selector: 'app-home',
@@ -28,12 +29,23 @@ export class HomeComponent {
   scheduleMock: Schedule[] = mockSchedules;
   notices: Notice[] | null = null;
   isNoticesSliced: boolean = false;
+  // TODO: Remover any
+  calendarList: any;
+  currentWeekDay: string;
 
   constructor(
     private noticeService: NoticeService,
-    private userService: UserService
+    private userService: UserService,
+    private calendarService: CalendarService
   ) {
     this.loadNotices();
+
+    const today = new Date();
+    this.currentWeekDay = today.toLocaleDateString('pt-BR', {
+      weekday: 'long',
+    });
+
+    this.loadCalendar();
   }
 
   loadNotices() {
@@ -63,5 +75,19 @@ export class HomeComponent {
         (notice) => notice.id !== deletedNoticeId
       );
     }
+  }
+
+  loadCalendar() {
+    this.calendarService.getCalendarByTurma().subscribe({
+      next: (calendarList) => {
+        const filteredList = calendarList.filter(
+          (calendar) => calendar.diaSemana.toLowerCase() === this.currentWeekDay
+        );
+
+        if (filteredList.length > 0) {
+          this.calendarList = filteredList;
+        }
+      },
+    });
   }
 }

@@ -1,4 +1,8 @@
-<p class="current-day">{{ weekSchedule[0].weekDay }}</p>
+<p class="current-day">
+  @if (scheduleList) {
+  {{ scheduleList[0].diaSemana }}
+  }
+</p>
 
 <table class="calendar">
   <thead>
@@ -36,18 +40,18 @@
     </tr>
   </thead>
   <tbody>
-    <!-- @for (day of formattedWeekSchedule; track day.id) {
+    @for (schedule of scheduleList; track schedule.id) {
     <tr class="calendar-body-row">
       <th scope="row" class="calendar-schedule">
-        {{ day.startTime }} - {{ day.endTime }}
+        {{ schedule?.horarioInicial }} - {{ schedule?.horarioFinal }}
       </th>
       <td class="calendar-class">
-        {{ day.subjectName }}
+        {{ schedule?.disciplina?.nome }}
       </td>
       <td class="calendar-teacher">
-        {{ day.teacherName }}
+        {{ schedule?.disciplina?.professor?.nome }}
       </td>
     </tr>
-    } -->
+    }
   </tbody>
 </table>
