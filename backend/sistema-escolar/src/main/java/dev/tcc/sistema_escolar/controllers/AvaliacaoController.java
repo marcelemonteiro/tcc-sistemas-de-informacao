@@ -48,6 +48,12 @@ public class AvaliacaoController {
         return ResponseEntity.ok(avaliacoes);
     }
 
+    @GetMapping("/todos/turma/{turmaId}")
+    public ResponseEntity<List<Avaliacao>> listAllByTurma(@PathVariable("turmaId") String turmaId) {
+        var avaliacoes = this.avaliacaoService.listAvaliacoesByTurma(turmaId);
+        return ResponseEntity.ok(avaliacoes);
+    }
+
     @DeleteMapping("{id}")
     public ResponseEntity<Avaliacao> delete(@PathVariable("id") String id) {
         this.avaliacaoService.deleteAvaliacao(id);
