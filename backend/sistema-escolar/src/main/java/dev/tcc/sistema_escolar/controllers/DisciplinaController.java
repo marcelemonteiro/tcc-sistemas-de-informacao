@@ -50,6 +50,12 @@ public class DisciplinaController {
         return ResponseEntity.ok(disciplinas);
     }
 
+    @GetMapping("/todos/turma/{turmaId}")
+    public ResponseEntity<List<Disciplina>> getAllDisciplinasByTurma(@PathVariable("turmaId") String turmaId) {
+        var disciplinas = this.disciplinaService.listAllByTurma(turmaId);
+        return ResponseEntity.ok(disciplinas);
+    }
+
     @DeleteMapping("{id}")
     public ResponseEntity<List<Disciplina>> deleteDisciplina(@PathVariable("id") String id) {
         var disciplinasRestantes = this.disciplinaService.delete(id);

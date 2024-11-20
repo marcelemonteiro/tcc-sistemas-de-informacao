@@ -64,6 +64,10 @@ public class DisciplinaService {
         return disciplinaRepository.findAll();
     }
 
+    public List<Disciplina> listAllByTurma(String turmaId) {
+        return disciplinaRepository.findByTurmaId(turmaId);
+    }
+
     public List<Disciplina> delete(String id) {
         this.disciplinaRepository.deleteById(id);
         return this.listAll();
