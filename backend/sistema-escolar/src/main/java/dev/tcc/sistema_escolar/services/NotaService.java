@@ -65,6 +65,10 @@ public class NotaService {
         return this.notaRepository.findAll();
     }
 
+    public List<Nota> listNotasByAluno(String alunoId) {
+        return this.notaRepository.findByAlunoId(alunoId);
+    }
+
     public void deleteNota(String id) {
         this.notaRepository.deleteById(id);
     }

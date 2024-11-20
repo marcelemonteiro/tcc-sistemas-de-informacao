@@ -47,6 +47,12 @@ public class NotaController {
         return ResponseEntity.ok(notas);
     }
 
+    @GetMapping("/todos/aluno/{alunoId}")
+    public ResponseEntity<List<Nota>> listAllByAluno(@PathVariable("alunoId") String alunoId) {
+        var notas = this.notaService.listNotasByAluno(alunoId);
+        return ResponseEntity.ok(notas);
+    }
+
     @DeleteMapping("{id}")
     public ResponseEntity<Nota> listAll(@PathVariable("id") String id) {
         this.notaService.deleteNota(id);
