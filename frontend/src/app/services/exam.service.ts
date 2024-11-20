@@ -8,7 +8,7 @@ import { ExamResult } from '../interfaces/ExamResult.model';
   providedIn: 'root',
 })
 export class ExamService {
-  constructor(private http: HttpClient, private authService: AuthService) {}
+  constructor(private http: HttpClient, private authService: AuthService) { }
 
   getExamListByClass(classId: string) {
     return this.http.get<Exam[]>(
@@ -24,6 +24,17 @@ export class ExamService {
   getExamResultListByStudent(studentId: string) {
     return this.http.get<ExamResult[]>(
       `http://localhost:8080/nota/todos/aluno/${studentId}`,
+      {
+        headers: new HttpHeaders({
+          Authorization: 'Bearer ' + this.authService.getToken(),
+        }),
+      }
+    );
+  }
+
+  getExam(id: string) {
+    return this.http.get<Exam>(
+      `http://localhost:8080/avaliacao/${id}`,
       {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + this.authService.getToken(),

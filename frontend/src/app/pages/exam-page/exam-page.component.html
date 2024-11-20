@@ -1,5 +1,7 @@
 <app-default-layout>
-    <app-section [title]="examMock.title">
-        <p>{{ examMock.description }}</p>
-    </app-section>
+  @if (exam) {
+  <app-section [title]="exam.titulo">
+    <p>{{ exam?.descricao }}</p>
+  </app-section>
+  }
 </app-default-layout>

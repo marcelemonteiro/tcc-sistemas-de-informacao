@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { DefaultLayoutComponent } from "../../components/default-layout/default-layout.component";
 import { SectionComponent } from "../../components/section/section.component";
+import { ActivatedRoute } from '@angular/router';
+import { ExamService } from '../../services/exam.service';
+import { Exam } from '../../components/exam/exam.model';
 
 @Component({
   selector: 'app-exam-page',
@@ -10,13 +13,25 @@ import { SectionComponent } from "../../components/section/section.component";
   styleUrl: './exam-page.component.css'
 })
 export class ExamPageComponent {
-  examMock = {
-    id: 1,
-    title: "Prova de Matemática",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nec nulla sed nulla pulvinar bibendum. Mauris luctus elit vitae massa mollis convallis. Integer consequat diam ac vulputate sollicitudin. Mauris sed egestas diam. Etiam hendrerit, ex in ornare viverra, nisi felis interdum mauris, quis commodo dolor justo sed dolor.",
-    type: "Prova",
-    dateStart: "17/10/2024 às 11h",
-    dateEnd: "17/10/2024 às 12h30",
-    idDisciplina: 2
+  id: string | null;
+  exam: Exam | null = null;
+
+  constructor(private route: ActivatedRoute, private examService: ExamService) {
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.loadExam();
+
+  }
+
+  loadExam() {
+    if (this.id) {
+      this.examService.getExam(this.id).subscribe({
+        next: (examData) => {
+          this.exam = examData;
+        },
+        error: (error) => {
+          console.error("Avaliação não encontrada:", error);
+        }
+      });
+    }
   }
 }
