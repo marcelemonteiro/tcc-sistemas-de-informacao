@@ -1,15 +1,22 @@
 <div class="exam-card">
   <h3 class="exam-card-title">
     <a [routerLink]="['/avaliacoes', exam.id]">
-      {{ exam.title }}
+      {{ exam.titulo }}
     </a>
   </h3>
 
-  @if (exam.finished) {
+  @if (exam.status === "CONCLUIDA") {
   <p class="exam-finished">Finalizado</p>
-  <p class="exam-result">Nota: {{ exam.result }}</p>
-  } @else {
-  <p class="exam-card-date"><strong>Início:</strong> {{ exam.dateStart }}</p>
-  <p class="exam-card-date"><strong>Término:</strong> {{ exam.dateEnd }}</p>
+  <p class="exam-result">Nota: {{ examResult }}</p>
+  }
+  <!--  -->
+  @if (exam.status === "ESPERANDO_CORRECAO") {
+  <p class="exam-finished">Esperando Correção</p>
+  }
+
+  <!--  -->
+  @if (exam.status === "REGISTRADA") {
+  <p class="exam-card-date"><strong>Início:</strong> {{ exam.dataInicio }}</p>
+  <p class="exam-card-date"><strong>Término:</strong> {{ exam.dataTermino }}</p>
   }
 </div>

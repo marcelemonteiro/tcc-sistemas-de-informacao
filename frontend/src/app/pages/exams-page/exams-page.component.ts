@@ -2,6 +2,14 @@ import { Component } from '@angular/core';
 import { DefaultLayoutComponent } from '../../components/default-layout/default-layout.component';
 import { SectionComponent } from '../../components/section/section.component';
 import { ExamComponent } from '../../components/exam/exam.component';
+import { ExamService } from '../../services/exam.service';
+import { Exam } from '../../components/exam/exam.model';
+import { User } from '../user/user.model';
+import { UserService } from '../../services/user.service';
+
+type ExamResultByExamId = {
+  [id: string]: { resultado: number };
+};
 
 @Component({
   selector: 'app-exams-page',
@@ -11,27 +19,65 @@ import { ExamComponent } from '../../components/exam/exam.component';
   styleUrl: './exams-page.component.css',
 })
 export class ExamsPageComponent {
-  examMock = {
-    id: 1,
-    title: 'Prova de Matemática',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nec nulla sed nulla pulvinar bibendum. Mauris luctus elit vitae massa mollis convallis. Integer consequat diam ac vulputate sollicitudin. Mauris sed egestas diam. Etiam hendrerit, ex in ornare viverra, nisi felis interdum mauris, quis commodo dolor justo sed dolor.',
-    type: 'Prova',
-    dateStart: '17/10/2024 às 11h',
-    dateEnd: '17/10/2024 às 12h30',
-    idDisciplina: 2,
-  };
+  upcomingExams: Exam[] | null = null;
+  finishedExams?: Exam[];
+  // TODO: Remover any
+  finishedExamsResults?: ExamResultByExamId;
+  waitingCorrectionExams: Exam[] | null = null;
+  currentUser: User | null;
 
-  examFinishedMock = {
-    id: 1,
-    title: 'Prova de Matemática',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nec nulla sed nulla pulvinar bibendum. Mauris luctus elit vitae massa mollis convallis. Integer consequat diam ac vulputate sollicitudin. Mauris sed egestas diam. Etiam hendrerit, ex in ornare viverra, nisi felis interdum mauris, quis commodo dolor justo sed dolor.',
-    type: 'Prova',
-    dateStart: '17/10/2024 às 11h',
-    dateEnd: '17/10/2024 às 12h30',
-    idDisciplina: 2,
-    finished: true,
-    result: 9.5,
-  };
+  constructor(
+    private examService: ExamService,
+    private userService: UserService
+  ) {
+    this.currentUser = this.userService.getCurrentUser();
+    this.loadExamList();
+    this.getExamResults();
+  }
+
+  loadExamList() {
+    const classId = this.currentUser?.turma?.id;
+
+    if (classId) {
+      this.examService.getExamListByClass(classId).subscribe({
+        next: (examListData) => {
+          this.upcomingExams = examListData.filter(
+            (exam) => exam.status === 'REGISTRADA'
+          );
+
+          this.finishedExams = examListData.filter(
+            (exam) => exam.status === 'CONCLUIDA'
+          );
+
+          this.waitingCorrectionExams = examListData.filter(
+            (exam) => exam.status === 'ESPERANDO_CORRECAO'
+          );
+        },
+        error: (error) => {
+          console.error('Lista de avaliações não encontrada:', error);
+        },
+      });
+    }
+  }
+
+  getExamResults() {
+    if (this.currentUser) {
+      this.examService
+        .getExamResultListByStudent(this.currentUser.id)
+        .subscribe({
+          next: (examResultData) => {
+            // TODO: Para quê serve esse Record?
+            const results = examResultData.reduce<Record<string, { resultado: number }>>((acc, examResult) => {
+              acc[examResult.avaliacao.id] = {
+                resultado: examResult.resultado,
+              };
+
+              return acc;
+            }, {});
+
+            this.finishedExamsResults = results;
+          },
+        });
+    }
+  }
 }

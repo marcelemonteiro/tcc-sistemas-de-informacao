@@ -3,15 +3,40 @@
     <div class="upcoming-exams">
       <h3>Próximas Avaliações</h3>
       <div class="app-exam-wrapper">
-        <app-exam [exam]="examMock" />
+        @for (exam of upcomingExams; track exam.id) {
+        <app-exam [exam]="exam" />
+        } @empty {
+        <p>Não há próximas avaliações.</p>
+        }
+      </div>
+    </div>
+
+    <div class="finished-exams">
+      <h3>Esperando Correção</h3>
+      <div class="app-exam-wrapper">
+        @for (exam of waitingCorrectionExams; track exam.id) {
+        <app-exam [exam]="exam" />
+        } @empty {
+        <p>Não há avaliações esperando correção.</p>
+        }
       </div>
     </div>
 
     <div class="finished-exams">
       <h3>Avaliações Finalizadas</h3>
       <div class="app-exam-wrapper">
-        <app-exam [exam]="examFinishedMock" />
-        <app-exam [exam]="examFinishedMock" />
+        @for (exam of finishedExams; track exam.id) {
+        <!--  -->
+        @if (finishedExamsResults) {
+        <app-exam
+          [exam]="exam"
+          [examResult]="finishedExamsResults[exam.id].resultado"
+        />
+        }
+        <!--  -->
+        } @empty {
+        <p>Não há avaliações finalizadas.</p>
+        }
       </div>
     </div>
   </app-section>

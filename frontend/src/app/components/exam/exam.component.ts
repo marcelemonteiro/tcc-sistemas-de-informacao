@@ -11,4 +11,6 @@ import { RouterLink } from '@angular/router';
 })
 export class ExamComponent {
   @Input() exam!: Exam;
+  // TODO: Remover any
+  @Input() examResult?: number;
 }

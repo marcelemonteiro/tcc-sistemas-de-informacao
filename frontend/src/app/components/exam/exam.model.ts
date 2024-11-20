@@ -1,11 +1,12 @@
+import { Disciplina } from '../../interfaces/Disciplina.model';
+
 export interface Exam {
-  id: number;
-  title: string;
-  description: string;
-  type: string;
-  dateStart: string;
-  dateEnd: string;
-  idDisciplina: number;
-  finished?: boolean;
-  result?: number;
+  id: string;
+  titulo: string;
+  descricao: string;
+  dataInicio: string;
+  dataTermino: string;
+  status: string;
+  disciplina: Disciplina;
+  resultado?: number;
 }
