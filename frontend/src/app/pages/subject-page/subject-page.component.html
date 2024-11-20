@@ -1,21 +1,25 @@
 <app-default-layout>
-  <app-section title="Matemática">
+  @if (subject) {
+  <app-section [title]="subject.nome">
     <div class="subject-teacher">
       <mat-icon
         aria-hidden="false"
         aria-label="User Icon"
         fontIcon="person"
       ></mat-icon>
-      <p>Prof. Carlos</p>
+      <p>{{ subject.professor.nome }}</p>
     </div>
 
     <div class="subject-content-grid">
       <div class="subject-schedule">
         <h3 class="subject-section-title">Horários</h3>
         <div class="subject-schedule-group">
-          <!-- <app-schedule [weekSchedule]="scheduleMockBySubject" />
-          <app-schedule [weekSchedule]="scheduleMockBySubject" />
-          <app-schedule [weekSchedule]="scheduleMockBySubject" /> -->
+          @for (day of diasUteis; track day) { @if (calendarList[day]) {
+          <app-schedule
+            [scheduleList]="calendarList[day]"
+            [noClassHeader]="true"
+          />
+          } }
         </div>
       </div>
 
@@ -49,4 +53,5 @@
       </div>
     </div>
   </app-section>
+  }
 </app-default-layout>

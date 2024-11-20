@@ -1,18 +1,31 @@
 import { Injectable } from '@angular/core';
 
-import { mockSubjects } from '../mock-data';
-import { Subject } from '../components/subject-card/subject.model';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { AuthService } from './auth.service';
+import { Disciplina } from '../interfaces/Disciplina.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SubjectService {
-  mockSubjects: Subject[] = mockSubjects;
+  constructor(private http: HttpClient, private authService: AuthService) {}
 
-  constructor() { }
+  getSubjectByClass(classId: string) {
+    return this.http.get<Disciplina[]>(
+      `http://localhost:8080/disciplina/todos/turma/${classId}`,
+      {
+        headers: new HttpHeaders({
+          Authorization: 'Bearer ' + this.authService.getToken(),
+        }),
+      }
+    );
+  }
 
-  getSubject(id: number): Subject | undefined {
-    const subject = mockSubjects.find((subject) => subject.id === id);
-    return subject;
+  getSubject(id: string) {
+    return this.http.get<Disciplina>(`http://localhost:8080/disciplina/${id}`, {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + this.authService.getToken(),
+      }),
+    });
   }
 }

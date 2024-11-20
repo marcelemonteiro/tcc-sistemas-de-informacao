@@ -17,6 +17,8 @@
           Horário
         </div>
       </th>
+
+      @if (!noClassHeader) {
       <th scope="col">
         <div>
           <mat-icon
@@ -27,6 +29,8 @@
           Disciplina
         </div>
       </th>
+      }
+
       <th scope="col">
         <div>
           <mat-icon
@@ -45,9 +49,13 @@
       <th scope="row" class="calendar-schedule">
         {{ schedule?.horarioInicial }} - {{ schedule?.horarioFinal }}
       </th>
+
+      @if (!noClassHeader) {
       <td class="calendar-class">
         {{ schedule?.disciplina?.nome }}
       </td>
+      }
+
       <td class="calendar-teacher">
         {{ schedule?.disciplina?.professor?.nome }}
       </td>

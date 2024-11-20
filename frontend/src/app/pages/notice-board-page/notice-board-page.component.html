@@ -5,7 +5,7 @@
       [id]="notice.id"
       [title]="notice.titulo"
       [date]="notice.dataEnvio"
-      [author]="notice.remetente.nome"
+      [author]="notice.professor.nome"
       [isNew]="notice.statusLeitura === 'LIDO' ? false : true"
       (delete)="onDeletedNotice($event)"
     />

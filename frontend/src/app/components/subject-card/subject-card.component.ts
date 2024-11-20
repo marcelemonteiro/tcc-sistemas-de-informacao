@@ -7,11 +7,10 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   imports: [RouterLink, MatIconModule],
   templateUrl: './subject-card.component.html',
-  styleUrl: './subject-card.component.css'
+  styleUrl: './subject-card.component.css',
 })
 export class SubjectCardComponent {
-  @Input() subjectId!: number;
+  @Input() subjectId!: string;
   @Input() subjectName!: string;
   @Input() teacherName!: string;
-
 }
