@@ -49,6 +49,15 @@ public class AvisoController {
         return ResponseEntity.ok(avisos);
     }
 
+    @GetMapping("professor/{professorId}")
+    ResponseEntity<List<Aviso>> getAvisosByProfessor(@PathVariable("professorId") String professorId) {
+        var avisos = avisoService.listAllByProfessor(professorId);
+        if (avisos == null) {
+            return ResponseEntity.badRequest().build();
+        }
+        return ResponseEntity.ok(avisos);
+    }
+
     @PostMapping
     ResponseEntity<Aviso> createAviso(@RequestBody @Valid CreateAvisoDTO aviso) {
         var avisos = avisoService.create(aviso);

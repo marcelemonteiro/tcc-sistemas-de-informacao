@@ -8,4 +8,6 @@ import dev.tcc.sistema_escolar.domain.aviso.Aviso;
 
 public interface AvisoRepository extends JpaRepository<Aviso, String> {
     List<Aviso> findByAlunoId(String alunoId);
+
+    List<Aviso> findByProfessorId(String professorId);
 }

@@ -1,6 +1,12 @@
 package dev.tcc.sistema_escolar.domain.professor;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import dev.tcc.sistema_escolar.domain.disciplina.Disciplina;
 import dev.tcc.sistema_escolar.domain.user.User;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,6 +14,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -30,12 +37,19 @@ public class Professor {
     private User usuario;
 
     private String nome;
+
     private String cpf;
+
     @Column(name = "data_nascimento")
     private String dataNascimento;
+
     private String email;
+
     private String telefone;
-    // TODO: Criar lista de disciplinas lecionadas (talvez já incluido as turmas)
-    // private String disciplinasLecionadas;
+
+    @OneToMany(mappedBy = "professor", cascade = { CascadeType.PERSIST,
+            CascadeType.MERGE })
+    @JsonIgnoreProperties("professor")
+    private List<Disciplina> disciplinas;
 
 }

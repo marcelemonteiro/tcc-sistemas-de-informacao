@@ -56,6 +56,10 @@ public class AvisoService {
         return avisoRepository.findByAlunoId(userId);
     }
 
+    public List<Aviso> listAllByProfessor(String userId) {
+        return avisoRepository.findByProfessorId(userId);
+    }
+
     public Aviso get(String id) {
         Optional<Aviso> aviso = avisoRepository.findById(id);
 
