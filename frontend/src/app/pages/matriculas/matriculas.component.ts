@@ -22,7 +22,6 @@ export class MatriculasComponent {
   loadMatriculas() {
     this.userService.getAllUsers().subscribe({
       next: (response) => {
-        console.log(response);
         this.matriculas = response;
       },
     });

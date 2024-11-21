@@ -32,7 +32,7 @@ export class HomeComponent {
   isNoticesSliced: boolean = false;
   // TODO: Remover any
   calendarList: any;
-  currentWeekDay: string;
+  currentWeekDay: string = '';
   currentUser: User | null;
 
   constructor(

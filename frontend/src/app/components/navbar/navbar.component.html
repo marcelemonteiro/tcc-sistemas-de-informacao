@@ -34,6 +34,8 @@
 
   <nav class="navbar-nav" [class.openMobileNav]="isMobileNavbar">
     <ul>
+      @if (user?.usuario?.role === "ALUNO" || user?.usuario?.role ===
+      "PROFESSOR") {
       <li>
         <a routerLink="/home" routerLinkActive="active">
           <mat-icon
@@ -45,7 +47,8 @@
           Dashboard
         </a>
       </li>
-
+      }
+      <!--  -->
       @if (user?.usuario?.role === "ALUNO" || user?.usuario?.role ===
       "PROFESSOR") {
       <li>
@@ -129,6 +132,20 @@
             class="nav-icon"
           ></mat-icon>
           Configurações
+        </a>
+      </li>
+      }
+      <!--  -->
+      @if (user && user.role === 'ADMIN') {
+      <li>
+        <a routerLink="/admin/home" routerLinkActive="active">
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Configurações Icon"
+            fontIcon="settings"
+            class="nav-icon"
+          ></mat-icon>
+          Dashboard
         </a>
       </li>
       }

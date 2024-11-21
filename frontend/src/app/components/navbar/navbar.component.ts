@@ -27,7 +27,6 @@ export class NavbarComponent {
     if (this.user === null) {
       this.user = this.userService.getCurrentUser();
     }
-    console.log(this.user);
   }
 
   logout() {
