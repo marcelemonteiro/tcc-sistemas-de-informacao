@@ -12,6 +12,7 @@ export class AuthService {
   token: string | null = null;
   aluno: string | null = null;
   professor: string | null = null;
+  user: string | null = null;
 
   constructor(private httpClient: HttpClient) {
     this.isAuthenticated = !!localStorage.getItem(this.authSecretKey);
@@ -19,6 +20,7 @@ export class AuthService {
     this.token = localStorage.getItem(this.authSecretKey);
     this.aluno = localStorage.getItem('aluno');
     this.professor = localStorage.getItem('professor');
+    this.user = localStorage.getItem('user');
   }
 
   login(email: string, password: string) {
@@ -34,6 +36,7 @@ export class AuthService {
           localStorage.setItem(this.authSecretKey, response.token);
           localStorage.setItem('aluno', JSON.stringify(response.aluno));
           localStorage.setItem('professor', JSON.stringify(response.professor));
+          localStorage.setItem('user', JSON.stringify(response.user));
         })
       );
   }
@@ -48,6 +51,10 @@ export class AuthService {
 
   getProfessor() {
     return this.professor;
+  }
+
+  getUser() {
+    return this.user;
   }
 
   isAuthenticatedUser(): boolean {

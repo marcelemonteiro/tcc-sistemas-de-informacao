@@ -20,7 +20,14 @@ export class NavbarComponent {
   user: User | null;
 
   constructor(private userService: UserService) {
-    this.user = this.userService.getCurrentAluno() || this.userService.getCurrentProfessor();
+    this.user =
+      this.userService.getCurrentAluno() ||
+      this.userService.getCurrentProfessor();
+
+    if (this.user === null) {
+      this.user = this.userService.getCurrentUser();
+    }
+    console.log(this.user);
   }
 
   logout() {

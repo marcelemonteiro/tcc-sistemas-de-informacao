@@ -33,6 +33,12 @@
   background-color: var(--laranja-1);
 }
 
+.navbar-user {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .navbar-mobile-btn {
   padding: 0.25rem 0.5rem;
   border: none;

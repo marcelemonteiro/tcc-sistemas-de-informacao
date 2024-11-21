@@ -43,7 +43,7 @@ public class AuthController {
 
             Optional<Professor> professor = this.professorRepository.findByIdOrUsuarioId(user.getId(), user.getId());
 
-            return ResponseEntity.ok(new LoginResponseDTO(token, aluno, professor));
+            return ResponseEntity.ok(new LoginResponseDTO(token, aluno, professor, user));
         }
         return ResponseEntity.badRequest().build();
     }

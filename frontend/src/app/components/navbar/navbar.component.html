@@ -1,5 +1,9 @@
 <div class="navbar">
-  <div class="navbar-header" routerLink="/usuario">
+  <div
+    class="navbar-header"
+    [routerLink]="user && user.role !== 'ADMIN' ? '/usuario' : ''"
+  >
+    @if (user && user.role !== 'ADMIN'){
     <div
       class="navbar-avatar"
       [ngClass]="{
@@ -7,10 +11,15 @@
         professor: user?.usuario?.role === 'PROFESSOR'
       }"
     ></div>
+    }
 
     <div class="navbar-user">
+      @if (user && user.role === 'ADMIN') {
+      <span>Administrador</span>
+      } @else {
       <p>{{ user?.nome }}</p>
       <span>{{ user?.usuario?.role }}</span>
+      }
     </div>
 
     <button class="navbar-mobile-btn" (click)="enableMobileNavbar()">
@@ -37,6 +46,8 @@
         </a>
       </li>
 
+      @if (user?.usuario?.role === "ALUNO" || user?.usuario?.role ===
+      "PROFESSOR") {
       <li>
         <a routerLink="/horarios" routerLinkActive="active">
           <mat-icon
@@ -48,7 +59,8 @@
           Horários
         </a>
       </li>
-
+      }
+      <!--  -->
       @if (user?.usuario?.role === "ALUNO") {
       <li>
         <a routerLink="/disciplinas" routerLinkActive="active">
@@ -90,7 +102,9 @@
         </a>
       </li>
       }
-
+      <!--  -->
+      @if (user?.usuario?.role === "ALUNO" || user?.usuario?.role ===
+      "PROFESSOR") {
       <li>
         <a routerLink="/avaliacoes" routerLinkActive="active">
           <mat-icon
@@ -102,9 +116,12 @@
           Avaliações
         </a>
       </li>
-
+      }
+      <!--  -->
+      @if (user?.usuario?.role === "ALUNO" || user?.usuario?.role ===
+      "PROFESSOR") {
       <li>
-        <a routerLink="/configuracoes" routerLinkActive="active">
+        <a routerLink="configuracoes" routerLinkActive="active">
           <mat-icon
             aria-hidden="false"
             aria-label="Configurações Icon"
@@ -114,7 +131,64 @@
           Configurações
         </a>
       </li>
+      }
+      <!--  -->
+      @if (user && user.role === 'ADMIN') {
+      <li>
+        <a routerLink="/admin/matriculas" routerLinkActive="active">
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Configurações Icon"
+            fontIcon="settings"
+            class="nav-icon"
+          ></mat-icon>
+          Matrículas
+        </a>
+      </li>
+      }
+      <!--  -->
+      @if (user && user.role === 'ADMIN') {
+      <li>
+        <a routerLink="/admin/professores" routerLinkActive="active">
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Configurações Icon"
+            fontIcon="settings"
+            class="nav-icon"
+          ></mat-icon>
+          Professores
+        </a>
+      </li>
+      }
+      <!--  -->
+      @if (user && user.role === 'ADMIN') {
+      <li>
+        <a routerLink="/admin/turmas" routerLinkActive="active">
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Configurações Icon"
+            fontIcon="settings"
+            class="nav-icon"
+          ></mat-icon>
+          Turmas
+        </a>
+      </li>
+      }
 
+      <!--  -->
+      @if (user && user.role === 'ADMIN') {
+      <li>
+        <a routerLink="/admin/disciplinas" routerLinkActive="active">
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Configurações Icon"
+            fontIcon="settings"
+            class="nav-icon"
+          ></mat-icon>
+          Disciplinas
+        </a>
+      </li>
+      }
       <li>
         <button (click)="logout()">
           <mat-icon
