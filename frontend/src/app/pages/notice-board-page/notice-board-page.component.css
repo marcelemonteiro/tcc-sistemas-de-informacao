@@ -1,0 +1,13 @@
+.create-notice-btn {
+  padding: 0.5rem 1rem;
+  background-color: var(--laranja-1);
+  color: var(--laranja-2);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.create-notice-btn:hover {
+  background-color: var(--laranja-3);
+  transition: all 200ms ease-in-out;
+}

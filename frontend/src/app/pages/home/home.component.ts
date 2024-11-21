@@ -12,6 +12,7 @@ import { UserService } from '../../services/user.service';
 import { map, tap } from 'rxjs';
 import { TeacherService } from '../../services/teacher.service';
 import { CalendarService } from '../../services/calendar.service';
+import { User } from '../user/user.model';
 
 @Component({
   selector: 'app-home',
@@ -32,12 +33,17 @@ export class HomeComponent {
   // TODO: Remover any
   calendarList: any;
   currentWeekDay: string;
+  currentUser: User | null;
 
   constructor(
     private noticeService: NoticeService,
     private userService: UserService,
     private calendarService: CalendarService
   ) {
+    this.currentUser =
+      this.userService.getCurrentAluno() ||
+      this.userService.getCurrentProfessor();
+
     this.loadNotices();
 
     const today = new Date();
@@ -49,11 +55,27 @@ export class HomeComponent {
   }
 
   loadNotices() {
-    const currentUser = this.userService.getCurrentAluno() || this.userService.getCurrentProfessor()
-    const userId = currentUser?.id;
+    if (this.currentUser?.usuario.role === 'ALUNO') {
+      const userId = this.currentUser?.id;
+      this.noticeService.getNoticesByAluno(userId).subscribe({
+        next: (response) => {
+          if (response.length > 4) {
+            this.isNoticesSliced = true;
+            this.notices = response.slice(0, 4);
+          } else {
+            this.notices = response;
+          }
+        },
+        error: (error) => {
+          // TODO: Melhorar tratamento de erros
+          console.error(error);
+        },
+      });
+    }
 
-    if (userId) {
-      this.noticeService.getNoticesByUserId(userId).subscribe({
+    if (this.currentUser?.usuario.role === 'PROFESSOR') {
+      const userId = this.currentUser?.id;
+      this.noticeService.getNoticesByProfessor(userId).subscribe({
         next: (response) => {
           if (response.length > 4) {
             this.isNoticesSliced = true;

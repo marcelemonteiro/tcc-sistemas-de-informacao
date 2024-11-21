@@ -1,0 +1,51 @@
+.notice-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.notice-form input {
+  padding: 1rem 0.5rem;
+  border-radius: 8px;
+  border: 2px solid #e8e9ec;
+}
+
+.select-group label {
+  font-size: var(--font-md);
+}
+
+.select-group select {
+  font-size: var(--font-md);
+  width: 100%;
+  padding: 1rem 0.5rem;
+  margin-top: 0.25rem;
+  border-radius: 8px;
+  border: 2px solid #e8e9ec;
+}
+
+.textarea {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.textarea textarea {
+  padding: 0.5rem;
+  font-size: var(--font-md);
+  font-family: "Roboto", sans-serif;
+  border-radius: 8px;
+  border: 2px solid #e8e9ec;
+}
+
+.notice-form button {
+  padding: 1rem 0.5rem;
+  border-radius: 8px;
+  background: var(--gradient-2);
+  color: var(--verde-1);
+  border: 1px solid var(--verde-1);
+  cursor: pointer;
+}
+
+.notice-form button:hover {
+  opacity: 0.6;
+  border: 1px solid transparent;
+  transition: all 300ms ease-in-out;
+}

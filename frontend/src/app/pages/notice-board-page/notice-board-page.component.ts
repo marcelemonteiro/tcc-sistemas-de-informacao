@@ -5,6 +5,7 @@ import { UserService } from '../../services/user.service';
 import { Notice } from '../../components/notice/notice.model';
 import { NoticeComponent } from '../../components/notice/notice.component';
 import { SectionComponent } from '../../components/section/section.component';
+import { User } from '../user/user.model';
 
 @Component({
   selector: 'app-notice-board-page',
@@ -15,19 +16,35 @@ import { SectionComponent } from '../../components/section/section.component';
 })
 export class NoticeBoardPageComponent {
   notices: Notice[] | null = null;
+  currentUser: User | null = null;
 
   constructor(
     private noticeService: NoticeService,
     private userService: UserService
   ) {
     this.loadNotices();
+    this.currentUser =
+      this.userService.getCurrentAluno() ||
+      this.userService.getCurrentProfessor();
   }
 
   loadNotices() {
-    const currentUser = this.userService.getCurrentAluno() || this.userService.getCurrentProfessor()
-    const userId = currentUser?.id;
-    if (userId) {
-      this.noticeService.getNoticesByUserId(userId).subscribe({
+    if (this.currentUser?.usuario.role === 'ALUNO') {
+      const userId = this.currentUser?.id;
+      this.noticeService.getNoticesByAluno(userId).subscribe({
+        next: (response) => {
+          this.notices = response;
+        },
+        error: (error) => {
+          // TODO: Melhorar tratamento de erros
+          console.error(error);
+        },
+      });
+    }
+
+    if (this.currentUser?.usuario.role === 'PROFESSOR') {
+      const userId = this.currentUser?.id;
+      this.noticeService.getNoticesByProfessor(userId).subscribe({
         next: (response) => {
           this.notices = response;
         },

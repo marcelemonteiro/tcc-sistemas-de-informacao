@@ -10,7 +10,13 @@
     </section>
 
     <section class="dashboard-section">
-      <h2>Avisos</h2>
+      <div class="section-header">
+        <h2>Avisos</h2>
+        @if (currentUser && currentUser.usuario.role === 'PROFESSOR') {
+        <a routerLink="/avisos/criar"> Criar aviso </a>
+        }
+      </div>
+
       @for (notice of notices; track notice.id) {
       <app-notice
         [id]="notice.id"

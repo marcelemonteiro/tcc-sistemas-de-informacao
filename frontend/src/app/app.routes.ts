@@ -15,6 +15,7 @@ import { SubjectsPageComponent } from './pages/subjects-page/subjects-page.compo
 import { SubjectPageComponent } from './pages/subject-page/subject-page.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { UserComponent } from './pages/user/user.component';
+import { CreateNoticeComponent } from './pages/create-notice/create-notice.component';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -33,6 +34,11 @@ export const routes: Routes = [
   {
     path: 'avisos',
     component: NoticeBoardPageComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'avisos/criar',
+    component: CreateNoticeComponent,
     canActivate: [authGuard],
   },
   {

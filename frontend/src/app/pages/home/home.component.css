@@ -10,8 +10,24 @@
   padding: 1rem 2rem;
 }
 
-.dashboard-section h2 {
-  margin-bottom: 1rem;
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section-header a {
+  padding: 0.5rem 1rem;
+  background-color: var(--laranja-1);
+  color: var(--laranja-2);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.section-header a:hover {
+  background-color: var(--laranja-3);
+  transition: all 200ms ease-in-out;
 }
 
 .schedule {

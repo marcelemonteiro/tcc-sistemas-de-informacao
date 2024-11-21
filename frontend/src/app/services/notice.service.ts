@@ -11,9 +11,20 @@ import { DeleteNoticeResponse } from '../types/delete-notice-response.type';
 export class NoticeService {
   constructor(private http: HttpClient, private authService: AuthService) {}
 
-  getNoticesByUserId(userId: string) {
+  getNoticesByAluno(userId: string) {
     return this.http.get<Notice[]>(
       `http://localhost:8080/aviso/aluno/${userId}`,
+      {
+        headers: new HttpHeaders({
+          Authorization: 'Bearer ' + this.authService.getToken(),
+        }),
+      }
+    );
+  }
+
+  getNoticesByProfessor(userId: string) {
+    return this.http.get<Notice[]>(
+      `http://localhost:8080/aviso/professor/${userId}`,
       {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + this.authService.getToken(),
@@ -31,7 +42,11 @@ export class NoticeService {
   }
 
   createNotice(notice: Notice) {
-    // TODO: Implementar createNotice
+    return this.http.post('http://localhost:8080/aviso', notice, {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + this.authService.getToken(),
+      }),
+    });
   }
 
   updateNotice(noticeId: string) {
