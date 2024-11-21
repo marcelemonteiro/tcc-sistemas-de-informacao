@@ -1,0 +1,37 @@
+<app-default-layout>
+  <app-section title="Professores">
+    <a routerLink="cadastro-professor" class="cadastro-professor-btn"
+      >Cadastrar novo professor</a
+    >
+
+    <table class="matricula-table">
+      <thead class="matricula-table-head">
+        <tr>
+          <th>Nome</th>
+          <th>Data de Nascimento</th>
+          <th>CPF</th>
+          <th>Telefone</th>
+          <th>E-mail</th>
+          <th [colSpan]="2"></th>
+        </tr>
+      </thead>
+      <tbody class="matricula-table-body">
+        @for (prof of professores; track prof.id) {
+        <tr>
+          <td>{{ prof.nome }}</td>
+          <td>{{ prof.dataNascimento }}</td>
+          <td>{{ prof.cpf }}</td>
+          <td>{{ prof.telefone }}</td>
+          <td>{{ prof.email }}</td>
+          <td>
+            <button>Editar</button>
+          </td>
+          <td>
+            <button>Deletar</button>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </app-section>
+</app-default-layout>
