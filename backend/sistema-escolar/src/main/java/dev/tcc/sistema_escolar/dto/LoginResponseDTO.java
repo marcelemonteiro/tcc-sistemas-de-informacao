@@ -1,6 +1,9 @@
 package dev.tcc.sistema_escolar.dto;
 
-import dev.tcc.sistema_escolar.domain.aluno.Aluno;
+import java.util.Optional;
 
-public record LoginResponseDTO(String token, Aluno aluno) {
+import dev.tcc.sistema_escolar.domain.aluno.Aluno;
+import dev.tcc.sistema_escolar.domain.professor.Professor;
+
+public record LoginResponseDTO(String token, Optional<Aluno> aluno, Optional<Professor> professor) {
 }

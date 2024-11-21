@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import dev.tcc.sistema_escolar.domain.aluno.Aluno;
+import dev.tcc.sistema_escolar.domain.professor.Professor;
 import dev.tcc.sistema_escolar.domain.user.User;
 import dev.tcc.sistema_escolar.dto.LoginRequestDTO;
 import dev.tcc.sistema_escolar.dto.LoginResponseDTO;
@@ -17,6 +18,7 @@ import dev.tcc.sistema_escolar.dto.RegisterRequestDTO;
 import dev.tcc.sistema_escolar.dto.RegisterResponseDTO;
 import dev.tcc.sistema_escolar.infra.security.TokenService;
 import dev.tcc.sistema_escolar.repositories.AlunoRepository;
+import dev.tcc.sistema_escolar.repositories.ProfessorRepository;
 import dev.tcc.sistema_escolar.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 
@@ -28,6 +30,7 @@ public class AuthController {
     private final AlunoRepository alunoRepository;
     private final PasswordEncoder passwordEncoder;
     private final TokenService tokenService;
+    private final ProfessorRepository professorRepository;
 
     @PostMapping("/login")
     public ResponseEntity<LoginResponseDTO> login(@RequestBody LoginRequestDTO body) {
@@ -35,9 +38,12 @@ public class AuthController {
 
         if (passwordEncoder.matches(body.password(), user.getPassword())) {
             String token = this.tokenService.generateToken(user);
-            Aluno aluno = this.alunoRepository.findByUsuarioId(user.getId())
-                    .orElseThrow(() -> new RuntimeException("User not found in Aluno"));
-            return ResponseEntity.ok(new LoginResponseDTO(token, aluno));
+
+            Optional<Aluno> aluno = this.alunoRepository.findByUsuarioId(user.getId());
+
+            Optional<Professor> professor = this.professorRepository.findByIdOrUsuarioId(user.getId(), user.getId());
+
+            return ResponseEntity.ok(new LoginResponseDTO(token, aluno, professor));
         }
         return ResponseEntity.badRequest().build();
     }
