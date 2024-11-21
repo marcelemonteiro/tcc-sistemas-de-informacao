@@ -174,21 +174,6 @@
         </a>
       </li>
       }
-
-      <!--  -->
-      @if (user && user.role === 'ADMIN') {
-      <li>
-        <a routerLink="/admin/disciplinas" routerLinkActive="active">
-          <mat-icon
-            aria-hidden="false"
-            aria-label="Configurações Icon"
-            fontIcon="settings"
-            class="nav-icon"
-          ></mat-icon>
-          Disciplinas
-        </a>
-      </li>
-      }
       <li>
         <button (click)="logout()">
           <mat-icon
