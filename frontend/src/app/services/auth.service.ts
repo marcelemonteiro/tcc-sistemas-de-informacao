@@ -11,12 +11,14 @@ export class AuthService {
   private authSecretKey = 'auth-token';
   token: string | null = null;
   aluno: string | null = null;
+  professor: string | null = null;
 
   constructor(private httpClient: HttpClient) {
     this.isAuthenticated = !!localStorage.getItem(this.authSecretKey);
     // TODO: Resolver problema dos dados persistirem até dar refresh na página mesmo depois do logout
     this.token = localStorage.getItem(this.authSecretKey);
     this.aluno = localStorage.getItem('aluno');
+    this.professor = localStorage.getItem('professor');
   }
 
   login(email: string, password: string) {
@@ -31,6 +33,7 @@ export class AuthService {
           localStorage.clear();
           localStorage.setItem(this.authSecretKey, response.token);
           localStorage.setItem('aluno', JSON.stringify(response.aluno));
+          localStorage.setItem('professor', JSON.stringify(response.professor));
         })
       );
   }
@@ -41,6 +44,10 @@ export class AuthService {
 
   getAluno() {
     return this.aluno;
+  }
+
+  getProfessor() {
+    return this.professor;
   }
 
   isAuthenticatedUser(): boolean {

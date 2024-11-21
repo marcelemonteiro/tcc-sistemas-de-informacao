@@ -45,7 +45,8 @@ export class SubjectPageComponent {
     private userService: UserService
   ) {
     this.id = this.route.snapshot.paramMap.get('id');
-    this.currentUser = this.userService.getCurrentUser();
+    this.currentUser = this.userService.getCurrentAluno() || this.userService.getCurrentProfessor();
+
     this.loadSubject();
     this.loadSchedule();
   }

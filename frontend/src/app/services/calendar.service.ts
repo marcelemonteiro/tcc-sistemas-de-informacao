@@ -12,10 +12,10 @@ export class CalendarService {
     private http: HttpClient,
     private authService: AuthService,
     private userService: UserService
-  ) {}
+  ) { }
 
   getCalendarByTurma() {
-    const aluno = this.userService.getCurrentUser();
+    const aluno = this.userService.getCurrentAluno() || this.userService.getCurrentProfessor();
     const turma = aluno?.turma?.id;
 
     return this.http.get<Calendar[]>(

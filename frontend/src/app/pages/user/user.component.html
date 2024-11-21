@@ -1,7 +1,7 @@
 <app-default-layout>
+  @if (user && user.usuario.role === "ALUNO") {
   <app-section title="Perfil do Aluno">
     <div class="section-inner">
-      @if (user) {
       <p><strong>Nome completo</strong>: {{ user.nome }}</p>
       <p><strong>CPF</strong>: {{ user.cpf }}</p>
       <p>
@@ -15,7 +15,24 @@
         <strong>Email</strong>: <code>{{ user.email }}</code>
       </p>
       <p><strong>Telefone</strong>: {{ user.telefone }}</p>
-      }
     </div>
   </app-section>
+  }
+  <!--  -->
+  @if (user && user.usuario.role === "PROFESSOR") {
+  <app-section title="Perfil do Professor">
+    <div class="section-inner">
+      <p><strong>Nome completo</strong>: {{ user.nome }}</p>
+      <p><strong>CPF</strong>: {{ user.cpf }}</p>
+      <p>
+        <strong>Data de nascimento</strong>:
+        {{ user.dataNascimento | date : "dd/MM/yyyy" }}
+      </p>
+      <p>
+        <strong>Email</strong>: <code>{{ user.email }}</code>
+      </p>
+      <p><strong>Telefone</strong>: {{ user.telefone }}</p>
+    </div>
+  </app-section>
+  }
 </app-default-layout>

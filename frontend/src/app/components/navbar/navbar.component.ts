@@ -4,11 +4,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { AuthService } from '../../services/auth.service';
 import { User } from '../../pages/user/user.model';
 import { UserService } from '../../services/user.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, MatIconModule],
+  imports: [RouterLink, RouterLinkActive, MatIconModule, CommonModule],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css',
 })
@@ -16,10 +17,10 @@ export class NavbarComponent {
   authService = inject(AuthService);
   router = inject(Router);
   isMobileNavbar = false;
-  aluno: User | null;
+  user: User | null;
 
   constructor(private userService: UserService) {
-    this.aluno = this.userService.getCurrentUser();
+    this.user = this.userService.getCurrentAluno() || this.userService.getCurrentProfessor();
   }
 
   logout() {

@@ -9,6 +9,7 @@ import { User } from '../pages/user/user.model';
 export class UserService {
   private token: string | null;
   private aluno: User | null = null;
+  private professor: User | null = null;
 
   constructor(
     private httpClient: HttpClient,
@@ -20,6 +21,11 @@ export class UserService {
     if (storageAluno) {
       this.aluno = JSON.parse(storageAluno);
     }
+
+    const storageProfessor = this.authService.getProfessor();
+    if (storageProfessor) {
+      this.professor = JSON.parse(storageProfessor);
+    }
   }
 
   getUserById() {
@@ -30,8 +36,12 @@ export class UserService {
     });
   }
 
-  getCurrentUser() {
+  getCurrentAluno() {
     return this.aluno;
+  }
+
+  getCurrentProfessor() {
+    return this.professor;
   }
 
   getAllUsers() {

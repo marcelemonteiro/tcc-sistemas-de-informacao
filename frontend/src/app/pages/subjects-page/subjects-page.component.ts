@@ -28,7 +28,7 @@ export class SubjectsPageComponent {
     private subjectService: SubjectService,
     private userService: UserService
   ) {
-    this.currentUser = this.userService.getCurrentUser();
+    this.currentUser = this.userService.getCurrentAluno() || this.userService.getCurrentProfessor();
     this.loadClasses();
   }
 

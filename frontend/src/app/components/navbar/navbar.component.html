@@ -1,10 +1,16 @@
 <div class="navbar">
   <div class="navbar-header" routerLink="/usuario">
-    <div class="navbar-avatar"></div>
+    <div
+      class="navbar-avatar"
+      [ngClass]="{
+        aluno: user?.usuario?.role === 'ALUNO',
+        professor: user?.usuario?.role === 'PROFESSOR'
+      }"
+    ></div>
 
     <div class="navbar-user">
-      <p>{{ aluno?.nome }}</p>
-      <span>{{ aluno?.usuario?.role }}</span>
+      <p>{{ user?.nome }}</p>
+      <span>{{ user?.usuario?.role }}</span>
     </div>
 
     <button class="navbar-mobile-btn" (click)="enableMobileNavbar()">
@@ -43,6 +49,7 @@
         </a>
       </li>
 
+      @if (user?.usuario?.role === "ALUNO") {
       <li>
         <a routerLink="/disciplinas" routerLinkActive="active">
           <mat-icon
@@ -54,6 +61,35 @@
           Disciplinas
         </a>
       </li>
+      }
+      <!--  -->
+      @if (user?.usuario?.role === "PROFESSOR") {
+      <li>
+        <a routerLink="/diario" routerLinkActive="active">
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Disciplinas Icon"
+            fontIcon="menu_book"
+            class="nav-icon"
+          ></mat-icon>
+          Diário
+        </a>
+      </li>
+      }
+      <!--  -->
+      @if (user?.usuario?.role === "PROFESSOR") {
+      <li>
+        <a routerLink="/turmas" routerLinkActive="active">
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Disciplinas Icon"
+            fontIcon="inventory"
+            class="nav-icon"
+          ></mat-icon>
+          Turmas
+        </a>
+      </li>
+      }
 
       <li>
         <a routerLink="/avaliacoes" routerLinkActive="active">

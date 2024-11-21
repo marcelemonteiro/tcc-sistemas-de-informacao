@@ -20,7 +20,7 @@ export class UserComponent {
   }
 
   loadUser() {
-    const currentUser = this.userService.getCurrentUser();
+    const currentUser = this.userService.getCurrentAluno() || this.userService.getCurrentProfessor();
     if (currentUser) {
       this.user = currentUser;
     }

@@ -22,8 +22,15 @@
 .navbar-avatar {
   width: 40px;
   height: 40px;
-  background-color: var(--azul-1);
   border-radius: 50%;
+}
+
+.navbar-avatar.aluno {
+  background-color: var(--azul-1);
+}
+
+.navbar-avatar.professor {
+  background-color: var(--laranja-1);
 }
 
 .navbar-mobile-btn {

@@ -30,7 +30,7 @@ export class ExamsPageComponent {
     private examService: ExamService,
     private userService: UserService
   ) {
-    this.currentUser = this.userService.getCurrentUser();
+    this.currentUser = this.userService.getCurrentAluno() || this.userService.getCurrentProfessor();
     this.loadExamList();
     this.getExamResults();
   }
