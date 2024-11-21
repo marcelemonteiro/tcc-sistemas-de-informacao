@@ -18,6 +18,7 @@ import { UserComponent } from './pages/user/user.component';
 import { CreateNoticeComponent } from './pages/create-notice/create-notice.component';
 import { MatriculasComponent } from './pages/matriculas/matriculas.component';
 import { ProfessoresComponent } from './pages/professores/professores.component';
+import { TurmasComponent } from './pages/turmas/turmas.component';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -81,6 +82,11 @@ export const routes: Routes = [
   {
     path: 'admin/professores',
     component: ProfessoresComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'admin/turmas',
+    component: TurmasComponent,
     canActivate: [authGuard],
   },
   { path: '**', component: PageNotFoundComponent },
