@@ -16,6 +16,7 @@ import { SubjectPageComponent } from './pages/subject-page/subject-page.componen
 import { SettingsComponent } from './pages/settings/settings.component';
 import { UserComponent } from './pages/user/user.component';
 import { CreateNoticeComponent } from './pages/create-notice/create-notice.component';
+import { MatriculasComponent } from './pages/matriculas/matriculas.component';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -69,6 +70,11 @@ export const routes: Routes = [
   {
     path: 'configuracoes',
     component: SettingsComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'admin/matriculas',
+    component: MatriculasComponent,
     canActivate: [authGuard],
   },
   { path: '**', component: PageNotFoundComponent },

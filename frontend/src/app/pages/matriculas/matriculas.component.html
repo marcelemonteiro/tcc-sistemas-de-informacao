@@ -1,0 +1,40 @@
+<app-default-layout>
+  <app-section title="Matrículas">
+    <a routerLink="nova-matricula" class="nova-matricula-btn"
+      >Abrir nova matrícula</a
+    >
+
+    <table class="matricula-table">
+      <thead class="matricula-table-head">
+        <tr>
+          <th>Nome</th>
+          <th>Data de Nascimento</th>
+          <th>CPF</th>
+          <th>Endereço</th>
+          <th>Telefone</th>
+          <th>E-mail</th>
+          <th [colSpan]="2"></th>
+        </tr>
+      </thead>
+      <tbody class="matricula-table-body">
+        @for (matricula of matriculas; track matricula.id) {
+        <tr>
+          <td>{{ matricula.nome }}</td>
+          <td>{{ matricula.dataNascimento }}</td>
+          <td>{{ matricula.cpf }}</td>
+          <td>{{ matricula.endereco }}</td>
+          <td>{{ matricula.telefone }}</td>
+          <td>{{ matricula.email }}</td>
+          <td>
+            <button>Editar</button>
+          </td>
+          <td>
+            <button>Deletar</button>
+          </td>
+        </tr>
+        }
+        <tr></tr>
+      </tbody>
+    </table>
+  </app-section>
+</app-default-layout>
