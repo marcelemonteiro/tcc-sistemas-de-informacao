@@ -1,23 +1,42 @@
 <app-default-layout>
   @if (id && notice) {
-  <app-section>
-    <div class="notice-header">
-      <h2>{{ notice.titulo }}</h2>
-      <p>{{ notice.dataEnvio }}</p>
-    </div>
+    <app-section>
+      <div class="notice-header">
+        <h2>{{ notice.titulo }}</h2>
+        <p>{{ notice.dataEnvio | date: "dd/MM/yyyy" }}</p>
+      </div>
 
-    <div class="notice-remetente">
-      <mat-icon
-        aria-hidden="false"
-        aria-label="User Icon"
-        fontIcon="person"
-      ></mat-icon>
-      <p>{{ notice.professor.nome }}</p>
-    </div>
+      <div class="notice-remetente">
+        <mat-icon
+          aria-hidden="false"
+          aria-label="User Icon"
+          fontIcon="person"
+        ></mat-icon>
+        <p>{{ notice.professor.nome }}</p>
+      </div>
 
-    <p class="notice-content">
-      {{ notice.conteudo }}
-    </p>
-  </app-section>
+      <p class="notice-content">
+        {{ notice.conteudo }}
+      </p>
+
+      @if (notice.statusLeitura === "LIDO") {
+        <button type="button" class="notice-read-btn" (click)="handleRead()">
+          Lido
+          <mat-icon
+            aria-hidden="false"
+            aria-label="User Icon"
+            fontIcon="check"
+          ></mat-icon>
+        </button>
+      } @else {
+        <button
+          type="button"
+          class="notice-not-read-btn"
+          (click)="handleRead()"
+        >
+          Marcar como lido
+        </button>
+      }
+    </app-section>
   }
 </app-default-layout>

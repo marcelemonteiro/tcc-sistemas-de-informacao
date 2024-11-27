@@ -4,6 +4,7 @@ import { AuthService } from './auth.service';
 import { Notice } from '../components/notice/notice.model';
 import { Observable } from 'rxjs';
 import { DeleteNoticeResponse } from '../types/delete-notice-response.type';
+import { UpdateNoticeRequest } from '../interfaces/UpdateNoticeRequest';
 
 @Injectable({
   providedIn: 'root',
@@ -49,8 +50,16 @@ export class NoticeService {
     });
   }
 
-  updateNotice(noticeId: string) {
-    // TODO: Implementar updateNotice
+  updateNotice(noticeId: string, notice: UpdateNoticeRequest) {
+    return this.http.put<Notice>(
+      `http://localhost:8080/aviso/${noticeId}`,
+      notice,
+      {
+        headers: new HttpHeaders({
+          Authorization: 'Bearer ' + this.authService.getToken(),
+        }),
+      }
+    );
   }
 
   deleteNotice(noticeId: string): Observable<DeleteNoticeResponse> {

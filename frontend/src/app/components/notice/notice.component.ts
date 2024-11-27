@@ -3,11 +3,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 import { NoticeService } from '../../services/notice.service';
 import { DeleteNoticeResponse } from '../../types/delete-notice-response.type';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-notice',
   standalone: true,
-  imports: [RouterLink, MatIconModule],
+  imports: [RouterLink, MatIconModule, DatePipe],
   templateUrl: './notice.component.html',
   styleUrl: './notice.component.css',
 })
