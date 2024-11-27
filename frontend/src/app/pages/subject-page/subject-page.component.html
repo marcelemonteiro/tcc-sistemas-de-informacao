@@ -1,57 +1,53 @@
 <app-default-layout>
   @if (subject) {
-  <app-section [title]="subject.nome">
-    <div class="subject-teacher">
-      <mat-icon
-        aria-hidden="false"
-        aria-label="User Icon"
-        fontIcon="person"
-      ></mat-icon>
-      <p>{{ subject.professor.nome }}</p>
-    </div>
-
-    <div class="subject-content-grid">
-      <div class="subject-schedule">
-        <h3 class="subject-section-title">Horários</h3>
-        <div class="subject-schedule-group">
-          @for (day of diasUteis; track day) { @if (calendarList[day]) {
-          <app-schedule
-            [scheduleList]="calendarList[day]"
-            [noClassHeader]="true"
-          />
-          } }
-        </div>
+    <app-section [title]="subject.nome">
+      <div class="subject-teacher">
+        <mat-icon
+          aria-hidden="false"
+          aria-label="User Icon"
+          fontIcon="person"
+        ></mat-icon>
+        <p>{{ subject.professor.nome }}</p>
       </div>
 
-      <div class="subject-upcoming-exams">
-        <h3 class="subject-section-title">Próximas avaliações</h3>
-
-        <div class="exam">
-          <div class="exam-date">
-            <p>10 de Setembro</p>
-            <p>9h</p>
-          </div>
-          <div class="exam-type">
-            <p>Prova</p>
+      <div class="subject-content-grid">
+        <div class="subject-schedule">
+          <h3 class="subject-section-title">Horários</h3>
+          <div class="subject-schedule-group">
+            @for (day of diasUteis; track day) {
+              @if (calendarList[day]) {
+                <app-schedule
+                  [scheduleList]="calendarList[day]"
+                  [noClassHeader]="true"
+                />
+              }
+            }
           </div>
         </div>
 
-        <div class="exam">
-          <div class="exam-date">
-            <p>20 de Setembro</p>
-            <p>8h</p>
-          </div>
-          <div class="exam-type">
-            <p>Entrega de Projeto</p>
-          </div>
+        <div class="subject-upcoming-exams">
+          <h3 class="subject-section-title">Próximas avaliações</h3>
+
+          @for (exam of upcomingExams; track exam.id) {
+            <div class="exam">
+              <div class="exam-date">
+                <p>
+                  {{ exam.dataTermino | date: "dd 'de' MMMM" }}
+                </p>
+                <p>{{ exam.dataTermino | date: "HH:mm" }}</p>
+              </div>
+              <div class="exam-type">
+                <p>{{ exam.titulo }}</p>
+              </div>
+            </div>
+          }
+        </div>
+
+        <div class="subject-attendance">
+          <h3 class="subject-section-title">Frequência</h3>
+          <p>100%</p>
         </div>
       </div>
-
-      <div class="subject-attendance">
-        <h3 class="subject-section-title">Frequência</h3>
-        <p>100%</p>
-      </div>
-    </div>
-  </app-section>
+    </app-section>
   }
 </app-default-layout>

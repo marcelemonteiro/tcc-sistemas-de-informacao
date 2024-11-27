@@ -11,6 +11,9 @@ import { CalendarService } from '../../services/calendar.service';
 import { User } from '../user/user.model';
 import { UserService } from '../../services/user.service';
 import { map } from 'rxjs';
+import { ExamService } from '../../services/exam.service';
+import { Exam } from '../../components/exam/exam.model';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-subject-page',
@@ -20,6 +23,7 @@ import { map } from 'rxjs';
     SectionComponent,
     MatIconModule,
     ScheduleComponent,
+    DatePipe,
   ],
   templateUrl: './subject-page.component.html',
   styleUrl: './subject-page.component.css',
@@ -37,18 +41,23 @@ export class SubjectPageComponent {
     'Quinta-feira',
     'Sexta-feira',
   ];
+  upcomingExams: Exam[] | null = null;
 
   constructor(
     private route: ActivatedRoute,
     private subjectService: SubjectService,
     private calendarService: CalendarService,
-    private userService: UserService
+    private userService: UserService,
+    private examService: ExamService,
   ) {
     this.id = this.route.snapshot.paramMap.get('id');
-    this.currentUser = this.userService.getCurrentAluno() || this.userService.getCurrentProfessor();
+    this.currentUser =
+      this.userService.getCurrentAluno() ||
+      this.userService.getCurrentProfessor();
 
     this.loadSubject();
     this.loadSchedule();
+    this.loadUpcomingExams();
   }
 
   loadSubject() {
@@ -73,16 +82,16 @@ export class SubjectPageComponent {
         .pipe(
           map((calendarList) => {
             const filteredCalendar = calendarList.filter(
-              (calendar) => calendar.disciplina.id === this.id
+              (calendar) => calendar.disciplina.id === this.id,
             );
             return filteredCalendar;
-          })
+          }),
         )
         .subscribe({
           next: (calendarList) => {
             this.diasUteis.forEach((dia) => {
               const filteredList = calendarList.filter(
-                (calendar) => calendar.diaSemana === dia
+                (calendar) => calendar.diaSemana === dia,
               );
 
               if (filteredList.length > 0) {
@@ -91,7 +100,30 @@ export class SubjectPageComponent {
               }
             });
           },
+          error: (error) => {
+            console.error('Erro: agenda não encontrada em disciplina:', error);
+          },
         });
+    }
+  }
+
+  loadUpcomingExams() {
+    const classId = this.currentUser?.turma?.id;
+
+    if (classId) {
+      this.examService.getExamListByClass(classId).subscribe({
+        next: (examListData) => {
+          this.upcomingExams = examListData.filter(
+            (exam) => exam.status === 'REGISTRADA',
+          );
+        },
+        error: (error) => {
+          console.error(
+            'Erro: avaliações não encontradas em disciplina:',
+            error,
+          );
+        },
+      });
     }
   }
 }
