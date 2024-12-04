@@ -14,7 +14,7 @@ export class UserService {
 
   constructor(
     private httpClient: HttpClient,
-    private authService: AuthService
+    private authService: AuthService,
   ) {
     this.token = this.authService.getToken();
 
@@ -66,8 +66,16 @@ export class UserService {
     // TODO: Implementar createUser
   }
 
-  updateUser(userId: string) {
-    // TODO: Implementar updateUser
+  updateUserPassword(userEmail: string, password: string) {
+    return this.httpClient.put(
+      'http://localhost:8080/user',
+      { userEmail, password },
+      {
+        headers: new HttpHeaders({
+          Authorization: 'Bearer ' + this.token,
+        }),
+      },
+    );
   }
 
   deleteUser(userId: string) {
