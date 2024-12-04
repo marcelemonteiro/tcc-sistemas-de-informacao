@@ -1,6 +1,6 @@
 <p class="current-day">
   @if (scheduleList) {
-  {{ scheduleList[0].diaSemana }}
+    {{ scheduleList[0].diaSemana }}
   }
 </p>
 
@@ -19,47 +19,51 @@
       </th>
 
       @if (!noClassHeader) {
-      <th scope="col">
-        <div>
-          <mat-icon
-            aria-hidden="false"
-            aria-label="Avaliações Icon"
-            fontIcon="book"
-          ></mat-icon>
-          Disciplina
-        </div>
-      </th>
+        <th scope="col">
+          <div>
+            <mat-icon
+              aria-hidden="false"
+              aria-label="Avaliações Icon"
+              fontIcon="book"
+            ></mat-icon>
+            Disciplina
+          </div>
+        </th>
       }
 
-      <th scope="col">
-        <div>
-          <mat-icon
-            aria-hidden="false"
-            aria-label="Avaliações Icon"
-            fontIcon="people"
-          ></mat-icon>
-          Professor(a)
-        </div>
-      </th>
+      @if (currentUser?.usuario?.role === "ALUNO") {
+        <th scope="col">
+          <div>
+            <mat-icon
+              aria-hidden="false"
+              aria-label="Avaliações Icon"
+              fontIcon="people"
+            ></mat-icon>
+            Professor(a)
+          </div>
+        </th>
+      }
     </tr>
   </thead>
   <tbody>
     @for (schedule of scheduleList; track schedule.id) {
-    <tr class="calendar-body-row">
-      <th scope="row" class="calendar-schedule">
-        {{ schedule?.horarioInicial }} - {{ schedule?.horarioFinal }}
-      </th>
+      <tr class="calendar-body-row">
+        <th scope="row" class="calendar-schedule">
+          {{ schedule?.horarioInicial }} - {{ schedule?.horarioFinal }}
+        </th>
 
-      @if (!noClassHeader) {
-      <td class="calendar-class">
-        {{ schedule?.disciplina?.nome }}
-      </td>
-      }
+        @if (!noClassHeader) {
+          <td class="calendar-class">
+            {{ schedule?.disciplina?.nome }}
+          </td>
+        }
 
-      <td class="calendar-teacher">
-        {{ schedule?.disciplina?.professor?.nome }}
-      </td>
-    </tr>
+        @if (currentUser?.usuario?.role === "ALUNO") {
+          <td class="calendar-teacher">
+            {{ schedule?.disciplina?.professor?.nome }}
+          </td>
+        }
+      </tr>
     }
   </tbody>
 </table>

@@ -78,7 +78,7 @@ export class SubjectPageComponent {
 
     if (classId) {
       this.calendarService
-        .getCalendarByTurma()
+        .getCalendarByTurma(classId)
         .pipe(
           map((calendarList) => {
             const filteredCalendar = calendarList.filter(
