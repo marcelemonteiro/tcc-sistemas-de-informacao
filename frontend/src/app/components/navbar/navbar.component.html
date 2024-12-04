@@ -3,22 +3,22 @@
     class="navbar-header"
     [routerLink]="user && user.role !== 'ADMIN' ? '/usuario' : ''"
   >
-    @if (user && user.role !== 'ADMIN'){
-    <div
-      class="navbar-avatar"
-      [ngClass]="{
-        aluno: user?.usuario?.role === 'ALUNO',
-        professor: user?.usuario?.role === 'PROFESSOR'
-      }"
-    ></div>
+    @if (user && user.role !== "ADMIN") {
+      <div
+        class="navbar-avatar"
+        [ngClass]="{
+          aluno: user?.usuario?.role === 'ALUNO',
+          professor: user?.usuario?.role === 'PROFESSOR',
+        }"
+      ></div>
     }
 
     <div class="navbar-user">
-      @if (user && user.role === 'ADMIN') {
-      <span>Administrador</span>
+      @if (user && user.role === "ADMIN") {
+        <span>Administrador</span>
       } @else {
-      <p>{{ user?.nome }}</p>
-      <span>{{ user?.usuario?.role }}</span>
+        <p>{{ user?.nome }}</p>
+        <span>{{ user?.usuario?.role }}</span>
       }
     </div>
 
@@ -34,162 +34,166 @@
 
   <nav class="navbar-nav" [class.openMobileNav]="isMobileNavbar">
     <ul>
-      @if (user?.usuario?.role === "ALUNO" || user?.usuario?.role ===
-      "PROFESSOR") {
-      <li>
-        <a routerLink="/home" routerLinkActive="active">
-          <mat-icon
-            aria-hidden="false"
-            aria-label="Dashboard Icon"
-            fontIcon="dashboard"
-            class="nav-icon"
-          ></mat-icon>
-          Dashboard
-        </a>
-      </li>
+      @if (
+        user?.usuario?.role === "ALUNO" || user?.usuario?.role === "PROFESSOR"
+      ) {
+        <li>
+          <a routerLink="/home" routerLinkActive="active">
+            <mat-icon
+              aria-hidden="false"
+              aria-label="Dashboard Icon"
+              fontIcon="dashboard"
+              class="nav-icon"
+            ></mat-icon>
+            Dashboard
+          </a>
+        </li>
       }
       <!--  -->
-      @if (user?.usuario?.role === "ALUNO" || user?.usuario?.role ===
-      "PROFESSOR") {
-      <li>
-        <a routerLink="/horarios" routerLinkActive="active">
-          <mat-icon
-            aria-hidden="false"
-            aria-label="Horários Icon"
-            fontIcon="calendar_today"
-            class="nav-icon"
-          ></mat-icon>
-          Horários
-        </a>
-      </li>
+      @if (
+        user?.usuario?.role === "ALUNO" || user?.usuario?.role === "PROFESSOR"
+      ) {
+        <li>
+          <a routerLink="/horarios" routerLinkActive="active">
+            <mat-icon
+              aria-hidden="false"
+              aria-label="Horários Icon"
+              fontIcon="calendar_today"
+              class="nav-icon"
+            ></mat-icon>
+            Horários
+          </a>
+        </li>
       }
       <!--  -->
       @if (user?.usuario?.role === "ALUNO") {
-      <li>
-        <a routerLink="/disciplinas" routerLinkActive="active">
-          <mat-icon
-            aria-hidden="false"
-            aria-label="Disciplinas Icon"
-            fontIcon="book"
-            class="nav-icon"
-          ></mat-icon>
-          Disciplinas
-        </a>
-      </li>
+        <li>
+          <a routerLink="/disciplinas" routerLinkActive="active">
+            <mat-icon
+              aria-hidden="false"
+              aria-label="Disciplinas Icon"
+              fontIcon="book"
+              class="nav-icon"
+            ></mat-icon>
+            Disciplinas
+          </a>
+        </li>
       }
       <!--  -->
       @if (user?.usuario?.role === "PROFESSOR") {
-      <li>
-        <a routerLink="/diario" routerLinkActive="active">
-          <mat-icon
-            aria-hidden="false"
-            aria-label="Disciplinas Icon"
-            fontIcon="menu_book"
-            class="nav-icon"
-          ></mat-icon>
-          Diário
-        </a>
-      </li>
+        <li>
+          <a routerLink="/diario" routerLinkActive="active">
+            <mat-icon
+              aria-hidden="false"
+              aria-label="Disciplinas Icon"
+              fontIcon="menu_book"
+              class="nav-icon"
+            ></mat-icon>
+            Diário
+          </a>
+        </li>
       }
       <!--  -->
       @if (user?.usuario?.role === "PROFESSOR") {
-      <li>
-        <a routerLink="/turmas" routerLinkActive="active">
-          <mat-icon
-            aria-hidden="false"
-            aria-label="Disciplinas Icon"
-            fontIcon="inventory"
-            class="nav-icon"
-          ></mat-icon>
-          Turmas
-        </a>
-      </li>
+        <li>
+          <a routerLink="/turmas" routerLinkActive="active">
+            <mat-icon
+              aria-hidden="false"
+              aria-label="Disciplinas Icon"
+              fontIcon="inventory"
+              class="nav-icon"
+            ></mat-icon>
+            Turmas
+          </a>
+        </li>
       }
       <!--  -->
-      @if (user?.usuario?.role === "ALUNO" || user?.usuario?.role ===
-      "PROFESSOR") {
-      <li>
-        <a routerLink="/avaliacoes" routerLinkActive="active">
-          <mat-icon
-            aria-hidden="false"
-            aria-label="Avaliações Icon"
-            fontIcon="bookmark"
-            class="nav-icon"
-          ></mat-icon>
-          Avaliações
-        </a>
-      </li>
+      @if (
+        user?.usuario?.role === "ALUNO" || user?.usuario?.role === "PROFESSOR"
+      ) {
+        <li>
+          <a routerLink="/avaliacoes" routerLinkActive="active">
+            <mat-icon
+              aria-hidden="false"
+              aria-label="Avaliações Icon"
+              fontIcon="bookmark"
+              class="nav-icon"
+            ></mat-icon>
+            Avaliações
+          </a>
+        </li>
       }
       <!--  -->
-      @if (user?.usuario?.role === "ALUNO" || user?.usuario?.role ===
-      "PROFESSOR") {
-      <li>
-        <a routerLink="configuracoes" routerLinkActive="active">
-          <mat-icon
-            aria-hidden="false"
-            aria-label="Configurações Icon"
-            fontIcon="settings"
-            class="nav-icon"
-          ></mat-icon>
-          Configurações
-        </a>
-      </li>
+      @if (
+        user?.usuario?.role === "ALUNO" || user?.usuario?.role === "PROFESSOR"
+      ) {
+        <li>
+          <a routerLink="/configuracoes" routerLinkActive="active">
+            <mat-icon
+              aria-hidden="false"
+              aria-label="Configurações Icon"
+              fontIcon="settings"
+              class="nav-icon"
+            ></mat-icon>
+            Configurações
+          </a>
+        </li>
       }
       <!--  -->
-      @if (user && user.role === 'ADMIN') {
-      <li>
-        <a routerLink="/admin/home" routerLinkActive="active">
-          <mat-icon
-            aria-hidden="false"
-            aria-label="Configurações Icon"
-            fontIcon="settings"
-            class="nav-icon"
-          ></mat-icon>
-          Dashboard
-        </a>
-      </li>
+      @if (user && user.role === "ADMIN") {
+        <li>
+          <a routerLink="/admin/home" routerLinkActive="active">
+            <mat-icon
+              aria-hidden="false"
+              aria-label="Configurações Icon"
+              fontIcon="settings"
+              class="nav-icon"
+            ></mat-icon>
+            Dashboard
+          </a>
+        </li>
       }
       <!--  -->
-      @if (user && user.role === 'ADMIN') {
-      <li>
-        <a routerLink="/admin/matriculas" routerLinkActive="active">
-          <mat-icon
-            aria-hidden="false"
-            aria-label="Configurações Icon"
-            fontIcon="settings"
-            class="nav-icon"
-          ></mat-icon>
-          Matrículas
-        </a>
-      </li>
+      @if (user && user.role === "ADMIN") {
+        <li>
+          <a routerLink="/admin/matriculas" routerLinkActive="active">
+            <mat-icon
+              aria-hidden="false"
+              aria-label="Configurações Icon"
+              fontIcon="settings"
+              class="nav-icon"
+            ></mat-icon>
+            Matrículas
+          </a>
+        </li>
       }
       <!--  -->
-      @if (user && user.role === 'ADMIN') {
-      <li>
-        <a routerLink="/admin/professores" routerLinkActive="active">
-          <mat-icon
-            aria-hidden="false"
-            aria-label="Configurações Icon"
-            fontIcon="settings"
-            class="nav-icon"
-          ></mat-icon>
-          Professores
-        </a>
-      </li>
+      @if (user && user.role === "ADMIN") {
+        <li>
+          <a routerLink="/admin/professores" routerLinkActive="active">
+            <mat-icon
+              aria-hidden="false"
+              aria-label="Configurações Icon"
+              fontIcon="settings"
+              class="nav-icon"
+            ></mat-icon>
+            Professores
+          </a>
+        </li>
       }
       <!--  -->
-      @if (user && user.role === 'ADMIN') {
-      <li>
-        <a routerLink="/admin/turmas" routerLinkActive="active">
-          <mat-icon
-            aria-hidden="false"
-            aria-label="Configurações Icon"
-            fontIcon="settings"
-            class="nav-icon"
-          ></mat-icon>
-          Turmas
-        </a>
-      </li>
+      @if (user && user.role === "ADMIN") {
+        <li>
+          <a routerLink="/admin/turmas" routerLinkActive="active">
+            <mat-icon
+              aria-hidden="false"
+              aria-label="Configurações Icon"
+              fontIcon="settings"
+              class="nav-icon"
+            ></mat-icon>
+            Turmas
+          </a>
+        </li>
       }
       <li>
         <button (click)="logout()">
