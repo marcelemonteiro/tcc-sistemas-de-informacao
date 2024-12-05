@@ -21,6 +21,7 @@ import { ProfessoresComponent } from './pages/professores/professores.component'
 import { TurmasComponent } from './pages/turmas/turmas.component';
 import { HomeAdminComponent } from './pages/home-admin/home-admin.component';
 import { TurmasProfessorComponent } from './pages/turmas-professor/turmas-professor.component';
+import { TurmaComponent } from './pages/turma/turma.component';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -79,6 +80,11 @@ export const routes: Routes = [
   {
     path: 'turmas/professor',
     component: TurmasProfessorComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'turmas/professor/:id',
+    component: TurmaComponent,
     canActivate: [authGuard],
   },
   {

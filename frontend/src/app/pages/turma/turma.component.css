@@ -1,0 +1,30 @@
+p {
+  margin-bottom: 1rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 2px solid var(--cinza-5);
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: var(--font-md);
+}
+
+thead {
+  background-color: var(--c-1);
+}
+
+th,
+td {
+  border: 1px solid var(--cinza-5);
+  padding: 8px 10px;
+  text-align: center;
+}
+
+.lista-alunos {
+  border-top: 1px solid var(--cinza-5);
+}
+
+.lista-alunos h3 {
+  margin: 1rem 0;
+}

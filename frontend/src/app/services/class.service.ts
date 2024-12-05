@@ -19,4 +19,12 @@ export class ClassService {
       }),
     });
   }
+
+  getClass(id: string) {
+    return this.http.get<Turma>(`http://localhost:8080/turma/${id}`, {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + this.authService.getToken(),
+      }),
+    });
+  }
 }

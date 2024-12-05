@@ -1,0 +1,36 @@
+<app-default-layout>
+  @if (turma) {
+    <app-section>
+      <h2>Turma {{ turma.nome }}</h2>
+      <p>{{ turma.serieAno }} | {{ turma.turno }}</p>
+
+      <div class="lista-alunos">
+        <h3>Lista de Alunos</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Data de Nascimento</th>
+              <th>CPF</th>
+              <th>Endereço</th>
+              <th>Telefone</th>
+              <th>E-mail</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (aluno of turma.alunos; track aluno.id) {
+              <tr>
+                <td>{{ aluno.nome }}</td>
+                <td>{{ aluno.dataNascimento }}</td>
+                <td>{{ aluno.cpf }}</td>
+                <td>{{ aluno.endereco }}</td>
+                <td>{{ aluno.telefone }}</td>
+                <td>{{ aluno.email }}</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </app-section>
+  }
+</app-default-layout>
