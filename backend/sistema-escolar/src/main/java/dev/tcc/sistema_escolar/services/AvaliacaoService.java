@@ -82,6 +82,10 @@ public class AvaliacaoService {
         return this.avaliacaoRepository.findByTurmaId(turmaId);
     }
 
+    public List<Avaliacao> listAvaliacoesByProfessor(String professorId) {
+        return this.avaliacaoRepository.findByProfessorId(professorId);
+    }
+
     public void deleteAvaliacao(String id) {
         this.avaliacaoRepository.deleteById(id);
     }

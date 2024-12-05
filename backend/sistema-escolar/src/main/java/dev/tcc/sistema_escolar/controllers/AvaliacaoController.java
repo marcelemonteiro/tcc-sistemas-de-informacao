@@ -54,6 +54,12 @@ public class AvaliacaoController {
         return ResponseEntity.ok(avaliacoes);
     }
 
+    @GetMapping("/todos/professor/{professorId}")
+    public ResponseEntity<List<Avaliacao>> listAllByProfessor(@PathVariable("professorId") String professorId) {
+        var avaliacoes = this.avaliacaoService.listAvaliacoesByProfessor(professorId);
+        return ResponseEntity.ok(avaliacoes);
+    }
+
     @DeleteMapping("{id}")
     public ResponseEntity<Avaliacao> delete(@PathVariable("id") String id) {
         this.avaliacaoService.deleteAvaliacao(id);

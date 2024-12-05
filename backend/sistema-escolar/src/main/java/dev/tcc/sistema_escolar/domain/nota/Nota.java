@@ -2,6 +2,7 @@ package dev.tcc.sistema_escolar.domain.nota;
 
 import dev.tcc.sistema_escolar.domain.aluno.Aluno;
 import dev.tcc.sistema_escolar.domain.avaliacao.Avaliacao;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -25,7 +26,7 @@ public class Nota {
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "avaliacao_id", nullable = false)
     private Avaliacao avaliacao;
 

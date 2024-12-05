@@ -8,4 +8,6 @@ import dev.tcc.sistema_escolar.domain.avaliacao.Avaliacao;
 
 public interface AvaliacaoRepository extends JpaRepository<Avaliacao, String> {
     List<Avaliacao> findByTurmaId(String turmaId);
+
+    List<Avaliacao> findByProfessorId(String professorId);
 }

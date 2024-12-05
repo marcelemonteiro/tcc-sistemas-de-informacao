@@ -3,6 +3,7 @@ package dev.tcc.sistema_escolar.domain.avaliacao;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import dev.tcc.sistema_escolar.domain.disciplina.Disciplina;
+import dev.tcc.sistema_escolar.domain.professor.Professor;
 import dev.tcc.sistema_escolar.domain.turma.Turma;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -49,4 +50,9 @@ public class Avaliacao {
     @JoinColumn(name = "turma_id", nullable = false)
     @JsonIgnore
     private Turma turma;
+
+    @ManyToOne
+    @JoinColumn(name = "professor_id", nullable = false)
+    @JsonIgnore
+    private Professor professor;
 }
