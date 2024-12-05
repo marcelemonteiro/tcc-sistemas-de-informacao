@@ -1,0 +1,16 @@
+<app-default-layout>
+  <app-section title="Turmas">
+    <div class="cardsContainer">
+      @for (turma of turmas; track turma.id) {
+        <div class="card" [routerLink]="['/turmas/professor', turma.id]">
+          <div class="card-header"></div>
+          <div class="card-body">
+            <h3 class="card-class-name">
+              {{ turma.nome }} {{ turma.serieAno }} | {{ turma.turno }}
+            </h3>
+          </div>
+        </div>
+      }
+    </div>
+  </app-section>
+</app-default-layout>

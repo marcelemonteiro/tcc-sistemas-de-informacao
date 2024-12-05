@@ -7,7 +7,10 @@ import { Turma } from '../interfaces/Turma.model';
   providedIn: 'root',
 })
 export class ClassService {
-  constructor(private http: HttpClient, private authService: AuthService) {}
+  constructor(
+    private http: HttpClient,
+    private authService: AuthService,
+  ) {}
 
   getAllClasses() {
     return this.http.get<Turma[]>(`http://localhost:8080/turma/todos`, {
