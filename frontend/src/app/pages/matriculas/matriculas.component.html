@@ -26,6 +26,7 @@
             <p>{{ matricula.endereco?.logradouro }}, {{ matricula.endereco?.numero }}</p> 
             <p>{{ matricula.endereco?.bairro}}</p>
             <p>{{ matricula.endereco?.cidade }} - {{ matricula.endereco?.estado }}</p>
+            <p>{{ matricula.endereco?.complemento}}</p>
             <p>{{ matricula.endereco?.cep}}</p>
           </td>
           <td>{{ matricula.telefone }}</td>
@@ -34,7 +35,7 @@
             <button>Editar</button>
           </td>
           <td>
-            <button>Deletar</button>
+            <button (click)="handleDelete(matricula.usuario.id)">Deletar</button>
           </td>
         </tr>
         }

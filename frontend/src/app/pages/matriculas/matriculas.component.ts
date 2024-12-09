@@ -24,8 +24,20 @@ export class MatriculasComponent {
     this.userService.getAllUsers().subscribe({
       next: (response) => {
         this.matriculas = response;
-        console.log(response);
       },
+    });
+  }
+
+  handleDelete(userId: string) {
+    this.userService.deleteUser(userId).subscribe({
+      next:  () => {
+        if (this.matriculas) {
+          this.matriculas = this.matriculas.filter(({ usuario }) => usuario.id !== userId);
+        }
+      },
+      error: (error) => {
+        console.error(error);
+      }
     });
   }
 }

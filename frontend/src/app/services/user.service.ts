@@ -111,7 +111,12 @@ export class UserService {
     );
   }
 
+  // Delete qualquer usuário
   deleteUser(userId: string) {
-    // TODO: Implementar deleteUser
+    return this.httpClient.delete(`http://localhost:8080/user/${userId}`, {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + this.token,
+      }),
+    });
   }
 }
