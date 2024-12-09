@@ -3,11 +3,12 @@ import { DefaultLayoutComponent } from '../../components/default-layout/default-
 import { SectionComponent } from '../../components/section/section.component';
 import { User } from '../user/user.model';
 import { TeacherService } from '../../services/teacher.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-professores',
   standalone: true,
-  imports: [DefaultLayoutComponent, SectionComponent],
+  imports: [DefaultLayoutComponent, SectionComponent, RouterLink],
   templateUrl: './professores.component.html',
   styleUrl: './professores.component.css',
 })

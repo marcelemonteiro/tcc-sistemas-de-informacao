@@ -20,7 +20,7 @@ export interface User {
     estado: string,
     complemento?: string 
   };
-  email: string;
+  email?: string;
   telefone: string;
   role?: string;
   disciplinas?: Disciplina[];
