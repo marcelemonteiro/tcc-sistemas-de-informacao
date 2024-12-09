@@ -40,4 +40,12 @@ export class TeacherService {
       }),
     });
   }
+
+  updateProfessor(id: string, professor: ProfessorRequest) {
+    return this.http.put(`http://localhost:8080/professor/${id}`, professor, {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + this.authService.getToken(),
+      }),
+    })
+  }
 }

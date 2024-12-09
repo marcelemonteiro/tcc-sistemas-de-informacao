@@ -24,7 +24,7 @@
           <td>{{ prof.telefone }}</td>
           <td>{{ prof.email }}</td>
           <td>
-            <button>Editar</button>
+            <a [routerLink]="['/admin/professores/editar', prof.id]">Editar</a>
           </td>
           <td>
             <button (click)="handleDelete(prof.usuario.id)">Deletar</button>

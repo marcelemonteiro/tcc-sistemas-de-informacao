@@ -27,6 +27,7 @@ import { EditarAvaliacaoComponent } from './pages/editar-avaliacao/editar-avalia
 import { NovaMatriculaComponent } from './pages/nova-matricula/nova-matricula.component';
 import { EditarMatriculaComponent } from './pages/editar-matricula/editar-matricula.component';
 import { NovoProfessorComponent } from './pages/novo-professor/novo-professor.component';
+import { EditarProfessorComponent } from './pages/editar-professor/editar-professor.component';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -130,6 +131,11 @@ export const routes: Routes = [
   {
     path: 'admin/professores/cadastro',
     component: NovoProfessorComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'admin/professores/editar/:id',
+    component: EditarProfessorComponent,
     canActivate: [authGuard],
   },
   {

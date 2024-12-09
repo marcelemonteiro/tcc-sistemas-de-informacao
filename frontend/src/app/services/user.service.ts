@@ -99,6 +99,14 @@ export class UserService {
     });
   }
 
+  updateUser(userId: string, userEmail: string, password: string) {
+    return this.httpClient.put(`http://localhost:8080/user/${userId}`, { userEmail, password }, {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + this.token,
+      }),
+    });
+  }
+
   updateUserPassword(userEmail: string, password: string) {
     return this.httpClient.put(
       'http://localhost:8080/user',
