@@ -4,6 +4,7 @@ import { SectionComponent } from '../../components/section/section.component';
 import { User } from '../user/user.model';
 import { TeacherService } from '../../services/teacher.service';
 import { RouterLink } from '@angular/router';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-professores',
@@ -15,7 +16,7 @@ import { RouterLink } from '@angular/router';
 export class ProfessoresComponent {
   professores: User[] | null = null;
 
-  constructor(private teacherService: TeacherService) {
+  constructor(private teacherService: TeacherService, private userService: UserService) {
     this.loadTeachers();
   }
 
@@ -27,6 +28,19 @@ export class ProfessoresComponent {
       error: (error) => {
         console.error('Lista de professores não encontrada:', error);
       },
+    });
+  }
+
+  handleDelete(userId: string) {
+    this.userService.deleteUser(userId).subscribe({
+      next:  () => {
+        if (this.professores) {
+          this.professores = this.professores.filter(({ usuario }) => usuario.id !== userId);
+        }
+      },
+      error: (error) => {
+        console.error(error);
+      }
     });
   }
 }
