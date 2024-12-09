@@ -18,6 +18,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table(name = "alunos")
@@ -30,7 +32,8 @@ public class Aluno {
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
-    @ManyToOne
+    @ManyToOne()
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "usuario_id", nullable = false)
     private User usuario;
 
@@ -45,6 +48,7 @@ public class Aluno {
     @JoinColumn(name = "numero_matricula", referencedColumnName = "id")
     private AlunoMatricula matricula;
 
+    // TODO: Talvez tirar, pois já tem em Turma...
     @Column(name = "serie_ano")
     private String serieAno;
 
@@ -57,6 +61,7 @@ public class Aluno {
     @JoinColumn(name = "endereco_id", referencedColumnName = "id")
     private AlunoEndereco endereco;
 
+    // TODO: Talvez tirar, pois já tem em Usert...
     private String email;
 
     private String telefone;

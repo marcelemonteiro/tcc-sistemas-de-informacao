@@ -2,11 +2,7 @@ package dev.tcc.sistema_escolar.controllers;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import dev.tcc.sistema_escolar.domain.user.User;
 import dev.tcc.sistema_escolar.dto.UpdateUserPasswordDTO;
@@ -33,5 +29,11 @@ public class UserController {
             user.setRole(user.getRole());
             return this.repository.save(user);
         }).orElseThrow(() -> new RuntimeException("User not found"));
+    }
+
+    @DeleteMapping("{id}")
+    public ResponseEntity<String> deleteUser(@PathVariable("id") String id) {
+        this.repository.deleteById(id);
+        return ResponseEntity.ok("deletado");
     }
 }

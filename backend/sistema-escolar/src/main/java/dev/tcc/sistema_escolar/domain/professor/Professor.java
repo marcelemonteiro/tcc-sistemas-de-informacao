@@ -43,6 +43,7 @@ public class Professor {
     @Column(name = "data_nascimento")
     private String dataNascimento;
 
+    // TODO: retirar, já tem em user
     private String email;
 
     private String telefone;
