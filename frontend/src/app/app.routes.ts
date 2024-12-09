@@ -24,6 +24,7 @@ import { TurmasProfessorComponent } from './pages/turmas-professor/turmas-profes
 import { TurmaComponent } from './pages/turma/turma.component';
 import { AvaliacoesProfessorComponent } from './pages/avaliacoes-professor/avaliacoes-professor.component';
 import { EditarAvaliacaoComponent } from './pages/editar-avaliacao/editar-avaliacao.component';
+import { NovaMatriculaComponent } from './pages/nova-matricula/nova-matricula.component';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -107,6 +108,11 @@ export const routes: Routes = [
   {
     path: 'admin/matriculas',
     component: MatriculasComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'admin/matriculas/nova-matricula',
+    component: NovaMatriculaComponent,
     canActivate: [authGuard],
   },
   {

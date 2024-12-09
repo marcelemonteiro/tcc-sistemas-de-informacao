@@ -1,0 +1,49 @@
+.matricula-form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+    grid-auto-columns: 1fr;
+    gap: 1rem;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 0.5rem;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 0.8rem;
+}
+
+.matricula-form-endereco {
+    grid-column: span 3;
+}
+
+.matricula-form-endereco p {
+    font-size: 18px;
+    font-weight: 500;
+    padding: 1rem 0;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #ccc;
+}
+
+.matricula-form-endereco-inputs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+    grid-auto-columns: 1fr;
+    gap: 1rem;
+}
+
+
+.matricula-form button {
+    width: 100%;
+    padding: 1rem 2rem;
+    background-color: #8cdf2f;
+    cursor: pointer;
+}
+
+.matricula-form button:hover {
+    opacity: 0.8;
+}
