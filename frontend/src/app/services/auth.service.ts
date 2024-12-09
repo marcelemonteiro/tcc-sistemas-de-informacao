@@ -41,6 +41,14 @@ export class AuthService {
       );
   }
 
+  register(email: string, password: string, role: string) {
+    return this.httpClient.post<LoginResponse>('http://localhost:8080/auth/register', {
+      email,
+      password,
+      role
+    });
+  }
+
   getToken() {
     return this.token;
   }

@@ -3,6 +3,19 @@ import { Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
 import { User } from '../pages/user/user.model';
 
+type UserRequest = {
+  usuario: string,
+  nome: string,
+  cpf: string,
+  dataNascimento: string,
+  matricula: {
+    data: Date,
+    status: string
+  },
+  serieAno: string,
+  telefone: string
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -62,8 +75,28 @@ export class UserService {
     });
   }
 
-  createUser(user: User) {
-    // TODO: Implementar createUser
+  registerAluno(user: UserRequest) {
+    return this.httpClient.post<User>('http://localhost:8080/aluno', user, {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + this.token,
+      }),
+    });
+  }
+
+  registerAlunoEndereco(alunoId: string, endereco: {
+    cep: string,
+    numero: string,
+    logradouro: string,
+    bairro: string,
+    cidade: string,
+    estado: string,
+    complemento?: string 
+  }) {
+    return this.httpClient.post<User>(`http://localhost:8080/aluno/${alunoId}/endereco`, endereco, {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + this.token,
+      }),
+    });
   }
 
   updateUserPassword(userEmail: string, password: string) {
