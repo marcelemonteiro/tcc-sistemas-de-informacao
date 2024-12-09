@@ -57,10 +57,10 @@ public class AuthController {
             newUser.setPassword(passwordEncoder.encode(body.password()));
             newUser.setEmail(body.email());
             newUser.setRole(body.role());
-            this.repository.save(newUser);
+            var userRegister = this.repository.save(newUser);
 
             String token = this.tokenService.generateToken(newUser);
-            return ResponseEntity.ok(new RegisterResponseDTO(token));
+            return ResponseEntity.ok(new RegisterResponseDTO(token, userRegister));
         }
         return ResponseEntity.badRequest().build();
     }
