@@ -8,7 +8,10 @@ import { ExamResult } from '../interfaces/ExamResult.model';
   providedIn: 'root',
 })
 export class ExamService {
-  constructor(private http: HttpClient, private authService: AuthService) { }
+  constructor(
+    private http: HttpClient,
+    private authService: AuthService,
+  ) {}
 
   getExamListByClass(classId: string) {
     return this.http.get<Exam[]>(
@@ -17,7 +20,18 @@ export class ExamService {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + this.authService.getToken(),
         }),
-      }
+      },
+    );
+  }
+
+  getExamListByProfessor(professorId: string) {
+    return this.http.get<Exam[]>(
+      `http://localhost:8080/avaliacao/todos/professor/${professorId}`,
+      {
+        headers: new HttpHeaders({
+          Authorization: 'Bearer ' + this.authService.getToken(),
+        }),
+      },
     );
   }
 
@@ -28,18 +42,39 @@ export class ExamService {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + this.authService.getToken(),
         }),
-      }
+      },
     );
   }
 
   getExam(id: string) {
-    return this.http.get<Exam>(
-      `http://localhost:8080/avaliacao/${id}`,
-      {
-        headers: new HttpHeaders({
-          Authorization: 'Bearer ' + this.authService.getToken(),
-        }),
-      }
-    );
+    return this.http.get<Exam>(`http://localhost:8080/avaliacao/${id}`, {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + this.authService.getToken(),
+      }),
+    });
+  }
+
+  deleteExam(id: string) {
+    return this.http.delete(`http://localhost:8080/avaliacao/${id}`, {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + this.authService.getToken(),
+      }),
+    });
+  }
+
+  updateExam(id: string, exam: Exam) {
+    return this.http.put(`http://localhost:8080/avaliacao/${id}`, exam, {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + this.authService.getToken(),
+      }),
+    });
+  }
+
+  createExam(exam: Exam) {
+    return this.http.put(`http://localhost:8080/avaliacao/`, exam, {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + this.authService.getToken(),
+      }),
+    });
   }
 }

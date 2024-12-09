@@ -1,0 +1,33 @@
+<app-default-layout>
+  <app-section title="Avaliações">
+    <table class="matricula-table">
+      <thead class="matricula-table-head">
+        <tr>
+          <th>Título</th>
+          <th>Status</th>
+          <th>Disciplina</th>
+          <th [colSpan]="2"></th>
+        </tr>
+      </thead>
+      <tbody class="matricula-table-body">
+        @for (avaliacao of avaliacoes; track avaliacao.id) {
+          <tr>
+            <td>{{ avaliacao.titulo }}</td>
+            <td>{{ avaliacao.status }}</td>
+            <td>{{ avaliacao.disciplina.nome }}</td>
+
+            <td>
+              <a [routerLink]="['editar', avaliacao.id]">Editar</a>
+            </td>
+            <td>
+              <button type="button" (click)="handleDeleteExam(avaliacao.id)">
+                Deletar
+              </button>
+            </td>
+          </tr>
+        }
+        <tr></tr>
+      </tbody>
+    </table>
+  </app-section>
+</app-default-layout>

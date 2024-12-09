@@ -7,8 +7,8 @@
       <div
         class="navbar-avatar"
         [ngClass]="{
-          aluno: user?.usuario?.role === 'ALUNO',
-          professor: user?.usuario?.role === 'PROFESSOR',
+          aluno: user.usuario.role === 'ALUNO',
+          professor: user.usuario.role === 'PROFESSOR',
         }"
       ></div>
     }
@@ -107,10 +107,8 @@
           </a>
         </li>
       }
-      <!--  -->
-      @if (
-        user?.usuario?.role === "ALUNO" || user?.usuario?.role === "PROFESSOR"
-      ) {
+
+      @if (user?.usuario?.role === "ALUNO") {
         <li>
           <a routerLink="/avaliacoes" routerLinkActive="active">
             <mat-icon
@@ -123,7 +121,21 @@
           </a>
         </li>
       }
-      <!--  -->
+
+      @if (user?.usuario?.role === "PROFESSOR") {
+        <li>
+          <a routerLink="/professor/avaliacoes" routerLinkActive="active">
+            <mat-icon
+              aria-hidden="false"
+              aria-label="Avaliações Icon"
+              fontIcon="bookmark"
+              class="nav-icon"
+            ></mat-icon>
+            Avaliações
+          </a>
+        </li>
+      }
+
       @if (
         user?.usuario?.role === "ALUNO" || user?.usuario?.role === "PROFESSOR"
       ) {
@@ -139,7 +151,7 @@
           </a>
         </li>
       }
-      <!--  -->
+
       @if (user && user.role === "ADMIN") {
         <li>
           <a routerLink="/admin/home" routerLinkActive="active">
