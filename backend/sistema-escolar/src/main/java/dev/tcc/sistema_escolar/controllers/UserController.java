@@ -31,6 +31,15 @@ public class UserController {
         }).orElseThrow(() -> new RuntimeException("User not found"));
     }
 
+    @PutMapping("{id}")
+    public User updateUser(@RequestBody UpdateUserPasswordDTO updatedUser) {
+        return this.repository.findByEmail(updatedUser.userEmail()).map(user -> {
+            user.setPassword(passwordEncoder.encode(updatedUser.password()));
+            user.setEmail(updatedUser.userEmail());
+            return this.repository.save(user);
+        }).orElseThrow(() -> new RuntimeException("User not found"));
+    }
+
     @DeleteMapping("{id}")
     public ResponseEntity<String> deleteUser(@PathVariable("id") String id) {
         this.repository.deleteById(id);
