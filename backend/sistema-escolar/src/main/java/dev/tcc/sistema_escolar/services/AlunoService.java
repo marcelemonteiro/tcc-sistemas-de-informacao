@@ -37,9 +37,6 @@ public class AlunoService {
         User usuario = this.userRepository.findById(aluno.usuario())
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
-        Turma turma = this.turmaRepository.findById(aluno.turma())
-                .orElseThrow(() -> new RuntimeException("Turma in user not found"));
-
         AlunoMatricula matricula = this.alunoMatriculaRepository.save(aluno.matricula());
 
         Aluno novoAluno = new Aluno();
@@ -49,7 +46,13 @@ public class AlunoService {
         novoAluno.setDataNascimento(aluno.dataNascimento());
         novoAluno.setMatricula(matricula);
         novoAluno.setSerieAno(aluno.serieAno());
-        novoAluno.setTurma(turma);
+
+        if (aluno.turma() != null) {
+            Turma turma = this.turmaRepository.findById(aluno.turma())
+                    .orElseThrow(() -> new RuntimeException("Turma in user not found"));
+            novoAluno.setTurma(turma);
+        }
+
         novoAluno.setEmail(aluno.email());
         novoAluno.setTelefone(aluno.telefone());
 
