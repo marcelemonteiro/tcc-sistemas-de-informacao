@@ -1,6 +1,6 @@
 .matricula-form {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 20rem));
     grid-auto-columns: 1fr;
     gap: 1rem;
 }
@@ -36,9 +36,7 @@
     gap: 1rem;
 }
 
-
 .matricula-form button {
-    width: 100%;
     padding: 1rem 2rem;
     background-color: #8cdf2f;
     cursor: pointer;
@@ -46,4 +44,15 @@
 
 .matricula-form button:hover {
     opacity: 0.8;
+}
+
+.matricula-form a {
+    padding: 1rem 2rem;
+    border: 1px solid;
+    text-align: center;
+}
+
+.buttons {
+    display: flex;
+    grid-column: span 3;
 }

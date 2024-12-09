@@ -47,8 +47,8 @@ export class UserService {
     }
   }
 
-  getUserById() {
-    return this.httpClient.get<User>('http://localhost:8080/aluno', {
+  getUserById(userId: string) {
+    return this.httpClient.get<User>(`http://localhost:8080/aluno/${userId}`, {
       headers: new HttpHeaders({
         Authorization: 'Bearer ' + this.token,
       }),

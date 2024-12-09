@@ -11,6 +11,7 @@ export interface User {
   serieAno: string;
   turma?: Turma;
   endereco: {
+    id: string;
     cep: string,
     numero: string,
     logradouro: string,
