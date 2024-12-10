@@ -1,0 +1,43 @@
+<app-default-layout>
+  @if (turma) {
+    <app-section [title]="'Alunos da turma ' + turma.nome">
+      <table class="matricula-table">
+        <thead class="matricula-table-head">
+          <tr>
+            <th>Nome</th>
+            <th>Data de Nascimento</th>
+            <th>CPF</th>
+            <th>Endereço</th>
+            <th>Telefone</th>
+            <th>E-mail</th>
+          </tr>
+        </thead>
+        <tbody class="matricula-table-body">
+          @for (matricula of turma.alunos; track matricula.id) {
+            <tr>
+              <td>{{ matricula.nome }}</td>
+              <td>{{ matricula.dataNascimento | date: "dd/MM/yyyy" }}</td>
+              <td>{{ matricula.cpf }}</td>
+              <td>
+                <p>
+                  {{ matricula.endereco?.logradouro }},
+                  {{ matricula.endereco?.numero }}
+                </p>
+                <p>{{ matricula.endereco?.bairro }}</p>
+                <p>
+                  {{ matricula.endereco?.cidade }} -
+                  {{ matricula.endereco?.estado }}
+                </p>
+                <p>{{ matricula.endereco?.complemento }}</p>
+                <p>{{ matricula.endereco?.cep }}</p>
+              </td>
+              <td>{{ matricula.telefone }}</td>
+              <td>{{ matricula.usuario.email }}</td>
+            </tr>
+          }
+          <tr></tr>
+        </tbody>
+      </table>
+    </app-section>
+  }
+</app-default-layout>
