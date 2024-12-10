@@ -1,0 +1,41 @@
+<form class="matricula-form" (ngSubmit)="handleCreateTurmaSubmit()">
+  <div class="input-group">
+    <label for="nome">Nome</label>
+    <input
+      type="text"
+      id="nome"
+      name="nome"
+      [(ngModel)]="nome"
+      placeholder="Digite o nome da turma"
+    />
+  </div>
+
+  <div class="input-group">
+    <label for="serieAno">Série Ano</label>
+    <select name="serieAno" id="serieAno" [(ngModel)]="serieAno">
+      @for (serie of serieAnoList; track serie) {
+        <option [value]="serie">{{ serie }}</option>
+      }
+    </select>
+  </div>
+
+  <div class="input-group">
+    <label for="turno">Turno</label>
+    <select name="turno" id="turno" [(ngModel)]="turno">
+      <option value="MANHA">Manhã</option>
+      <option value="TARDE">Tarde</option>
+    </select>
+  </div>
+
+  <div class="buttons">
+    <button type="submit">
+      @if (action === "update") {
+        Atualizar turma
+      } @else {
+        Criar turma
+      }
+    </button>
+
+    <a [routerLink]="['/admin/turmas']">Voltar</a>
+  </div>
+</form>
