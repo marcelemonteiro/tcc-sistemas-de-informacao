@@ -3,11 +3,12 @@ import { DefaultLayoutComponent } from '../../components/default-layout/default-
 import { SectionComponent } from '../../components/section/section.component';
 import { Turma } from '../../interfaces/Turma.model';
 import { ClassService } from '../../services/class.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-turmas',
   standalone: true,
-  imports: [DefaultLayoutComponent, SectionComponent],
+  imports: [DefaultLayoutComponent, SectionComponent, RouterLink],
   templateUrl: './turmas.component.html',
   styleUrl: './turmas.component.css',
 })

@@ -1,8 +1,8 @@
 <app-default-layout>
   <app-section title="Turmas">
-    <a routerLink="cadastro-turma" class="cadastro-turma-btn"
-      >Cadastrar nova turma</a
-    >
+    <a [routerLink]="['/admin/turmas/criar']" class="cadastro-turma-btn">
+      Cadastrar nova turma
+    </a>
 
     <table class="matricula-table">
       <thead class="matricula-table-head">
@@ -16,20 +16,20 @@
       </thead>
       <tbody class="matricula-table-body">
         @for (turma of turmas; track turma.id) {
-        <tr>
-          <td>{{ turma.nome }}</td>
-          <td>{{ turma.serieAno }}</td>
-          <td>{{ turma.turno }}</td>
-          <td>
-            <button>Lista de Alunos</button>
-          </td>
-          <td>
-            <button>Editar</button>
-          </td>
-          <td>
-            <button>Deletar</button>
-          </td>
-        </tr>
+          <tr>
+            <td>{{ turma.nome }}</td>
+            <td>{{ turma.serieAno }}</td>
+            <td>{{ turma.turno }}</td>
+            <td>
+              <button>Lista de Alunos</button>
+            </td>
+            <td>
+              <button>Editar</button>
+            </td>
+            <td>
+              <button>Deletar</button>
+            </td>
+          </tr>
         }
       </tbody>
     </table>

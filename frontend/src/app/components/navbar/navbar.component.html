@@ -182,6 +182,19 @@
       <!--  -->
       @if (user && user.role === "ADMIN") {
         <li>
+          <a routerLink="/admin/turmas" routerLinkActive="active">
+            <mat-icon
+              aria-hidden="false"
+              aria-label="Configurações Icon"
+              fontIcon="settings"
+              class="nav-icon"
+            ></mat-icon>
+            Turmas
+          </a>
+        </li>
+      }
+      @if (user && user.role === "ADMIN") {
+        <li>
           <a routerLink="/admin/professores" routerLinkActive="active">
             <mat-icon
               aria-hidden="false"
@@ -194,19 +207,6 @@
         </li>
       }
       <!--  -->
-      @if (user && user.role === "ADMIN") {
-        <li>
-          <a routerLink="/admin/turmas" routerLinkActive="active">
-            <mat-icon
-              aria-hidden="false"
-              aria-label="Configurações Icon"
-              fontIcon="settings"
-              class="nav-icon"
-            ></mat-icon>
-            Turmas
-          </a>
-        </li>
-      }
       <li>
         <button (click)="logout()">
           <mat-icon

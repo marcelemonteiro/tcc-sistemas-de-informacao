@@ -3,6 +3,12 @@ import { Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
 import { Turma } from '../interfaces/Turma.model';
 
+type TurmaRequest = {
+  nome: string;
+  serieAno: string;
+  turno: string;
+};
+
 @Injectable({
   providedIn: 'root',
 })
@@ -22,6 +28,14 @@ export class ClassService {
 
   getClass(id: string) {
     return this.http.get<Turma>(`http://localhost:8080/turma/${id}`, {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + this.authService.getToken(),
+      }),
+    });
+  }
+
+  createClass(turma: TurmaRequest) {
+    return this.http.post(`http://localhost:8080/turma`, turma, {
       headers: new HttpHeaders({
         Authorization: 'Bearer ' + this.authService.getToken(),
       }),
