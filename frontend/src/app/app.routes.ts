@@ -32,6 +32,7 @@ import { NovaTurmaComponent } from './pages/nova-turma/nova-turma.component';
 import { TurmaAlunosComponent } from './pages/turma-alunos/turma-alunos.component';
 import { EditarTurmaComponent } from './pages/editar-turma/editar-turma.component';
 import { DisciplinasComponent } from './pages/disciplinas/disciplinas.component';
+import { NovaDisciplinaComponent } from './pages/nova-disciplina/nova-disciplina.component';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -165,6 +166,11 @@ export const routes: Routes = [
   {
     path: 'admin/disciplinas',
     component: DisciplinasComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'admin/disciplinas/criar',
+    component: NovaDisciplinaComponent,
     canActivate: [authGuard],
   },
   { path: '**', component: PageNotFoundComponent },
