@@ -8,7 +8,10 @@ import { Disciplina } from '../interfaces/Disciplina.model';
   providedIn: 'root',
 })
 export class SubjectService {
-  constructor(private http: HttpClient, private authService: AuthService) {}
+  constructor(
+    private http: HttpClient,
+    private authService: AuthService,
+  ) {}
 
   getSubjectByClass(classId: string) {
     return this.http.get<Disciplina[]>(
@@ -17,7 +20,7 @@ export class SubjectService {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + this.authService.getToken(),
         }),
-      }
+      },
     );
   }
 
@@ -27,5 +30,16 @@ export class SubjectService {
         Authorization: 'Bearer ' + this.authService.getToken(),
       }),
     });
+  }
+
+  getAllSubjects() {
+    return this.http.get<Disciplina[]>(
+      `http://localhost:8080/disciplina/todos`,
+      {
+        headers: new HttpHeaders({
+          Authorization: 'Bearer ' + this.authService.getToken(),
+        }),
+      },
+    );
   }
 }
