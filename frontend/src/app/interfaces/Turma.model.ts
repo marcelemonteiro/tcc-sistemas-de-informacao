@@ -5,5 +5,5 @@ export interface Turma {
   nome: string;
   serieAno: string;
   turno: string;
-  alunos: User[];
+  alunos?: User[] | any;
 }

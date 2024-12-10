@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
 import { Turma } from '../interfaces/Turma.model';
 
-type TurmaRequest = {
+export type TurmaRequest = {
   nome: string;
   serieAno: string;
   turno: string;

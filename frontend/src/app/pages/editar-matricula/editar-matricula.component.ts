@@ -8,9 +8,13 @@ import { UserService } from '../../services/user.service';
 @Component({
   selector: 'app-editar-matricula',
   standalone: true,
-  imports: [DefaultLayoutComponent, SectionComponent, FormularioMatriculaComponent],
+  imports: [
+    DefaultLayoutComponent,
+    SectionComponent,
+    FormularioMatriculaComponent,
+  ],
   templateUrl: './editar-matricula.component.html',
-  styleUrl: './editar-matricula.component.css'
+  styleUrl: './editar-matricula.component.css',
 })
 export class EditarMatriculaComponent {
   alunoId: string | null;
@@ -20,7 +24,13 @@ export class EditarMatriculaComponent {
     cpf: '',
     telefone: '',
     email: '',
-  }
+    turma: {
+      id: '',
+      nome: '',
+      serieAno: '',
+      turno: '',
+    },
+  };
   alunoDataEndereco = {
     cep: '',
     numero: '',
@@ -28,10 +38,13 @@ export class EditarMatriculaComponent {
     bairro: '',
     cidade: '',
     estado: '',
-    complemento: '' 
-  }
+    complemento: '',
+  };
 
-  constructor(private route: ActivatedRoute, private userService: UserService) {
+  constructor(
+    private route: ActivatedRoute,
+    private userService: UserService,
+  ) {
     this.alunoId = this.route.snapshot.paramMap.get('id');
 
     if (this.alunoId) {
@@ -43,9 +56,18 @@ export class EditarMatriculaComponent {
             cpf: user.cpf,
             telefone: user.telefone,
             email: user.usuario.email,
-          }
+            turma: user.turma || {
+              id: '',
+              nome: '',
+              serieAno: '',
+              turno: '',
+            },
+          };
 
-        
+          // if (user.turma) {
+          //   this.turma = `${user.turma.nome} | ${user.turma.serieAno} | ${user.turma.turno}`;
+          // }
+
           this.alunoDataEndereco = {
             cep: user.endereco.cep,
             numero: user.endereco.numero,
@@ -53,17 +75,13 @@ export class EditarMatriculaComponent {
             bairro: user.endereco.bairro,
             cidade: user.endereco.cidade,
             estado: user.endereco.estado,
-            complemento: user.endereco.complemento || ''
-          }
-          
+            complemento: user.endereco.complemento || '',
+          };
         },
         error: (error) => {
-          console.error("Não foi possível achar o aluno pelo id:", error);
-        }
+          console.error('Não foi possível achar o aluno pelo id:', error);
+        },
       });
-
     }
   }
-
-
 }

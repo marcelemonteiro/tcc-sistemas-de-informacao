@@ -1,11 +1,11 @@
 <app-default-layout>
-    <app-section title="Editar matrícula">
-        @if(alunoData && alunoDataEndereco) {
-            <app-formulario-matricula 
-                [alunoData]="alunoData"
-                [alunoDataEndereco]="alunoDataEndereco"
-                action="update"
-            />
-        }
-    </app-section>
+  <app-section title="Editar matrícula">
+    @if (alunoData && alunoDataEndereco) {
+      <app-formulario-matricula
+        [alunoData]="alunoData"
+        [alunoDataEndereco]="alunoDataEndereco"
+        action="update"
+      />
+    }
+  </app-section>
 </app-default-layout>
