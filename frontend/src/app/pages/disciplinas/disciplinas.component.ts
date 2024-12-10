@@ -30,5 +30,18 @@ export class DisciplinasComponent {
     });
   }
 
-  handleDeleteDisciplina(id: string) {}
+  handleDeleteDisciplina(id: string) {
+    this.subjectService.deleteSubject(id).subscribe({
+      next: () => {
+        if (this.disciplinas) {
+          this.disciplinas = this.disciplinas?.filter(
+            (disciplina) => disciplina.id !== id,
+          );
+        }
+      },
+      error: (error) => {
+        console.error('Erro ao deletar disciplina:', error);
+      },
+    });
+  }
 }

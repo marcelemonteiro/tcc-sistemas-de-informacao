@@ -56,4 +56,20 @@ export class SubjectService {
       }),
     });
   }
+
+  updateSubject(id: string, disciplina: DisciplinaRequest) {
+    return this.http.put(`http://localhost:8080/disciplina/${id}`, disciplina, {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + this.authService.getToken(),
+      }),
+    });
+  }
+
+  deleteSubject(id: string) {
+    return this.http.delete(`http://localhost:8080/disciplina/${id}`, {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + this.authService.getToken(),
+      }),
+    });
+  }
 }

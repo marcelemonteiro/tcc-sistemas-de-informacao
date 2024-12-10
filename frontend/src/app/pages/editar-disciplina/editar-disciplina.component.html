@@ -1,0 +1,13 @@
+<app-default-layout>
+  <app-section title="Editar nova disciplina">
+    @if (disciplina) {
+      <app-formulario-disciplina
+        [id]="disciplina.id"
+        [nome]="disciplina.nome"
+        [turma]="disciplina.turma"
+        [professor]="disciplina.professor"
+        action="update"
+      />
+    }
+  </app-section>
+</app-default-layout>

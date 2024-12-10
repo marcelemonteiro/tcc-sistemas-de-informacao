@@ -20,9 +20,9 @@
             <td>{{ disciplina.turma.nome }}</td>
             <td>{{ disciplina.professor.nome }}</td>
             <td>
-              <a [routerLink]="['/admin/disciplinas/editar', disciplina.id]"
-                >Editar</a
-              >
+              <a [routerLink]="['/admin/disciplinas/editar', disciplina.id]">
+                Editar
+              </a>
             </td>
             <td>
               <button (click)="handleDeleteDisciplina(disciplina.id)">

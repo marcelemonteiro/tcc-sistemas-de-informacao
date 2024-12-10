@@ -15,6 +15,7 @@ import { SubjectService } from '../../services/subject.service';
   styleUrl: './formulario-disciplina.component.css',
 })
 export class FormularioDisciplinaComponent {
+  @Input() id = '';
   @Input() nome = '';
   @Input() turma = {
     id: '',
@@ -44,14 +45,27 @@ export class FormularioDisciplinaComponent {
       turma: this.turma.id,
     };
 
-    this.subjectService.createSubject(disciplina).subscribe({
-      next: () => {
-        this.router.navigate(['/admin/disciplinas']);
-      },
-      error: (error) => {
-        console.error('Erro ao cadastrar disciplina', error);
-      },
-    });
+    if (this.action === 'update') {
+      this.subjectService.updateSubject(this.id, disciplina).subscribe({
+        next: () => {
+          this.router.navigate(['/admin/disciplinas']);
+        },
+        error: (error) => {
+          console.error('Erro ao atualizar disciplina', error);
+        },
+      });
+    }
+
+    if (this.action !== 'update') {
+      this.subjectService.createSubject(disciplina).subscribe({
+        next: () => {
+          this.router.navigate(['/admin/disciplinas']);
+        },
+        error: (error) => {
+          console.error('Erro ao cadastrar disciplina', error);
+        },
+      });
+    }
   }
 
   getTurmas() {

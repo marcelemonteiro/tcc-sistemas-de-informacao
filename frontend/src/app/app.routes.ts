@@ -33,6 +33,7 @@ import { TurmaAlunosComponent } from './pages/turma-alunos/turma-alunos.componen
 import { EditarTurmaComponent } from './pages/editar-turma/editar-turma.component';
 import { DisciplinasComponent } from './pages/disciplinas/disciplinas.component';
 import { NovaDisciplinaComponent } from './pages/nova-disciplina/nova-disciplina.component';
+import { EditarDisciplinaComponent } from './pages/editar-disciplina/editar-disciplina.component';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -171,6 +172,11 @@ export const routes: Routes = [
   {
     path: 'admin/disciplinas/criar',
     component: NovaDisciplinaComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'admin/disciplinas/editar/:id',
+    component: EditarDisciplinaComponent,
     canActivate: [authGuard],
   },
   { path: '**', component: PageNotFoundComponent },
