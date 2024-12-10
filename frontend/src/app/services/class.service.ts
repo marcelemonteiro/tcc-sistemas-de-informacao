@@ -41,4 +41,12 @@ export class ClassService {
       }),
     });
   }
+
+  deleteClass(id: string) {
+    return this.http.delete(`http://localhost:8080/turma/${id}`, {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + this.authService.getToken(),
+      }),
+    });
+  }
 }

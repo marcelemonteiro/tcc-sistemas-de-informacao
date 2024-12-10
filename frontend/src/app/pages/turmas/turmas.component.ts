@@ -29,4 +29,17 @@ export class TurmasComponent {
       },
     });
   }
+
+  handleDeleteTurma(id: string) {
+    this.classService.deleteClass(id).subscribe({
+      next: () => {
+        if (this.turmas) {
+          this.turmas = this.turmas.filter((turma) => turma.id !== id);
+        }
+      },
+      error: (error) => {
+        console.error('Erro ao criar turma:', error);
+      },
+    });
+  }
 }
