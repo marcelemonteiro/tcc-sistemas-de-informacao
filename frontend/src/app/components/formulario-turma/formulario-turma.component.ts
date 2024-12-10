@@ -11,6 +11,7 @@ import { ClassService } from '../../services/class.service';
   styleUrl: './formulario-turma.component.css',
 })
 export class FormularioTurmaComponent {
+  @Input() id = '';
   @Input() nome = '';
   @Input() serieAno = '1º ano';
   @Input() turno = 'MANHA';
@@ -36,6 +37,22 @@ export class FormularioTurmaComponent {
       },
       error: (error) => {
         console.error('Erro ao criar turma:', error);
+      },
+    });
+  }
+
+  updateTurma() {
+    const turma = {
+      nome: this.nome,
+      serieAno: this.serieAno,
+      turno: this.turno,
+    };
+    this.classService.updateClass(this.id, turma).subscribe({
+      next: () => {
+        this.router.navigate(['/admin/turmas']);
+      },
+      error: (error) => {
+        console.error('Erro ao atualizar turma:', error);
       },
     });
   }

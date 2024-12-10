@@ -42,6 +42,14 @@ export class ClassService {
     });
   }
 
+  updateClass(id: string, turma: TurmaRequest) {
+    return this.http.put(`http://localhost:8080/turma/${id}`, turma, {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + this.authService.getToken(),
+      }),
+    });
+  }
+
   deleteClass(id: string) {
     return this.http.delete(`http://localhost:8080/turma/${id}`, {
       headers: new HttpHeaders({

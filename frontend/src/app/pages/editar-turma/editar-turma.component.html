@@ -1,0 +1,13 @@
+<app-default-layout>
+  <app-section title="Criar turma">
+    @if (turma) {
+      <app-formulario-turma
+        [id]="turma.id"
+        [nome]="turma.nome"
+        [serieAno]="turma.serieAno"
+        [turno]="turma.turno"
+        action="update"
+      />
+    }
+  </app-section>
+</app-default-layout>

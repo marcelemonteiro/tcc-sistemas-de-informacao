@@ -24,7 +24,7 @@
               <a [routerLink]="['/admin/turmas', turma.id]">Lista de Alunos</a>
             </td>
             <td>
-              <button>Editar</button>
+              <a [routerLink]="['/admin/turmas/editar', turma.id]">Editar</a>
             </td>
             <td>
               <button (click)="handleDeleteTurma(turma.id)">Deletar</button>

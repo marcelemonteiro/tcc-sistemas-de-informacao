@@ -30,6 +30,7 @@ import { NovoProfessorComponent } from './pages/novo-professor/novo-professor.co
 import { EditarProfessorComponent } from './pages/editar-professor/editar-professor.component';
 import { NovaTurmaComponent } from './pages/nova-turma/nova-turma.component';
 import { TurmaAlunosComponent } from './pages/turma-alunos/turma-alunos.component';
+import { EditarTurmaComponent } from './pages/editar-turma/editar-turma.component';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -153,6 +154,11 @@ export const routes: Routes = [
   {
     path: 'admin/turmas/:id',
     component: TurmaAlunosComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'admin/turmas/editar/:id',
+    component: EditarTurmaComponent,
     canActivate: [authGuard],
   },
   { path: '**', component: PageNotFoundComponent },
