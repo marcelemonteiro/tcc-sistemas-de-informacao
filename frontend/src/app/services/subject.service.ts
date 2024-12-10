@@ -4,6 +4,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from './auth.service';
 import { Disciplina } from '../interfaces/Disciplina.model';
 
+type DisciplinaRequest = {
+  nome: string;
+  professor: string;
+  turma: string;
+};
+
 @Injectable({
   providedIn: 'root',
 })
@@ -41,5 +47,13 @@ export class SubjectService {
         }),
       },
     );
+  }
+
+  createSubject(disciplina: DisciplinaRequest) {
+    return this.http.post(`http://localhost:8080/disciplina`, disciplina, {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + this.authService.getToken(),
+      }),
+    });
   }
 }
