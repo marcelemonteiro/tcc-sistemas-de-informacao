@@ -2,6 +2,7 @@ package dev.tcc.sistema_escolar.services;
 
 import java.util.List;
 
+import dev.tcc.sistema_escolar.repositories.ProfessorRepository;
 import org.springframework.stereotype.Service;
 
 import dev.tcc.sistema_escolar.domain.avaliacao.Avaliacao;
@@ -16,12 +17,14 @@ public class AvaliacaoService {
     private AvaliacaoRepository avaliacaoRepository;
     private DisciplinaRepository disciplinaRepository;
     private TurmaRepository turmaRepository;
+    private ProfessorRepository professorRepository;
 
     public AvaliacaoService(AvaliacaoRepository avaliacaoRepository, DisciplinaRepository disciplinaRepository,
-            TurmaRepository turmaRepository) {
+            TurmaRepository turmaRepository, ProfessorRepository professorRepository) {
         this.avaliacaoRepository = avaliacaoRepository;
         this.disciplinaRepository = disciplinaRepository;
         this.turmaRepository = turmaRepository;
+        this.professorRepository = professorRepository;
     }
 
     public Avaliacao createAvaliacao(AvaliacaoDTO avaliacao) {
@@ -29,6 +32,9 @@ public class AvaliacaoService {
                 .orElseThrow(() -> new RuntimeException("Disciplina in Avaliacao not found"));
 
         var turma = this.turmaRepository.findById(avaliacao.turma())
+                .orElseThrow(() -> new RuntimeException("Turma in Avaliacao not found"));
+
+        var professor = this.professorRepository.findById(avaliacao.professor())
                 .orElseThrow(() -> new RuntimeException("Turma in Avaliacao not found"));
 
         AvaliacaoStatus status = AvaliacaoStatus.valueOf(avaliacao.status());
@@ -41,6 +47,7 @@ public class AvaliacaoService {
         novaAvaliacao.setStatus(status);
         novaAvaliacao.setDisciplina(disciplina);
         novaAvaliacao.setTurma(turma);
+        novaAvaliacao.setProfessor(professor);
 
         return this.avaliacaoRepository.save(novaAvaliacao);
     }

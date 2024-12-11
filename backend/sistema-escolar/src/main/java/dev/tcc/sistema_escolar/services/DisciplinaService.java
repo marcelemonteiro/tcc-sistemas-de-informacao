@@ -68,6 +68,10 @@ public class DisciplinaService {
         return disciplinaRepository.findByTurmaId(turmaId);
     }
 
+    public List<Disciplina> listAllByProfessor(String professorId) {
+        return disciplinaRepository.findByProfessorId(professorId);
+    }
+
     public List<Disciplina> delete(String id) {
         this.disciplinaRepository.deleteById(id);
         return this.listAll();
