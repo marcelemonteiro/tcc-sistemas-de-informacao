@@ -1,18 +1,16 @@
 package dev.tcc.sistema_escolar.domain.disciplina;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import dev.tcc.sistema_escolar.domain.agenda.Agenda;
 import dev.tcc.sistema_escolar.domain.professor.Professor;
 import dev.tcc.sistema_escolar.domain.turma.Turma;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.List;
 
 @Entity
 @Table(name = "disciplinas")
@@ -31,4 +29,7 @@ public class Disciplina {
     @ManyToOne
     @JoinColumn(name = "professor_id", nullable = false)
     private Professor professor;
+    @OneToMany(mappedBy = "disciplina", cascade = CascadeType.REMOVE)
+    @JsonIgnoreProperties({"disciplina", "turma"})
+    private List<Agenda> agendas;
 }

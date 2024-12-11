@@ -34,6 +34,49 @@
     </select>
   </div>
 
+  <div class="horarios">
+    <h3>Horários</h3>
+
+    @for (horario of horarios; track horario.id) {
+      <div>
+        <div class="input-group">
+          <label for="diaSemana">Dia da semana</label>
+          <input
+            type="text"
+            [id]="'diaSemana_' + horario.id"
+            [name]="'diaSemana_' + horario.id"
+            [(ngModel)]="horario.diaSemana"
+            placeholder="Digite o dia da semana da disciplina"
+          />
+        </div>
+
+        <div class="input-group">
+          <label for="horarioInicial">Horário de início</label>
+          <input
+            type="text"
+            [id]="'horarioInicial_' + horario.id"
+            [name]="'horarioInicial_' + horario.id"
+            [(ngModel)]="horario.horarioInicial"
+            placeholder="Digite o horário de início"
+          />
+        </div>
+
+        <div class="input-group">
+          <label for="horarioFinal">Horário de término</label>
+          <input
+            type="text"
+            [id]="'horarioFinal_' + horario.id"
+            [name]="'horarioFinal_' + horario.id"
+            [(ngModel)]="horario.horarioFinal"
+            placeholder="Digite o horário de término"
+          />
+        </div>
+      </div>
+    }
+
+    <button (click)="adicionarInputsHorario()" type="button">+ horário</button>
+  </div>
+
   <div class="buttons">
     <button type="submit">
       @if (action === "update") {

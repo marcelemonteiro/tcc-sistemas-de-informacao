@@ -1,7 +1,7 @@
 <app-default-layout>
   <app-section title="Disciplinas">
     <a [routerLink]="['/admin/disciplinas/criar']" class="cadastro-turma-btn">
-      Cadastrar nova turma
+      Cadastrar nova disciplina
     </a>
 
     <table class="matricula-table">
@@ -10,6 +10,7 @@
           <th>Nome</th>
           <th>Turma</th>
           <th>Professor</th>
+          <th>Horários</th>
           <th [colSpan]="2"></th>
         </tr>
       </thead>
@@ -19,6 +20,16 @@
             <td>{{ disciplina.nome }}</td>
             <td>{{ disciplina.turma.nome }}</td>
             <td>{{ disciplina.professor.nome }}</td>
+            <td>
+              @for (agenda of disciplina.agendas; track agenda.id) {
+                <p>
+                  {{ agenda.diaSemana }} das {{ agenda.horarioInicial }} até
+                  {{ agenda.horarioFinal }}
+                </p>
+              } @empty {
+                <p>Sem horários</p>
+              }
+            </td>
             <td>
               <a [routerLink]="['/admin/disciplinas/editar', disciplina.id]">
                 Editar

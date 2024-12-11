@@ -23,6 +23,7 @@ export class DisciplinasComponent {
     this.subjectService.getAllSubjects().subscribe({
       next: (disciplinas) => {
         this.disciplinas = disciplinas;
+        console.log(disciplinas);
       },
       error: (error) => {
         console.error('Erro ao obter lista de disciplinas:', error);

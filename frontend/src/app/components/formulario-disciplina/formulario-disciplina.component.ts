@@ -7,6 +7,8 @@ import { TeacherService } from '../../services/teacher.service';
 import { User } from '../../pages/user/user.model';
 import { SubjectService } from '../../services/subject.service';
 
+type Horario = {};
+
 @Component({
   selector: 'app-formulario-disciplina',
   standalone: true,
@@ -23,6 +25,14 @@ export class FormularioDisciplinaComponent {
   @Input() professor = {
     id: '',
   };
+  @Input() horarios: any[] = [
+    {
+      id: this.gerarIdUnico(),
+      diaSemana: '',
+      horarioInicial: '',
+      horarioFinal: '',
+    },
+  ];
   @Input() action!: string;
 
   turmas: Turma[] | null = null;
@@ -36,6 +46,15 @@ export class FormularioDisciplinaComponent {
   ) {
     this.getTurmas();
     this.getProfessores();
+  }
+
+  adicionarInputsHorario() {
+    this.horarios.push({
+      id: this.gerarIdUnico(),
+      diaSemana: '',
+      horarioInicial: '',
+      horarioFinal: '',
+    });
   }
 
   handleCreateDisciplinaSubmit() {
@@ -58,14 +77,39 @@ export class FormularioDisciplinaComponent {
 
     if (this.action !== 'update') {
       this.subjectService.createSubject(disciplina).subscribe({
-        next: () => {
-          this.router.navigate(['/admin/disciplinas']);
+        next: (response) => {
+          const disciplinaId = response.id;
+          const turmaId = response.turma.id;
+          this.postDisciplinaAgenda(disciplinaId, turmaId);
         },
         error: (error) => {
           console.error('Erro ao cadastrar disciplina', error);
         },
       });
     }
+  }
+
+  postDisciplinaAgenda(disciplina: string, turma: string) {
+    this.horarios.forEach((horario) => {
+      const horarioPost = {
+        disciplina,
+        turma,
+        diaSemana: horario.diaSemana,
+        horarioInicial: horario.horarioInicial,
+        horarioFinal: horario.horarioFinal,
+      };
+
+      this.subjectService.createSubjectSchedule(horarioPost).subscribe({
+        next: (response) => {
+          console.log(response);
+        },
+        error: (error) => {
+          console.error('Erro ao cadastrar agenda da disciplina', error);
+        },
+      });
+    });
+
+    this.router.navigate(['/admin/disciplinas']);
   }
 
   getTurmas() {
@@ -83,11 +127,14 @@ export class FormularioDisciplinaComponent {
     this.teacherService.getAllTeachers().subscribe({
       next: (response) => {
         this.professores = response;
-        console.log(response);
       },
       error: (error) => {
         console.error('Erro ao obter lista de professores', error);
       },
     });
+  }
+
+  gerarIdUnico(): string {
+    return Math.random().toString(36).substring(2, 11); // Gera um ID único (2 até 11, total de 9 caracteres)
   }
 }

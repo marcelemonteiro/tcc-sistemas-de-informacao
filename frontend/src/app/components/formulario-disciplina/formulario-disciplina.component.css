@@ -61,3 +61,25 @@
   padding: 0.9rem;
   width: 100%;
 }
+
+.horarios {
+  grid-column: span 3;
+}
+
+.horarios h3 {
+  margin-bottom: 1rem;
+}
+
+.horarios > div {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.horarios > div > div {
+  margin-bottom: 1rem;
+}
+
+.horarios button {
+  background-color: #ddd;
+}

@@ -10,6 +10,14 @@ type DisciplinaRequest = {
   turma: string;
 };
 
+type AgendaRequest = {
+  disciplina: string;
+  turma: string;
+  diaSemana: string;
+  horarioInicial: string;
+  horarioFinal: string;
+};
+
 @Injectable({
   providedIn: 'root',
 })
@@ -50,11 +58,15 @@ export class SubjectService {
   }
 
   createSubject(disciplina: DisciplinaRequest) {
-    return this.http.post(`http://localhost:8080/disciplina`, disciplina, {
-      headers: new HttpHeaders({
-        Authorization: 'Bearer ' + this.authService.getToken(),
-      }),
-    });
+    return this.http.post<Disciplina>(
+      `http://localhost:8080/disciplina`,
+      disciplina,
+      {
+        headers: new HttpHeaders({
+          Authorization: 'Bearer ' + this.authService.getToken(),
+        }),
+      },
+    );
   }
 
   updateSubject(id: string, disciplina: DisciplinaRequest) {
@@ -67,6 +79,14 @@ export class SubjectService {
 
   deleteSubject(id: string) {
     return this.http.delete(`http://localhost:8080/disciplina/${id}`, {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + this.authService.getToken(),
+      }),
+    });
+  }
+
+  createSubjectSchedule(agenda: AgendaRequest) {
+    return this.http.post(`http://localhost:8080/agenda`, agenda, {
       headers: new HttpHeaders({
         Authorization: 'Bearer ' + this.authService.getToken(),
       }),

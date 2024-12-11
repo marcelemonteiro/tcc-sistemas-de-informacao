@@ -1,3 +1,4 @@
+import { Calendar } from './Calendar.model';
 import { Professor } from './Professor.model';
 import { Turma } from './Turma.model';
 
@@ -6,4 +7,5 @@ export interface Disciplina {
   nome: string;
   professor: Professor;
   turma: Turma;
+  agendas: Calendar[];
 }
