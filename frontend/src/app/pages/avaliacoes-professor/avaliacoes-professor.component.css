@@ -17,3 +17,16 @@ td {
   padding: 8px 10px;
   text-align: center;
 }
+.cadastro-turma-btn {
+  padding: 0.5rem 1rem;
+  background-color: var(--laranja-1);
+  color: var(--laranja-2);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.cadastro-turma-btn:hover {
+  background-color: var(--laranja-3);
+  transition: all 200ms ease-in-out;
+}

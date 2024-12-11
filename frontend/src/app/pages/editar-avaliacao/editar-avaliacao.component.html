@@ -1,5 +1,16 @@
 <app-default-layout>
-  <app-section title="Editar avaliação"> 
-    
+  <app-section title="Editar avaliação">
+    @if (avaliacao) {
+      <app-formulario-avaliacao
+        [id]="id || ''"
+        [titulo]="avaliacao.titulo"
+        [descricao]="avaliacao.descricao"
+        [dataInicio]="avaliacao.dataInicio"
+        [dataTermino]="avaliacao.dataTermino"
+        [status]="avaliacao.status"
+        [disciplina]="avaliacao.disciplina"
+        action="update"
+      />
+    }
   </app-section>
 </app-default-layout>

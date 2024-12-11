@@ -1,0 +1,79 @@
+<form class="matricula-form" (ngSubmit)="handleCreateAvaliacaoSubmit()">
+  <div class="input-group">
+    <label for="titulo">Título</label>
+    <input
+      type="text"
+      id="titulo"
+      name="titulo"
+      [(ngModel)]="titulo"
+      placeholder="Digite o titulo da avaliação"
+    />
+  </div>
+
+  <div class="input-group">
+    <label for="descricao">Descrição</label>
+    <input
+      type="text"
+      id="descricao"
+      name="descricao"
+      [(ngModel)]="descricao"
+      placeholder="Digite a descricao da avaliação"
+    />
+  </div>
+
+  <div class="input-group">
+    <label for="dataInicio">Data de início</label>
+    <input
+      type="date"
+      id="dataInicio"
+      name="dataInicio"
+      [(ngModel)]="dataInicio"
+    />
+  </div>
+
+  <div class="input-group">
+    <label for="dataTermino">Data de término</label>
+    <input
+      type="date"
+      id="dataTermino"
+      name="dataTermino"
+      [(ngModel)]="dataTermino"
+    />
+  </div>
+
+  @if (action === "update") {
+    <div class="input-group">
+      <label for="dataInicio">Status</label>
+      <select name="status" id="status" [(ngModel)]="status">
+        <option value="REGISTRADA">Registrada</option>
+        <option value="CONCLUIDA">Concluída</option>
+        <option value="ESPERANDO_CORRECAO">Esperando correção</option>
+      </select>
+    </div>
+  }
+
+  <div class="input-group">
+    <label for="disciplina">Disciplina/Turma</label>
+    <select name="disciplina" id="disciplina" [(ngModel)]="disciplina.id">
+      <option value="" disabled>Selecione uma disciplina</option>
+      @for (disciplina of disciplinas; track disciplina.id) {
+        <option [value]="disciplina.id">
+          {{ disciplina.nome }} - Turma {{ disciplina.turma.nome }}
+          {{ disciplina.turma.serieAno }} {{ disciplina.turma.turno }}
+        </option>
+      }
+    </select>
+  </div>
+
+  <div class="buttons">
+    <button type="submit">
+      @if (action === "update") {
+        Atualizar avaliação
+      } @else {
+        Criar avaliação
+      }
+    </button>
+
+    <a [routerLink]="['/professor/avaliacoes']">Voltar</a>
+  </div>
+</form>

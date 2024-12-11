@@ -38,6 +38,17 @@ export class SubjectService {
     );
   }
 
+  getSubjectByProfessor(professorId: string) {
+    return this.http.get<Disciplina[]>(
+      `http://localhost:8080/disciplina/todos/professor/${professorId}`,
+      {
+        headers: new HttpHeaders({
+          Authorization: 'Bearer ' + this.authService.getToken(),
+        }),
+      },
+    );
+  }
+
   getSubject(id: string) {
     return this.http.get<Disciplina>(`http://localhost:8080/disciplina/${id}`, {
       headers: new HttpHeaders({

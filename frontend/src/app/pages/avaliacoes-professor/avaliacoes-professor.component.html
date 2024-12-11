@@ -1,11 +1,18 @@
 <app-default-layout>
   <app-section title="Avaliações">
+    <a
+      [routerLink]="['/professor/avaliacoes/criar']"
+      class="cadastro-turma-btn"
+    >
+      Criar avaliação
+    </a>
+
     <table class="matricula-table">
       <thead class="matricula-table-head">
         <tr>
           <th>Título</th>
           <th>Status</th>
-          <th>Disciplina</th>
+          <th>Turma</th>
           <th [colSpan]="2"></th>
         </tr>
       </thead>
@@ -14,8 +21,11 @@
           <tr>
             <td>{{ avaliacao.titulo }}</td>
             <td>{{ avaliacao.status }}</td>
-            <td>{{ avaliacao.disciplina.nome }}</td>
-
+            <td>
+              {{ avaliacao.disciplina.turma.nome }}
+              {{ avaliacao.disciplina.turma.serieAno }}
+              {{ avaliacao.disciplina.turma.turno }}
+            </td>
             <td>
               <a [routerLink]="['editar', avaliacao.id]">Editar</a>
             </td>

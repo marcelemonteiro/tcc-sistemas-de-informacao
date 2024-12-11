@@ -4,6 +4,16 @@ import { AuthService } from './auth.service';
 import { Exam } from '../components/exam/exam.model';
 import { ExamResult } from '../interfaces/ExamResult.model';
 
+type ExamRequest = {
+  titulo: string;
+  descricao: string;
+  dataInicio: string;
+  dataTermino: string;
+  status: string;
+  disciplina: string;
+  turma: string;
+};
+
 @Injectable({
   providedIn: 'root',
 })
@@ -62,7 +72,7 @@ export class ExamService {
     });
   }
 
-  updateExam(id: string, exam: Exam) {
+  updateExam(id: string, exam: ExamRequest) {
     return this.http.put(`http://localhost:8080/avaliacao/${id}`, exam, {
       headers: new HttpHeaders({
         Authorization: 'Bearer ' + this.authService.getToken(),
@@ -70,8 +80,8 @@ export class ExamService {
     });
   }
 
-  createExam(exam: Exam) {
-    return this.http.put(`http://localhost:8080/avaliacao/`, exam, {
+  createExam(exam: ExamRequest) {
+    return this.http.post(`http://localhost:8080/avaliacao`, exam, {
       headers: new HttpHeaders({
         Authorization: 'Bearer ' + this.authService.getToken(),
       }),
