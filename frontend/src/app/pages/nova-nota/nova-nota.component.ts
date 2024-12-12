@@ -48,7 +48,7 @@ export class NovaNotaComponent {
               );
 
               return {
-                notaId: nota.id,
+                notaId: nota?.id,
                 alunoId: aluno.id,
                 avaliacaoId: this.avaliacao?.id,
                 aluno: aluno.nome,

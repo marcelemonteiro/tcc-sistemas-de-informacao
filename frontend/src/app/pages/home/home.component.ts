@@ -55,6 +55,7 @@ export class HomeComponent {
     this.currentWeekDay = today.toLocaleDateString('pt-BR', {
       weekday: 'long',
     });
+    console.log(this.currentWeekDay);
 
     if (this.currentUser?.usuario.role === 'ALUNO') {
       this.loadCalendarAluno();
@@ -142,6 +143,7 @@ export class HomeComponent {
       turmas.forEach((turma) => {
         this.calendarService.getCalendarByTurma(turma).subscribe({
           next: (response) => {
+            console.log(response);
             const filterByDisciplina = response.filter((data) =>
               disciplinas?.includes(data.disciplina.id),
             );

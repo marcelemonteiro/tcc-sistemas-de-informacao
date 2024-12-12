@@ -170,3 +170,7 @@ form {
   background-color: var(--laranja-3);
   border: 1px solid var(--laranja-2);
 }
+
+.input-group {
+  margin-top: 1rem;
+}

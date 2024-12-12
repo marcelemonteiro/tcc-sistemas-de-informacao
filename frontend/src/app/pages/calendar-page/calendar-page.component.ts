@@ -21,11 +21,11 @@ export class CalendarPageComponent {
   // TODO: Remover any
   calendarList: any = {};
   diasUteis = [
-    'Segunda-feira',
-    'Terça-feira',
-    'Quarta-feira',
-    'Quinta-feira',
-    'Sexta-feira',
+    'segunda-feira',
+    'terça-feira',
+    'quarta-feira',
+    'quinta-feira',
+    'sexta-feira',
   ];
   currentUser: User | null;
 

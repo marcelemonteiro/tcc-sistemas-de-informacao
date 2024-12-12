@@ -1,38 +1,50 @@
 <app-default-layout>
   @if (user && user.usuario.role === "ALUNO") {
-  <app-section title="Perfil do Aluno">
-    <div class="section-inner">
-      <p><strong>Nome completo</strong>: {{ user.nome }}</p>
-      <p><strong>CPF</strong>: {{ user.cpf }}</p>
-      <p>
-        <strong>Data de nascimento</strong>:
-        {{ user.dataNascimento | date : "dd/MM/yyyy" }}
-      </p>
-      <p><strong>Matrícula</strong>: {{ user.matricula.status }}</p>
-      <p><strong>Série</strong>: {{ user.serieAno }}</p>
-      <p><strong>Endereço</strong>: {{ user.endereco }}</p>
-      <p>
-        <strong>Email</strong>: <code>{{ user.email }}</code>
-      </p>
-      <p><strong>Telefone</strong>: {{ user.telefone }}</p>
-    </div>
-  </app-section>
+    <app-section title="Perfil do Aluno">
+      <div class="section-inner">
+        <p><strong>Nome completo</strong>: {{ user.nome }}</p>
+        <p><strong>CPF</strong>: {{ user.cpf }}</p>
+        <p>
+          <strong>Data de nascimento</strong>:
+          {{ user.dataNascimento | date: "dd/MM/yyyy" }}
+        </p>
+        <p><strong>Matrícula</strong>: {{ user.matricula.status }}</p>
+        <p><strong>Série</strong>: {{ user.serieAno }}</p>
+        <div>
+          <strong>Endereço</strong>:
+          <p>
+            {{ user.endereco?.logradouro }},
+            {{ user.endereco?.numero }}
+            {{ user.endereco?.bairro }}
+            {{ user.endereco?.cidade }} -
+            {{ user.endereco?.estado }}
+          </p>
+
+          <p>{{ user.endereco?.complemento }}</p>
+          <p>{{ user.endereco?.cep }}</p>
+        </div>
+        <p>
+          <strong>Email</strong>: <code>{{ user.email }}</code>
+        </p>
+        <p><strong>Telefone</strong>: {{ user.telefone }}</p>
+      </div>
+    </app-section>
   }
   <!--  -->
   @if (user && user.usuario.role === "PROFESSOR") {
-  <app-section title="Perfil do Professor">
-    <div class="section-inner">
-      <p><strong>Nome completo</strong>: {{ user.nome }}</p>
-      <p><strong>CPF</strong>: {{ user.cpf }}</p>
-      <p>
-        <strong>Data de nascimento</strong>:
-        {{ user.dataNascimento | date : "dd/MM/yyyy" }}
-      </p>
-      <p>
-        <strong>Email</strong>: <code>{{ user.email }}</code>
-      </p>
-      <p><strong>Telefone</strong>: {{ user.telefone }}</p>
-    </div>
-  </app-section>
+    <app-section title="Perfil do Professor">
+      <div class="section-inner">
+        <p><strong>Nome completo</strong>: {{ user.nome }}</p>
+        <p><strong>CPF</strong>: {{ user.cpf }}</p>
+        <p>
+          <strong>Data de nascimento</strong>:
+          {{ user.dataNascimento | date: "dd/MM/yyyy" }}
+        </p>
+        <p>
+          <strong>Email</strong>: <code>{{ user.email }}</code>
+        </p>
+        <p><strong>Telefone</strong>: {{ user.telefone }}</p>
+      </div>
+    </app-section>
   }
 </app-default-layout>

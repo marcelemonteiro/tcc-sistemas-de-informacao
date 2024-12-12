@@ -92,7 +92,7 @@ export class FormularioMatriculaComponent {
       },
       serieAno: '9o ano',
       telefone: this.alunoData.telefone,
-      turma: this.alunoData.turma,
+      turma: this.alunoData.turma.id,
     };
 
     this.userService.registerAluno(user).subscribe({
