@@ -36,6 +36,7 @@ import { NovaDisciplinaComponent } from './pages/nova-disciplina/nova-disciplina
 import { EditarDisciplinaComponent } from './pages/editar-disciplina/editar-disciplina.component';
 import { NovaAvaliacaoComponent } from './pages/nova-avaliacao/nova-avaliacao.component';
 import { NovaNotaComponent } from './pages/nova-nota/nova-nota.component';
+import { DiarioComponent } from './pages/diario/diario.component';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -99,6 +100,11 @@ export const routes: Routes = [
   {
     path: 'turmas/professor/:id',
     component: TurmaComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'diario',
+    component: DiarioComponent,
     canActivate: [authGuard],
   },
   {

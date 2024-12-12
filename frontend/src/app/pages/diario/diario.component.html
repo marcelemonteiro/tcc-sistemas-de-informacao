@@ -1,0 +1,98 @@
+<app-default-layout>
+  <app-section title="Diário | Registro de frequências">
+    <div class="turmas-buttons">
+      @for (turma of turmas; track turma.id) {
+        <button
+          [class.active]="activeTab === turma.id"
+          (click)="enableTab(turma.id)"
+        >
+          {{ turma.nome }} {{ turma.serieAno }} | {{ turma.turno }}
+        </button>
+      }
+    </div>
+
+    <div class="options-buttons">
+      <button [class.active]="listagem" (click)="enableListagem()">
+        Listagem de frequências
+      </button>
+      <button [class.active]="registro" (click)="enableRegistro()">
+        Registrar frequência de hoje
+      </button>
+    </div>
+
+    @if (listagem) {
+      <table class="matricula-table">
+        <thead class="matricula-table-head">
+          <tr>
+            <th>Aluno</th>
+            <th>Disciplina</th>
+            <th>Data</th>
+            <th>Horário</th>
+            <th>Presente?</th>
+          </tr>
+        </thead>
+        <tbody class="matricula-table-body">
+          <tr>
+            <td>Marcele</td>
+            <td>Matemática</td>
+            <td>12/10/2024</td>
+            <td>10:30</td>
+            <td>Sim</td>
+          </tr>
+        </tbody>
+      </table>
+    }
+
+    @if (registro) {
+      <form class="matricula-form">
+        <div class="input-group">
+          <label for="titulo">Aluno</label>
+          <select name="presente" id="presente">
+            <option value="sim">Marcele</option>
+            <option value="sim">Carlos</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <label for="titulo">Disciplina</label>
+          <select name="presente" id="presente">
+            <option value="sim">Matemática</option>
+            <option value="sim">Geografia</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <label for="titulo">Data</label>
+          <input
+            type="date"
+            id="titulo"
+            name="titulo"
+            placeholder="Digite o titulo da avaliação"
+          />
+        </div>
+
+        <div class="input-group">
+          <label for="titulo">Horário</label>
+          <input
+            type="horario"
+            id="titulo"
+            name="titulo"
+            placeholder="Digite o horário"
+          />
+        </div>
+
+        <div class="input-group">
+          <label for="titulo">Presente</label>
+          <select name="presente" id="presente">
+            <option value="sim">Sim</option>
+            <option value="nao">Não</option>
+          </select>
+        </div>
+
+        <div class="buttons">
+          <button type="submit">Registrar</button>
+        </div>
+      </form>
+    }
+  </app-section>
+</app-default-layout>
