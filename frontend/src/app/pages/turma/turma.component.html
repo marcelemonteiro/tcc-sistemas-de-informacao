@@ -21,11 +21,22 @@
             @for (aluno of turma.alunos; track aluno.id) {
               <tr>
                 <td>{{ aluno.nome }}</td>
-                <td>{{ aluno.dataNascimento }}</td>
+                <td>{{ aluno.dataNascimento | date: "dd/MM/yyyy" }}</td>
                 <td>{{ aluno.cpf }}</td>
-                <td>{{ aluno.endereco }}</td>
+                <td>
+                  <p>
+                    {{ aluno.endereco?.logradouro }},
+                    {{ aluno.endereco?.numero }}
+                  </p>
+                  <p>{{ aluno.endereco?.bairro }}</p>
+                  <p>
+                    {{ aluno.endereco?.cidade }} - {{ aluno.endereco?.estado }}
+                  </p>
+                  <p>{{ aluno.endereco?.complemento }}</p>
+                  <p>{{ aluno.endereco?.cep }}</p>
+                </td>
                 <td>{{ aluno.telefone }}</td>
-                <td>{{ aluno.email }}</td>
+                <td>{{ aluno.usuario.email }}</td>
               </tr>
             }
           </tbody>

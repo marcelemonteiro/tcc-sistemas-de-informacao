@@ -28,3 +28,7 @@ td {
 .lista-alunos h3 {
   margin: 1rem 0;
 }
+
+.lista-alunos p {
+  margin: 0;
+}

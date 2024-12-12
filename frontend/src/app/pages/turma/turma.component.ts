@@ -4,11 +4,12 @@ import { SectionComponent } from '../../components/section/section.component';
 import { Turma } from '../../interfaces/Turma.model';
 import { ActivatedRoute } from '@angular/router';
 import { ClassService } from '../../services/class.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-turma',
   standalone: true,
-  imports: [DefaultLayoutComponent, SectionComponent],
+  imports: [DefaultLayoutComponent, SectionComponent, DatePipe],
   templateUrl: './turma.component.html',
   styleUrl: './turma.component.css',
 })
