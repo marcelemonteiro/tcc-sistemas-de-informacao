@@ -2,23 +2,18 @@ package dev.tcc.sistema_escolar.domain.avaliacao;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import dev.tcc.sistema_escolar.domain.disciplina.Disciplina;
+import dev.tcc.sistema_escolar.domain.nota.Nota;
 import dev.tcc.sistema_escolar.domain.professor.Professor;
 import dev.tcc.sistema_escolar.domain.turma.Turma;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.List;
 
 @Entity
 @Table(name = "avaliacoes")
@@ -55,4 +50,8 @@ public class Avaliacao {
     @JoinColumn(name = "professor_id", nullable = false)
     @JsonIgnore
     private Professor professor;
+
+    @OneToMany(mappedBy = "avaliacao")
+    @JsonIgnoreProperties({ "avaliacao" })
+    private List<Nota> notas;
 }

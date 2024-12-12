@@ -1,0 +1,45 @@
+<app-default-layout>
+  <app-section title="Registrar notas da avaliação">
+    @if (avaliacao) {
+      <table class="matricula-table">
+        <thead class="matricula-table-head">
+          <tr>
+            <th>Nome</th>
+            <th>Nota</th>
+          </tr>
+        </thead>
+        <tbody class="matricula-table-body">
+          @for (nota of notas; track nota.alunoId; let index = $index) {
+            <tr>
+              <td>{{ nota.aluno }}</td>
+              <td class="td-form">
+                @if (nota.resultado && !nota.update) {
+                  <div class="td-editar">
+                    <span>{{ nota.resultado }}</span>
+                    <button type="button" (click)="enableUpdate(index)">
+                      Editar
+                    </button>
+                  </div>
+                }
+
+                @if (nota.resultado === "" || nota.update) {
+                  <form (ngSubmit)="handleCriaNota(index)">
+                    <input
+                      type="text"
+                      [name]="'nota_' + nota.aluno"
+                      [id]="'nota_' + nota.aluno"
+                      placeholder="Digite a nota do aluno"
+                      [(ngModel)]="nota.resultado"
+                    />
+                    <button type="submit">OK</button>
+                  </form>
+                }
+              </td>
+            </tr>
+          }
+          <tr></tr>
+        </tbody>
+      </table>
+    }
+  </app-section>
+</app-default-layout>

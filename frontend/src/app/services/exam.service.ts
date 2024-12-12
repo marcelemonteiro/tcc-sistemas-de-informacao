@@ -14,6 +14,12 @@ type ExamRequest = {
   turma: string;
 };
 
+type ExamResulRequest = {
+  avaliacao: string;
+  aluno: string;
+  resultado: number;
+};
+
 @Injectable({
   providedIn: 'root',
 })
@@ -54,6 +60,22 @@ export class ExamService {
         }),
       },
     );
+  }
+
+  postExamResult(nota: ExamResulRequest) {
+    return this.http.post(`http://localhost:8080/nota`, nota, {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + this.authService.getToken(),
+      }),
+    });
+  }
+
+  updateExamResult(id: string, nota: ExamResulRequest) {
+    return this.http.put(`http://localhost:8080/nota/${id}`, nota, {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + this.authService.getToken(),
+      }),
+    });
   }
 
   getExam(id: string) {

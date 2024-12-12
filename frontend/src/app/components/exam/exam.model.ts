@@ -9,4 +9,5 @@ export interface Exam {
   status: string;
   disciplina: Disciplina;
   resultado?: number;
+  notas: any;
 }

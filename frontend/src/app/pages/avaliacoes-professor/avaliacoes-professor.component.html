@@ -7,17 +7,40 @@
       Criar avaliação
     </a>
 
+    <div class="exam-options">
+      <button
+        [class.active]="activeTab === 'esperando'"
+        (click)="enableEsperandoCorrecao()"
+      >
+        Avaliações esperando correção
+      </button>
+      <button
+        [class.active]="activeTab === 'registradas'"
+        (click)="enableRegistradas()"
+      >
+        Avaliações registradas
+      </button>
+      <button
+        [class.active]="activeTab === 'concluidas'"
+        (click)="enableConcluidas()"
+      >
+        Avaliações concluídas
+      </button>
+    </div>
+
     <table class="matricula-table">
       <thead class="matricula-table-head">
         <tr>
           <th>Título</th>
           <th>Status</th>
           <th>Turma</th>
-          <th [colSpan]="2"></th>
+          <th>Data de início</th>
+          <th>Data de término</th>
+          <th [colSpan]="activeTab === 'esperando' ? 3 : 2"></th>
         </tr>
       </thead>
       <tbody class="matricula-table-body">
-        @for (avaliacao of avaliacoes; track avaliacao.id) {
+        @for (avaliacao of avaliacoesFiltrada; track avaliacao.id) {
           <tr>
             <td>{{ avaliacao.titulo }}</td>
             <td>{{ avaliacao.status }}</td>
@@ -26,6 +49,13 @@
               {{ avaliacao.disciplina.turma.serieAno }}
               {{ avaliacao.disciplina.turma.turno }}
             </td>
+            <td>{{ avaliacao.dataInicio }}</td>
+            <td>{{ avaliacao.dataTermino }}</td>
+            @if (activeTab === "esperando") {
+              <td class="link-registro-notas">
+                <a [routerLink]="['nota', avaliacao.id]">Registrar notas</a>
+              </td>
+            }
             <td>
               <a [routerLink]="['editar', avaliacao.id]">Editar</a>
             </td>

@@ -17,6 +17,9 @@ import { RouterLink } from '@angular/router';
 export class AvaliacoesProfessorComponent {
   professor: User | null = null;
   avaliacoes: Exam[] | null = null;
+  avaliacoesFiltrada: Exam[] | null = null;
+
+  activeTab = '';
 
   constructor(
     private userService: UserService,
@@ -31,6 +34,8 @@ export class AvaliacoesProfessorComponent {
       this.examService.getExamListByProfessor(this.professor.id).subscribe({
         next: (response) => {
           this.avaliacoes = response;
+          this.avaliacoesFiltrada = response;
+          this.enableEsperandoCorrecao();
         },
         error: (error) => {
           console.error(
@@ -55,5 +60,35 @@ export class AvaliacoesProfessorComponent {
         console.error('Não foi possível deletar a avaliação:', error);
       },
     });
+  }
+
+  enableRegistradas() {
+    this.activeTab = 'registradas';
+
+    if (this.avaliacoes) {
+      this.avaliacoesFiltrada = this.avaliacoes.filter(
+        (exam) => exam.status === 'REGISTRADA',
+      );
+    }
+  }
+
+  enableEsperandoCorrecao() {
+    this.activeTab = 'esperando';
+
+    if (this.avaliacoes) {
+      this.avaliacoesFiltrada = this.avaliacoes.filter(
+        (exam) => exam.status === 'ESPERANDO_CORRECAO',
+      );
+    }
+  }
+
+  enableConcluidas() {
+    this.activeTab = 'concluidas';
+
+    if (this.avaliacoes) {
+      this.avaliacoesFiltrada = this.avaliacoes.filter(
+        (exam) => exam.status === 'CONCLUIDA',
+      );
+    }
   }
 }

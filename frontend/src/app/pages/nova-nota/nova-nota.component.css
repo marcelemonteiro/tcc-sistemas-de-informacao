@@ -17,7 +17,8 @@ td {
   padding: 8px 10px;
   text-align: center;
 }
-.cadastro-turma-btn {
+
+.nova-matricula-btn {
   padding: 0.5rem 1rem;
   background-color: var(--laranja-1);
   color: var(--laranja-2);
@@ -26,29 +27,40 @@ td {
   cursor: pointer;
 }
 
-.cadastro-turma-btn:hover {
+.nova-matricula-btn:hover {
   background-color: var(--laranja-3);
   transition: all 200ms ease-in-out;
 }
 
-.exam-options {
-  margin-top: 1rem;
+.td-form {
+  width: 30%;
+}
+
+.td-form form {
   display: flex;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
-.exam-options button {
+.td-form input {
+  width: auto;
   padding: 1rem;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
 }
 
-.exam-options button.active {
-  border: 1px solid var(--laranja-2);
-  background-color: var(--laranja-3);
+.td-form button {
+  width: 100%;
 }
 
-.link-registro-notas {
-  background-color: greenyellow;
+.td-editar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.td-editar span {
+  flex: 1;
+  text-align: center;
+}
+
+.td-editar button {
+  width: auto;
 }

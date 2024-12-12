@@ -35,6 +35,7 @@ import { DisciplinasComponent } from './pages/disciplinas/disciplinas.component'
 import { NovaDisciplinaComponent } from './pages/nova-disciplina/nova-disciplina.component';
 import { EditarDisciplinaComponent } from './pages/editar-disciplina/editar-disciplina.component';
 import { NovaAvaliacaoComponent } from './pages/nova-avaliacao/nova-avaliacao.component';
+import { NovaNotaComponent } from './pages/nova-nota/nova-nota.component';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -113,6 +114,11 @@ export const routes: Routes = [
   {
     path: 'professor/avaliacoes/editar/:id',
     component: EditarAvaliacaoComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'professor/avaliacoes/nota/:id',
+    component: NovaNotaComponent,
     canActivate: [authGuard],
   },
   {
